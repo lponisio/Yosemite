@@ -1,86 +1,100 @@
-plot.panels <- function(){
-    f <- function(){
-        col.white <- add.alpha("white", alpha=0)
-        col.lines <- brewer.pal(4, "Greys")[3]
-        col.fill <- add.alpha(col.lines, alpha=0.5)
-        cols.points <- add.alpha(brewer.pal(5, "Set1"), alpha=0.6)
-        layout(matrix(1:6, ncol=3))
-        par(oma=c(6, 1, 2, 1),
-            mar=c(1, 6, 0.5, 1), cex.axis=1.5)
-        ## nodf
-        plot.panel(new.dd=nodf.pi,
-                   dats=cor.dats,
-                   y1="zNODF",
-                   xs="ypr",
-                   col.fill=col.white,
-                   col.lines=col.white,
-                   col.points= cols.points,
-                   plotPoints=TRUE)
-        mtext("Nestedness", 2, line=4, cex=1.5)
-        ## modularity
-        plot.panel(new.dd=mod.pi,
-                   dats=cor.dats,
-                   y1="zmod.met.D",
-                   xs="ypr",
-                   col.fill=col.white,
-                   col.lines=col.white,
-                   col.points= cols.points,
-                   plotPoints=TRUE)
-        mtext("Modularity", 2, line=4, cex=1.5)
+plot.panels <- function(type, xabel, xs= "s.simpson.div"){
+  f <- function(){
+    col.lines <- rev(brewer.pal(4, "RdYlGn"))[c(2,3,4)]
+    col.fill <- add.alpha(col.lines, alpha=0.3)
+    treatments <- c("LOW", "MOD", "HIGH")
 
-        axis(1, pretty(cor.dats$ypr), labels=pretty(cor.dats$ypr))
-        mtext("Year of assembly", 1, line=3.5, cex=1.5)
+    layout(matrix(1:6, ncol=2, byrow=TRUE))
+    par(oma=c(6, 7, 2, 1),
+        mar=c(0.5, 0, 1, 1), cex.axis=1.5)
 
-        ## specialization
-        plot.panel(new.dd=h2.pi,
-                   dats=cor.dats,
-                   y1="zH2",
-                   xs="ypr",
-                   col.fill=col.white,
-                   col.lines=col.white,
-                   col.points=cols.points,
-                   plotPoints=TRUE)
-        mtext("Specialization", 2, line=4, cex=1.5)
-
-        plot.panel(new.dd=conn.pi,
-                   dats=cor.dats,
-                   y1="connectance",
-                   xs="ypr",
-                   col.fill=col.fill,
-                   col.points=cols.points,
-                   col.lines=col.lines,
-                   plotPoints=TRUE)
-        mtext("Connectance", 2, line=4, cex=1.5)
-        axis(1, pretty(cor.dats$ypr), labels=pretty(cor.dats$ypr))
-        mtext("Year of assembly", 1, line=3.5, cex=1.5)
-
-        plot.panel(new.dd=rich.hl.pi,
-                   dats=cor.dats,
-                   y1="number.of.species.HL",
-                   xs="ypr",
-                   col.fill=col.fill,
-                   col.points=cols.points,
-                   col.lines=col.lines,
-                   plotPoints=TRUE)
-        mtext("Pollinator richness", 2, line=4, cex=1.5)
-
-        plot.panel(new.dd=rich.ll.pi,
-                   dats=cor.dats,
-                   y1="number.of.species.LL",
-                   xs="ypr",
-                   col.fill=col.fill,
-                   col.lines=col.lines,
-                   col.points=cols.points,
-                   plotPoints=TRUE)
-        mtext("Plant richness", 2, line=4, cex=1.5)
-
-        axis(1, pretty(cor.dats$ypr), labels=pretty(cor.dats$ypr))
-        mtext("Year of assembly", 1, line=3.5, cex=1.5)
+    ## abundance
+    years <- c("2013", "2014")
+    ## for(j in 1:length(years)){
+    ##   year <- years[j]
+    ##   plot.panel(dats=dat.mods,
+    ##              new.dd=abund.pi,
+    ##              xs=xs,
+    ##              y1="Abund", y2="Abund",
+    ##              treatments=treatments,
+    ##              year=year,
+    ##              col.lines=col.lines,
+    ##              col.fill=col.fill,
+    ##              legend.loc.year="topleft",
+    ##              ylabel= "Bee Abundance",
+    ##              plot.x=FALSE,
+    ##              FUN=max)
+    ## }
+    ## legend("topright",
+    ##        legend=c("Low", "Moderate","High"),
+    ##        col=col.lines,
+    ##        pch=16, bty="n", cex=1.9)
+    ## richness
+    for(j in 1:length(years)){
+      year <- years[j]
+      plot.panel(dats=dat.mods,
+                 new.dd=richness.pi,
+                 xs=xs,
+                 y1="Richness", y2="Richness",
+                 treatments=treatments,
+                 year=year,
+                 col.lines=col.lines,
+                 col.fill=col.fill,
+                 legend.loc.year="topleft",
+                 ylabel= "Bee Richness",
+                 plot.x=FALSE,
+                 FUN=max)
     }
-    path <- 'figures'
-    pdf.f(f, file=file.path(path,
-                            sprintf("%s.pdf", "baci")),
-          width=10, height=6)
+    legend("topright",
+           legend=c("Low", "Moderate","High"),
+           col=col.lines,
+           pch=c(15, 16, 17), bty="n", cex=1.2)
+    ## floral richness
+    for(j in 1:length(years)){
+      year <- years[j]
+      plot.panel(dats=dat.mods,
+                 new.dd=floralRichness.pi,
+                 xs=xs,
+                 y1="FloralRichness",
+                 y2="FloralRichness",
+                 treatments=treatments,
+                 year=year,
+                 col.lines=col.lines,
+                 col.fill=col.fill,
+                 ## legend.loc.year="topleft",
+                 ylabel= "Floral Richness",
+                 plot.x=FALSE,
+                 FUN=max)
+      ## axis(1, pretty(dat.mods[, xs], 4))
+      ##   labels= round((pretty(dat.mods[, xs], 4)*
+      ##     sd(dat.mods[,"simpson.div"])) +
+      ## mean(dat.mods[,"simpson.div"]), 2))
+    }
+
+      for(j in 1:length(years)){
+      year <- years[j]
+      plot.panel(dats=dat.mods,
+                 new.dd=InteractionRichness.pi,
+                 xs=xs,
+                 y1="InteractionRichness",
+                 y2="InteractionRichness",
+                 treatments=treatments,
+                 year=year,
+                 col.lines=col.lines,
+                 col.fill=col.fill,
+                 ylabel= "Interaction Richness",
+                 plot.x=FALSE,
+                 FUN=max)
+      axis(1, pretty(dat.mods[, xs], 4))
+    }
+
+    mtext(xlabel, 1, line=3.5, cex=1.5, at=-1.8)
+  }
+  path <- 'figures/ms'
+  pdf.f(f, file=file.path(path,
+             sprintf("%s.pdf",
+                     paste(type, strsplit(xs, '\\.')[[1]][2], sep="_"))),
+        width=6, height=8)
 
 }
 

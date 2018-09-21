@@ -4,7 +4,7 @@ setwd('analysis/networkLevel')
 source('src/initialize.R')
 
 ## either "abund" or "degree"
-extinction.method <- "degree"
+extinction.method <- "abund"
 
 ## **********************************************************
 ## robustness
@@ -13,14 +13,14 @@ extinction.method <- "degree"
 ## simmpson div pyrodiversity
 res <- simExtinction(nets, extinction.method, dat.mods)
 
-mod.div <- lmer(Robustness ~ s.simpson.div*Year
+mod.div <- lmer(Robustness ~ s.simpson.div*Year*SiteStatus
                 + (1|Site),
                 data=res)
 
 summary(mod.div)
 
 ## functional disperson pyrodiversity
-mod.dis <- lmer(Robustness ~ s.FuncDis*Year
+mod.dis <- lmer(Robustness ~ s.FuncDis*Year*SiteStatus
                 + (1|Site),
                 data=res)
 

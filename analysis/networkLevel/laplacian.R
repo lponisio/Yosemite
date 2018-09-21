@@ -54,4 +54,5 @@ lapply(mods.dis, summary)
 cor.test(alg.con$Richness, alg.con$AlgCon)
 
 
-save(mods.dis, mods.div, alg.con, file=file.path(save.path, 'mods/algCon.Rdata'))
+save(mods.dis, mods.div, alg.con,
+     file=file.path(save.path, 'mods/algCon.Rdata'))
