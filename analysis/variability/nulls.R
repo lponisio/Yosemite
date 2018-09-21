@@ -1,4 +1,4 @@
-## setwd('~/Dropbox/speciesRoles/')
+## setwd('~/Dropbox/Yosemite')
 rm(list=ls())
 setwd('analysis/variability')
 source('src/initialize.R')
@@ -10,12 +10,12 @@ source('src/misc.R')
 source('src/vaznull2.R')
 
 sites <- unique(spec$Site)
+years <- unique(spec$Year)
 spec$Int <- paste(spec$GenusSpecies,
                   spec$PlantGenusSpecies)
 
-args <- commandArgs(trailingOnly=TRUE)
-type <- args[1]
-nnull <- args[2]
+type <- "pols"
+nnull <- 99
 
 if(type=="pols"){
     species.type="GenusSpecies"
@@ -30,7 +30,7 @@ if(type=="plants"){
 ## ************************************************************
 ## year by species matrices pollinators!
 ## ************************************************************
-comms <- lapply(sites, calcYearBeta,
+comms <- lapply(years, calcSiteBeta,
                 species.type=species.type,
                 spec=spec,
                 species.type.int=species.type.int)
