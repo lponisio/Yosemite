@@ -1,0 +1,95 @@
+library('rjags')
+library('R2jags')
+
+ms.ms <- function(d,
+                  ni=1100,
+                  nt=100,
+                  nb=100,
+                  nc=3) {
+  
+  sink('model.jags')
+  cat('model{ 
+
+    ## Define prior distributions for community-level model parameters
+    omega ~ dunif(0,1)
+
+    mu.a.0 ~ dnorm(0,0.001)
+    tau.a.0 ~ dgamma(0.1,0.1)
+
+    ## multi-species priors
+    mu.p.0 ~ dnorm(0,0.001)
+    tau.p.0 ~ dgamma(0.1,0.1)
+    mu.p.day.1 ~ dnorm(0,0.001)
+    tau.p.day.1 ~ dgamma(0.1,0.1)
+  ##  mu.p.day.2 ~ dnorm(0,0.001)
+  ##  tau.p.day.2 ~ dgamma(0.1,0.1)
+
+    mu.a.day.1 ~ dnorm(0,0.001)
+    tau.a.day.1 ~ dgamma(0.1,0.1)
+ ## mu.a.day.2 ~ dnorm(0,0.001)
+ ## tau.a.day.2 ~ dgamma(0.1,0.1)
+
+   ## site specific parameters
+   beta.sev[1] <- 0		
+   beta.sev[2] ~ dnorm(0, 0.001)
+   beta.sev[3] ~ dnorm(0, 0.001)
+
+
+    ## species-specific detectability
+    for(sp in 1:nsp) {
+      p.0[sp] ~ dnorm(mu.p.0,tau.p.0)
+      p.day.1[sp] ~ dnorm(mu.p.day.1,tau.p.day.1)
+   ##   p.day.2[sp] ~ dnorm(mu.p.day.2,tau.p.day.2)
+      for(site in 1:nsite) {
+        for(yr in 1:nyear) {
+          for(rep in 1:nrep[site,yr,sp]) {
+            logit(p[site,yr,rep,sp]) <-
+              p.0[sp] +
+                p.day.1[sp]*day[site,yr,rep,sp] 
+                 ## + p.day.2[sp]*day[site,yr,rep,sp]^2
+          }
+        }
+      }
+    }
+
+    for(sp in 1:nsp) {
+
+      w[sp]  ~ dbern(omega)
+      a.0[sp] ~ dnorm(mu.a.0,tau.a.0)
+      a.day.1[sp] ~ dnorm(mu.a.day.1,tau.a.day.1)
+     ## a.day.2[sp] ~ dnorm(mu.a.day.2,tau.a.day.2)
+
+      for(site in 1:nsite) {
+        for(yr in 1:nyear) {
+          for(rep in 1:nrep[site,yr,sp]) {
+
+            ## occupancy:
+            logit(psi[site,yr,rep,sp]) <- a.0[sp] +
+                                          beta.sev[sev[site]]
+
+            mu.psi[site,yr,rep,sp] <- psi[site,yr,rep,sp]*w[sp]
+            Z[site,yr,rep,sp] ~ dbern(mu.psi[site,yr,rep,sp])
+            
+            ## detectability:
+            mu.p[site,yr,rep,sp] <-
+              p[site,yr,rep,sp]*Z[site,yr,rep,sp]
+            X[site,yr,rep,sp] ~ dbern(mu.p[site,yr,rep,sp])
+          }
+        }
+      }
+    }
+    N <- sum(w)
+  }',fill = TRUE)
+  sink()
+  jags(d$data,d$inits,d$params,'model.jags',n.chains=nc,
+       n.thin=nt,n.iter=ni,n.burnin=nb,working.directory=NULL)
+}
+
+## specify the parameters to be monitored
+get.params <- function()
+  c('mu.p.0',
+    'mu.p.day.1',
+    ##'mu.p.day.2',
+    'mu.a.0',
+    'N',
+    'beta.sev')
