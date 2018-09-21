@@ -18,7 +18,7 @@ ys <- metrics
 ## simpson's diversity of fire history
 formulas.div <-lapply(ys, function(x) {
     as.formula(paste(x, "~",
-                     paste("s.simpson.div*Year",
+                     paste("s.simpson.div*SiteStatus*Year",
                            "(1|Site)",
                            sep="+")))
 })
@@ -36,7 +36,7 @@ lapply(mods.div, summary)
 ## functional dispersion fo fire history
 formulas.dis <-lapply(ys, function(x) {
     as.formula(paste(x, "~",
-                     paste("s.FuncDis*Year",
+                     paste("s.FuncDis*SiteStatus*Year",
                            "(1|Site)",
                            sep="+")))
 })
