@@ -50,9 +50,5 @@ names(mods.dis) <- ys
 ## results
 lapply(mods.dis, summary)
 
-
-
-
 ## look at correlation between AlgCon and species richness
-
 cor.test(alg.con$Richness, alg.con$AlgCon)
