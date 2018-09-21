@@ -27,5 +27,5 @@ mod.dis <- lmer(Robustness ~ s.FuncDis*Year
 summary(mod.dis)
 
 save(mod.dis, mod.div, res, file=file.path(save.path,
-                             sprintf('mods/robistness_%s.Rdata',
+                             sprintf('mods/robustness_%s.Rdata',
                                      extinction.method)))
