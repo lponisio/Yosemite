@@ -7,7 +7,8 @@ simExtinction <- function(nets,
     ## takes the adjacency matrix, whether to drop species by abundance or
     ## degree and whther to drop the "higer" or "lower" level of the
     ## network
-    ## returns a data frame with the site, robustness score and YPR
+    ## returns a data frame with the site, robustness score and merges
+    ## with pyrodiv dataset
 
     ext <- lapply(nets, second.extinct,
                   participant="lower",
@@ -15,16 +16,15 @@ simExtinction <- function(nets,
 
     rob <- sapply(ext, robustness)
     sites <- sapply(strsplit(names(rob), "[.]"), function(x) x[1])
-    years <- sapply(strsplit(names(rob), "[.]"), function(x) x[2])
+    dates <-  sapply(strsplit(names(rob), "[.]"),
+                     function(x) x[2])
+    years <- format(as.Date(dates), "%Y")
 
     dats <- data.frame(Site= sites,
                        Year=years,
+                       Date=dates,
                        Robustness=rob)
     rownames(dats) <- NULL
-    dats$SiteStatus <- spec$SiteStatus[match(paste(dats$Site, dats$Year),
-                                             paste(spec$Site, spec$Year))]
-
-    dats$ypr <- spec$ypr[match(paste(dats$Site, dats$Year),
-                               paste(spec$Site, spec$Year))]
+    dats <- merge(dats, spec)
     return(dats)
 }

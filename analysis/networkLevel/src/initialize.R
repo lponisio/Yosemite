@@ -12,7 +12,20 @@ source('src/diffs.R')
 source('src/prepNets.R')
 
 load('../data/specimens/spec.Rdata')
-load('~/Dropbox/Yosemite/analysis/spatialData/config/saved/data/all150.Rdata')
+load('../data/pyrodiv_buffers/all150.Rdata')
 
 save.path <- 'saved'
 
+nets <- break.net(spec)
+nets <- unlist(nets, recursive=FALSE)
+
+getNetData <- function(nets){
+    sites <- sapply(strsplit(nets, "[.]"),
+                       function(x) x[1])
+    dates <-  sapply(strsplit(nets, "[.]"),
+                        function(x) x[2])
+    years <- format(as.Date(dates), "%Y")
+    return(data.frame(Date=dates,
+                      Site=sites,
+                      Year=years))
+}

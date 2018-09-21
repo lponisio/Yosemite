@@ -3,8 +3,6 @@ rm(list=ls())
 setwd('analysis/networkLevel')
 source('src/initialize.R')
 
-nets <- break.net(spec)
-nets <- unlist(nets, recursive=FALSE)
 ## number of null communities
 N <- 999
 
@@ -49,7 +47,7 @@ formulas.dis <-lapply(ys, function(x) {
                            sep="+")))
 })
 
-mods.dis <- lapply(formulas, function(x){
+mods.dis <- lapply(formulas.dis, function(x){
     lmer(x,
          data=cor.dats)
 })
