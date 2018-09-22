@@ -47,17 +47,3 @@ if(type=="ints"){
 if(type=="plants"){
   ylabel <- "Plant species turnover"
 }
-
-if(only.baci){
-  baci <- c("MullerB", "Sperandio", "Barger", "Butler", "Hrdy")
-  comm$comm <- comm$comm[names(comm$comm) %in% baci]
-  comm$sites <- comm$sites[comm$sites %in% baci]
-  comm$years <- comm$years[names(comm$years) %in% baci]
-  comm$status <- comm$status[names(comm$status) %in% baci]
-  nulls <- nulls[names(nulls) %in% baci]
-}
-
-traits <- read.csv(file=file.path('../../data', "traitsPhenAb.csv"))
-
-
-

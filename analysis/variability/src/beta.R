@@ -1,11 +1,9 @@
 
-calcBetaStatus <- function(comm,
-                           status,
+calcBeta <- function(comm,
                            dis.method,
                            nulls,
                            sub= "pol",
                            occ= FALSE,
-                           years,
                            zscore=FALSE){ ## calculate zscores?
     ## computes dispersion of community matrices, returns output of
     ## vegan function
@@ -55,12 +53,12 @@ calcBetaStatus <- function(comm,
 
 
 makeBetaDataPretty <- function(){
-    sites <- sapply(comm$comm, length)
-    nyears <- sapply(comm$comm, function(x){
+    nobs <- sapply(comm$comm, length)
+    nsite.date <- sapply(comm$comm, function(x){
         sapply(x, nrow)}
         )
-    nrep.years <- sapply(nyears, sum)
-    name.years <- sapply(comm$comm, function(x){
+    nrep.site.date <- sapply(nsite.date, sum)
+    name.site.date <- sapply(comm$comm, function(x){
         sapply(x, rownames)}
         )
 
@@ -68,18 +66,14 @@ makeBetaDataPretty <- function(){
         lapply(x, function(y) y$distances)}
         )
 
-    species.names <- rep(unlist(sapply(nyears, names)), unlist(nyears))
+    species.names <- rep(unlist(sapply(nsite.date, names)), unlist(nsite.date))
 
-    dats <- data.frame(site=rep(names(sites), nrep.years),
-                       year=unlist(name.years),
+    dats <- data.frame(year=rep(names(nobs), nrep.site.date),
+                       site.date=unlist(name.site.date),
                        species=species.names,
                        dist=unlist(distances))
-
+    dats$site <- sapply(strsplit(as.character(dats$site.date), split='-'),
+                        function(x) x[[1]])
     rownames(dats) <- NULL
-
-    #dats <- merge(dats, abund, by.x="species", by.y="GenusSpecies")
-    #dats <- merge(dats, phen, by.x="species", by.y="GenusSpecies")
-    #dats <- merge(dats, traits, by.x="species", by.y="GenusSpecies")
-    dats <- merge(dats, traits, by.x="species", by.y="GenusSpecies")
     return(dats)
 }
