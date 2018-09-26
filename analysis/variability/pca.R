@@ -38,3 +38,6 @@ plant.pca.scores <- calcPcaMeanVar(species.roles=plants,
                                    loadings=loadings,
                                    ave.method=ave.method,
                                    agg.col = "Year")
+
+
+save(pol.pca.scores, plant.pca.scores, file="saved/results/pcaVar.Rdata")

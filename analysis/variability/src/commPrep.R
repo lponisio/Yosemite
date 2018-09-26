@@ -11,7 +11,7 @@ calcSiteBeta <- function(x, species.type, spec, species.type.int,
                                 Date=this.spec$Date),
                            length)
     prep.comm$SiteDate <- paste(prep.comm$Site, prep.comm$Date,
-                                sep="-")
+                                sep=":")
     prep.comm <- prep.comm[!prep.comm$InterGenusSpecies == "",]
     by.species <- split(prep.comm, prep.comm$GenusSpecies)
 

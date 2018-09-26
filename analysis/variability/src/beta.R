@@ -66,14 +66,17 @@ makeBetaDataPretty <- function(){
         lapply(x, function(y) y$distances)}
         )
 
-    species.names <- rep(unlist(sapply(nsite.date, names)), unlist(nsite.date))
+    species.names <- rep(unlist(sapply(nsite.date, names)),
+                         unlist(nsite.date))
+    site.date <- unlist(name.site.date)
 
-    dats <- data.frame(year=rep(names(nobs), nrep.site.date),
-                       site.date=unlist(name.site.date),
-                       species=species.names,
+    dats <- data.frame(Year=rep(names(nobs), nrep.site.date),
+                       GenusSpecies=species.names,
                        dist=unlist(distances))
-    dats$site <- sapply(strsplit(as.character(dats$site.date), split='-'),
+    dats$Site <- sapply(strsplit(as.character(site.date), split=':'),
                         function(x) x[[1]])
+    dats$Date <- sapply(strsplit(as.character(site.date), split=':'),
+                        function(x) x[[2]])
     rownames(dats) <- NULL
     return(dats)
 }

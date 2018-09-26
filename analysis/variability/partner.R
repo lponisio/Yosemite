@@ -25,9 +25,6 @@ dis <- mapply(function(a, b, c, d)
     b= nulls,
     SIMPLIFY=FALSE)
 
-dats <- makeBetaDataPretty()
+beta.dist <- makeBetaDataPretty()
 
-pre.drought <- dats[dats$year=="2013",]
-
-mean.partner.var <- tapply(pre.drought$dist,
-                           pre.drought$species, mean, na.rm=TRUE)
+save(beta.dist, file="saved/results/partnerVar.Rdata")
