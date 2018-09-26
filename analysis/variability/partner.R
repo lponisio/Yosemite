@@ -16,15 +16,18 @@ source('src/initialize_beta.R')
 
 dis <- mapply(function(a, b, c, d)
     calcBeta(comm= a, ## observed communities
-                   dis.method, ## dissimilarity metric
-                   nulls=b, ## null communities
-                   occ=binary, ## binary or abundance weighted?
-                   sub=type,
-                   zscore=FALSE), ## use Chase method not zscores
+             dis.method, ## dissimilarity metric
+             nulls=b, ## null communities
+             occ=binary, ## binary or abundance weighted?
+             sub=type,
+             zscore=FALSE), ## use Chase method not zscores
     a=comm$comm,
     b= nulls,
     SIMPLIFY=FALSE)
 
 dats <- makeBetaDataPretty()
 
-average.partner.var <- tapply(dats[dates$year=="2013",], ]
+pre.drought <- dats[dats$year=="2013",]
+
+mean.partner.var <- tapply(pre.drought$dist,
+                           pre.drought$species, mean, na.rm=TRUE)
