@@ -1,0 +1,889 @@
+Site,Date,FieldPlantSp,PlantSp,BloomStatus,NumFlower,Collector
+L21,6/26/2013,Calochortus spp.,Calochortus spp.,FINISHING,3,LCP
+L21,7/13/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,LKM
+L21,7/17/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,LCP
+L21,7/30/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,LCP
+L21,6/26/2013,CEACOR,Ceanothus cordulatus,FULL,2,LCP
+L21,7/13/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,LKM
+L21,7/17/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,LCP
+L21,7/30/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,LCP
+L21,6/26/2013,Delphinium sp.,Delphinium sp.,FULL,1,LCP
+L21,7/13/2013,Delphinium sp.,Delphinium sp.,NOT BLOOMING,0,LKM
+L21,7/17/2013,Delphinium sp.,Delphinium sp.,NOT BLOOMING,0,LCP
+L21,7/30/2013,Delphinium sp.,Delphinium sp.,NOT BLOOMING,0,LCP
+L21,6/26/2013,ACHMIL,Achillea millefolium,FULL,2,LCP
+L21,7/13/2013,ACHMIL,Achillea millefolium,FULL,2,LKM
+L21,7/17/2013,ACHMIL,Achillea millefolium,FULL,2,LCP
+L21,7/30/2013,ACHMIL,Achillea millefolium,FINISHING,2,LCP
+L21,6/26/2013,ARNNEV,Arnica nevadensis,FULL,1,LCP
+L21,7/13/2013,ARNNEV,Arnica nevadensis,FINISHING,1,LCP
+L21,7/17/2013,ARNNEV,Arnica nevadensis,FINISHING,1,LKM
+L21,7/30/2013,ARNNEV,Arnica nevadensis,FINISHING,1,LCP
+L21,6/26/2013,ASTINT,Aster integrifolius,BEGINNING,1,LCP
+L21,7/13/2013,ASTINT,Aster integrifolius,FULL,3,LKM
+L21,7/17/2013,ASTINT,Aster integrifolius,FULL,3,LCP
+L21,7/30/2013,ASTINT,Aster integrifolius,FINISHING,3,LCP
+L21,6/26/2013,CASAPP,Castilleja applegatei ssp. disticha,FULL,2,LCP
+L21,7/13/2013,CASAPP,Castilleja applegatei ssp. disticha,FULL,2,LKM
+L21,7/17/2013,CASAPP,Castilleja applegatei ssp. disticha,FULL,2,LCP
+L21,7/30/2013,CASAPP,Castilleja applegatei ssp. disticha,FINISHING,1,LCP
+L21,6/26/2013,CHADOU,Chaenactis douglasii var. douglasii,FULL,1,LCP
+L21,7/13/2013,CHADOU,Chaenactis douglasii var. douglasii,FULL,1,LCP
+L21,7/17/2013,CHADOU,Chaenactis douglasii var. douglasii,FULL,1,LKM
+L21,7/30/2013,CHADOU,Chaenactis douglasii var. douglasii,FINISHING,1,LCP
+L21,6/26/2013,CIRAND,Cirsium andersonii,NOT BLOOMING,0,LCP
+L21,7/13/2013,CIRAND,Cirsium andersonii,BEGINNING,1,LKM
+L21,7/17/2013,CIRAND,Cirsium andersonii,BEGINNING,2,LCP
+L21,7/30/2013,CIRAND,Cirsium andersonii,FINISHING,2,LCP
+L21,6/26/2013,COLGRA,Collomia grandiflora,BEGINNING,1,LCP
+L21,7/13/2013,COLGRA,Collomia grandiflora,FULL,2,LKM
+L21,7/17/2013,COLGRA,Collomia grandiflora,FINISHING,2,LCP
+L21,7/30/2013,COLGRA,Collomia grandiflora,FINISHING,1,LCP
+L21,6/26/2013,ERIBRE,Erigeron brewerii var. brewerii,BEGINNING,2,LCP
+L21,7/13/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,3,LKM
+L21,7/17/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,LCP
+L21,7/30/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,1,LCP
+L21,6/26/2013,ERINUD,Eriogonum nudum var.nudum,BEGINNING,1,LCP
+L21,7/13/2013,ERINUD,Eriogonum nudum var.nudum,FULL,5,LKM
+L21,7/17/2013,ERINUD,Eriogonum nudum var.nudum,FULL,5,LCP
+L21,7/30/2013,ERINUD,Eriogonum nudum var.nudum,FINISHING,5,LCP
+L21,6/26/2013,GAYDIF,Gayophytum diffusum ,FULL,3,LCP
+L21,7/13/2013,GAYDIF,Gayophytum diffusum ,FULL,3,LKM
+L21,7/17/2013,GAYDIF,Gayophytum diffusum ,FULL,3,LCP
+L21,7/30/2013,GAYDIF,Gayophytum diffusum ,FINISHING,3,LCP
+L21,6/26/2013,HYPRAD,Hypochaeris radicata,FULL,1,LCP
+L21,7/13/2013,HYPRAD,Hypochaeris radicata,FULL,1,LKM
+L21,7/17/2013,HYPRAD,Hypochaeris radicata,FULL,1,LCP
+L21,7/30/2013,HYPRAD,Hypochaeris radicata,FINISHING,1,LCP
+L21,6/26/2013,LUPFUL,Lupinus fulcratus,FULL,2,LCP
+L21,7/13/2013,LUPFUL,Lupinus fulcratus,FULL,2,LKM
+L21,7/17/2013,LUPFUL,Lupinus fulcratus,FINISHING,2,LCP
+L21,7/30/2013,LUPFUL,Lupinus fulcratus,FINISHING,1,LCP
+L21,6/26/2013,LUPLAT,Lupinus latifolius var.columbianus,FULL,1,LCP
+L21,7/13/2013,LUPLAT,Lupinus latifolius var.columbianus,FINISHING,1,LKM
+L21,7/17/2013,LUPLAT,Lupinus latifolius var.columbianus,FINISHING,1,LCP
+L21,7/30/2013,LUPLAT,Lupinus latifolius var.columbianus,FINISHING,1,LCP
+L21,6/26/2013,MADGRA,Madia gracilis,BEGINNING,2,LCP
+L21,7/13/2013,MADGRA,Madia gracilis,FULL,4,LKM
+L21,7/17/2013,MADGRA,Madia gracilis,FULL,4,LCP
+L21,7/30/2013,MADGRA,Madia gracilis,FINISHING,4,LCP
+L21,6/26/2013,MONODO,Monardella odoratissima ssp. pallida,BEGINNING,1,LCP
+L21,7/13/2013,MONODO,Monardella odoratissima ssp. pallida,BEGINNING,2,LKM
+L21,7/17/2013,MONODO,Monardella odoratissima ssp. pallida,FULL,2,LCP
+L21,7/30/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,LCP
+L21,6/26/2013,PHAHAS,Phacelia hastata ssp. compacta,FULL,2,LCP
+L21,7/13/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,1,LKM
+L21,7/17/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,1,LCP
+L21,7/30/2013,PHAHAS,Phacelia hastata ssp. compacta,NOT BLOOMING,0,LCP
+L21,6/26/2013,RAISCA,Raillardella scaposa,FULL,2,LCP
+L21,7/13/2013,RAISCA,Raillardella scaposa,FULL,2,LKM
+L21,7/17/2013,RAISCA,Raillardella scaposa,FULL,2,LCP
+L21,7/30/2013,RAISCA,Raillardella scaposa,FINISHING,2,LCP
+L21,6/26/2013,TRADUB,Tragopogon dubius,BEGINNING,1,LCP
+L21,7/13/2013,TRADUB,Tragopogon dubius,FULL,1,LKM
+L21,7/17/2013,TRADUB,Tragopogon dubius,FULL,1,LCP
+L21,7/30/2013,TRADUB,Tragopogon dubius,FINISHING,1,LCP
+L21,6/26/2013,WYEMOL,Wyethia mollis,FULL,3,LCP
+L21,7/13/2013,WYEMOL,Wyethia mollis,FINISHING,3,LKM
+L21,7/17/2013,WYEMOL,Wyethia mollis,FINISHING,2,LCP
+L21,7/30/2013,WYEMOL,Wyethia mollis,FINISHING,1,LCP
+L24,6/27/2013,ACHMIL,Achillea millefolium,FULL,3,LKM
+L24,7/13/2013,ACHMIL,Achillea millefolium,FULL,3,SB
+L24,7/18/2013,ACHMIL,Achillea millefolium,FULL,3,LCP
+L24,7/31/2013,ACHMIL,Achillea millefolium,FINISHING,3,LCP
+L24,6/27/2013,ARNNEV,Arnica nevadensis,FULL,1,LKM
+L24,7/13/2013,ARNNEV,Arnica nevadensis,FINISHING,1,SB
+L24,7/18/2013,ARNNEV,Arnica nevadensis,FINISHING,1,LCP
+L24,7/31/2013,ARNNEV,Arnica nevadensis,FINISHING,1,LCP
+L24,6/27/2013,Calochortus spp.,Calochortus spp.,FULL,1,LKM
+L24,7/13/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,SB
+L24,7/18/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,LCP
+L24,7/31/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,LCP
+L24,6/27/2013,COLGRA,Collomia grandiflora,NOT BLOOMING,0,LKM
+L24,7/13/2013,COLGRA,Collomia grandiflora,FULL,1,SB
+L24,7/18/2013,COLGRA,Collomia grandiflora,FINISHING,1,LCP
+L24,7/31/2013,COLGRA,Collomia grandiflora,FINISHING,1,LCP
+L24,6/27/2013,COLTOR,Collinsia torreyi var. torreyi,FULL,1,LKM
+L24,7/13/2013,COLTOR,Collinsia torreyi var. torreyi,NOT BLOOMING,0,SB
+L24,7/18/2013,COLTOR,Collinsia torreyi var. torreyi,NOT BLOOMING,0,LCP
+L24,7/31/2013,COLTOR,Collinsia torreyi var. torreyi,NOT BLOOMING,0,LCP
+L24,6/27/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,BEGINNING,1,LKM
+L24,7/13/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FULL,1,SB
+L24,7/18/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FULL,1,LCP
+L24,7/31/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FINISHING,1,LCP
+L24,6/27/2013,ERIBRE,Erigeron brewerii var. brewerii,BEGINNING,1,LKM
+L24,7/13/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,SB
+L24,7/18/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,LCP
+L24,7/31/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,LCP
+L24,6/27/2013,GAYDIF,Gayophytum diffusum ,FULL,4,LKM
+L24,7/13/2013,GAYDIF,Gayophytum diffusum ,FULL,4,SB
+L24,7/18/2013,GAYDIF,Gayophytum diffusum ,FULL,4,LCP
+L24,7/31/2013,GAYDIF,Gayophytum diffusum ,FINISHING,3,LCP
+L24,6/27/2013,GAYERI,Gayophytum eriospermum,FULL,2,LKM
+L24,7/13/2013,GAYERI,Gayophytum eriospermum,FULL,2,SB
+L24,7/18/2013,GAYERI,Gayophytum eriospermum,FULL,2,LCP
+L24,7/31/2013,GAYERI,Gayophytum eriospermum,FINISHING,2,LCP
+L24,6/27/2013,Gnaphalium sp.,Pseudognaphalium spp.,NOT BLOOMING,0,LKM
+L24,7/13/2013,Gnaphalium sp.,Pseudognaphalium spp.,FULL,2,SB
+L24,7/18/2013,Gnaphalium sp.,Pseudognaphalium spp.,FULL,2,LCP
+L24,7/31/2013,Gnaphalium sp.,Pseudognaphalium spp.,FULL,2,LCP
+L24,6/27/2013,HIEALB,Hieracium albiflorum,FULL,1,LKM
+L24,7/13/2013,HIEALB,Hieracium albiflorum,FULL,1,SB
+L24,7/18/2013,HIEALB,Hieracium albiflorum,FULL,1,LCP
+L24,7/31/2013,HIEALB,Hieracium albiflorum,FINISHING,1,LCP
+L24,6/27/2013,HYPRAD,Hypochaeris radicata,NOT BLOOMING,0,LKM
+L24,7/13/2013,HYPRAD,Hypochaeris radicata,FULL,1,SB
+L24,7/18/2013,HYPRAD,Hypochaeris radicata,FULL,1,LCP
+L24,7/31/2013,HYPRAD,Hypochaeris radicata,NOT BLOOMING,0,LCP
+L24,6/27/2013,LUPLAT,Lupinus latifolius var.columbianus,FULL,2,LKM
+L24,7/13/2013,LUPLAT,Lupinus latifolius var.columbianus,FULL,2,SB
+L24,7/18/2013,LUPLAT,Lupinus latifolius var.columbianus,FINISHING,2,LCP
+L24,7/31/2013,LUPLAT,Lupinus latifolius var.columbianus,FINISHING,2,LCP
+L24,6/27/2013,Osmorhiza sp.,Osmorhiza bertero chilensis,NOT BLOOMING,0,LKM
+L24,7/13/2013,Osmorhiza sp.,Osmorhiza bertero chilensis,FULL,3,SB
+L24,7/18/2013,Osmorhiza sp.,Osmorhiza bertero chilensis,FULL,3,LCP
+L24,7/31/2013,Osmorhiza sp.,Osmorhiza bertero chilensis,FINISHING,2,LCP
+L24,6/27/2013,PHAHAS,Phacelia hastata ssp. compacta,FULL,3,LKM
+L24,7/13/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,SB
+L24,7/18/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,LCP
+L24,7/31/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,LCP
+L24,6/27/2013,POTDRU,Potentilla drummondii ssp. brewerii,FULL,3,LKM
+L24,7/13/2013,POTDRU,Potentilla drummondii ssp. brewerii,FULL,3,SB
+L24,7/18/2013,POTDRU,Potentilla drummondii ssp. brewerii,FINISHING,2,LCP
+L24,7/31/2013,POTDRU,Potentilla drummondii ssp. brewerii,FINISHING,2,LCP
+L24,6/27/2013,POTGLA,Potentilla glandulosa,FULL,1,LKM
+L24,7/13/2013,POTGLA,Potentilla glandulosa,FULL,1,SB
+L24,7/18/2013,POTGLA,Potentilla glandulosa,FINISHING,1,LCP
+L24,7/31/2013,POTGLA,Potentilla glandulosa,FINISHING,1,LCP
+L24,6/27/2013,SOLCAN,Solidago canadensis ssp. elongata,NOT BLOOMING,0,LKM
+L24,7/13/2013,SOLCAN,Solidago canadensis ssp. elongata,BEGINNING,3,SB
+L24,7/18/2013,SOLCAN,Solidago canadensis ssp. elongata,BEGINNING,3,LCP
+L24,7/31/2013,SOLCAN,Solidago canadensis ssp. elongata,FINISHING,4,LCP
+L24,6/27/2013,TRADUB,Tragopogon dubius,NOT BLOOMING,0,LKM
+L24,7/13/2013,TRADUB,Tragopogon dubius,FULL,1,SB
+L24,7/18/2013,TRADUB,Tragopogon dubius,FINISHING,1,LCP
+L24,7/31/2013,TRADUB,Tragopogon dubius,FINISHING,1,LCP
+L33,6/29/2013,Calochortus spp.,Calochortus spp.,FULL,1,CRP
+L33,7/13/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,GH
+L33,7/19/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,LCP
+L33,7/31/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,CRP
+L33,6/29/2013,CHADOU,Chaenactis douglasii var. douglasii,FULL,2,CRP
+L33,7/13/2013,CHADOU,Chaenactis douglasii var. douglasii,FINISHING,1,GH
+L33,7/19/2013,CHADOU,Chaenactis douglasii var. douglasii,FINISHING,1,LCP
+L33,7/31/2013,CHADOU,Chaenactis douglasii var. douglasii,NOT BLOOMING,0,CRP
+L33,6/29/2013,ERIUMB,Eriogonum umbellatum,NOT BLOOMING,0,CRP
+L33,7/13/2013,ERIUMB,Eriogonum umbellatum,BEGINNING,3,GH
+L33,7/19/2013,ERIUMB,Eriogonum umbellatum,FULL,3,LCP
+L33,7/31/2013,ERIUMB,Eriogonum umbellatum,FINISHING,2,CRP
+L33,6/29/2013,GAYDIF,Gayophytum diffusum ,FULL,3,CRP
+L33,7/13/2013,GAYDIF,Gayophytum diffusum ,FULL,3,GH
+L33,7/19/2013,GAYDIF,Gayophytum diffusum ,FULL,3,LCP
+L33,7/31/2013,GAYDIF,Gayophytum diffusum ,FULL,2,CRP
+L33,6/29/2013,GAYERI,Gayophytum eriospermum,FULL,1,CRP
+L33,7/13/2013,GAYERI,Gayophytum eriospermum,FULL,1,GH
+L33,7/19/2013,GAYERI,Gayophytum eriospermum,FULL,1,LCP
+L33,7/31/2013,GAYERI,Gayophytum eriospermum,FULL,1,CRP
+L33,6/29/2013,LUPBRE,Lupinus breweri var. breweri,FULL,2,CRP
+L33,7/13/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,2,GH
+L33,7/19/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,1,LCP
+L33,7/31/2013,LUPBRE,Lupinus breweri var. breweri,NOT BLOOMING,0,CRP
+L33,6/29/2013,MONODO,Monardella odoratissima ssp. pallida,FULL,2,CRP
+L33,7/13/2013,MONODO,Monardella odoratissima ssp. pallida,FULL,2,GH
+L33,7/19/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,LCP
+L33,7/31/2013,MONODO,Monardella odoratissima ssp. pallida,NOT BLOOMING,0,CRP
+L33,6/29/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,CRP
+L33,7/13/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,1,GH
+L33,7/19/2013,PHAHAS,Phacelia hastata ssp. compacta,NOT BLOOMING,0,LCP
+L33,7/31/2013,PHAHAS,Phacelia hastata ssp. compacta,NOT BLOOMING,0,CRP
+L33,6/29/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,CRP
+L33,7/13/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,GH
+L33,7/19/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,LCP
+L33,7/31/2013,ERIBRE,Erigeron brewerii var. brewerii,NOT BLOOMING,0,CRP
+L35,6/27/2013,Delphinium sp.,Delphinium sp.,FULL,1,LCP
+L35,7/13/2013,Delphinium sp.,Delphinium sp.,NOT BLOOMING,0,SH
+L35,7/18/2013,Delphinium sp.,Delphinium sp.,NOT BLOOMING,0,CRP
+L35,7/29/2013,Delphinium sp.,Delphinium sp.,NOT BLOOMING,0,LCP
+L35,6/27/2013,ACHMIL,Achillea millefolium,FULL,3,LCP
+L35,7/13/2013,ACHMIL,Achillea millefolium,FULL,3,SH
+L35,7/18/2013,ACHMIL,Achillea millefolium,FULL,3,CRP
+L35,7/29/2013,ACHMIL,Achillea millefolium,FINISHING,2,LCP
+L35,6/27/2013,CIRAND,Cirsium andersonii,NOT BLOOMING,0,LCP
+L35,7/13/2013,CIRAND,Cirsium andersonii,NOT BLOOMING,0,SH
+L35,7/18/2013,CIRAND,Cirsium andersonii,BEGINNING,1,CRP
+L35,7/29/2013,CIRAND,Cirsium andersonii,NOT BLOOMING,0,LCP
+L35,6/27/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,NOT BLOOMING,0,LCP
+L35,7/13/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,BEGINNING,2,SH
+L35,7/18/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FULL,2,CRP
+L35,7/29/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FULL,2,LCP
+L35,6/27/2013,ERIBRE,Erigeron brewerii var. brewerii,BEGINNING,1,LCP
+L35,7/13/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,SH
+L35,7/18/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,CRP
+L35,7/29/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,LCP
+L35,6/27/2013,GAYDIF,Gayophytum diffusum ,FULL,2,LCP
+L35,7/13/2013,GAYDIF,Gayophytum diffusum ,FULL,2,SH
+L35,7/18/2013,GAYDIF,Gayophytum diffusum ,FULL,2,CRP
+L35,7/29/2013,GAYDIF,Gayophytum diffusum ,FULL,2,LCP
+L35,6/27/2013,HORTRI,Horkelia fusca ,FULL,2,LCP
+L35,7/13/2013,HORTRI,Horkelia fusca ,FULL,2,SH
+L35,7/18/2013,HORTRI,Horkelia fusca ,FULL,2,CRP
+L35,7/29/2013,HORTRI,Horkelia fusca ,FINISHING,1,LCP
+L35,6/27/2013,LUPLAT,Lupinus latifolius var.columbianus,BEGINNING,1,LCP
+L35,7/13/2013,LUPLAT,Lupinus latifolius var.columbianus,BEGINNING,3,SH
+L35,7/18/2013,LUPLAT,Lupinus latifolius var.columbianus,FULL,4,CRP
+L35,7/29/2013,LUPLAT,Lupinus latifolius var.columbianus,FINISHING,4,LCP
+L35,6/27/2013,PHAHAS,Phacelia hastata ssp. compacta,FULL,2,LCP
+L35,7/13/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,SH
+L35,7/18/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,CRP
+L35,7/29/2013,PHAHAS,Phacelia hastata ssp. compacta,NOT BLOOMING,0,LCP
+L35,6/27/2013,SOLCAN,Solidago canadensis ssp. elongata,BEGINNING,1,LCP
+L35,7/13/2013,SOLCAN,Solidago canadensis ssp. elongata,BEGINNING,4,SH
+L35,7/18/2013,SOLCAN,Solidago canadensis ssp. elongata,BEGINNING,4,CRP
+L35,7/29/2013,SOLCAN,Solidago canadensis ssp. elongata,FULL,4,LCP
+N131,6/30/2013,APOAND,Apocynum androsaemifolium ,FULL,2,CK
+N131,7/14/2013,APOAND,Apocynum androsaemifolium ,FULL,3,CRP
+N131,7/20/2013,APOAND,Apocynum androsaemifolium ,FULL,3,LCP
+N131,8/1/2013,APOAND,Apocynum androsaemifolium ,FINISHING,3,CRP
+N131,6/30/2013,ARAREC,Arabis rectissima var. rectissima,FINISHING,1,CK
+N131,7/14/2013,ARAREC,Arabis rectissima var. rectissima,NOT BLOOMING,0,CRP
+N131,7/20/2013,ARAREC,Arabis rectissima var. rectissima,NOT BLOOMING,0,LCP
+N131,8/1/2013,ARAREC,Arabis rectissima var. rectissima,NOT BLOOMING,0,CRP
+N131,6/30/2013,ASTBRE,Aster breweri,NOT BLOOMING,0,CK
+N131,7/14/2013,ASTBRE,Aster breweri,FULL,2,CRP
+N131,7/20/2013,ASTBRE,Aster breweri,FULL,2,LCP
+N131,8/1/2013,ASTBRE,Aster breweri,FINISHING,2,CRP
+N131,6/30/2013,ASTINT,Aster integrifolius,NOT BLOOMING,0,CK
+N131,7/14/2013,ASTINT,Aster integrifolius,NOT BLOOMING,0,CRP
+N131,7/20/2013,ASTINT,Aster integrifolius,NOT BLOOMING,0,LCP
+N131,8/1/2013,ASTINT,Aster integrifolius,FULL,2,CRP
+N131,6/30/2013,CASAPP,Castilleja applegatei ssp. disticha,FULL,2,CK
+N131,7/14/2013,CASAPP,Castilleja applegatei ssp. disticha,FULL,2,CRP
+N131,7/20/2013,CASAPP,Castilleja applegatei ssp. disticha,FULL,2,LCP
+N131,8/1/2013,CASAPP,Castilleja applegatei ssp. disticha,FINISHING,2,CRP
+N131,6/30/2013,CEACOR,Ceanothus cordulatus,FINISHING,3,CK
+N131,7/14/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,CRP
+N131,7/20/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,LCP
+N131,8/1/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,CRP
+N131,6/30/2013,ERINUD,Eriogonum nudum var.nudum,FULL,3,CK
+N131,7/14/2013,ERINUD,Eriogonum nudum var.nudum,FULL,4,CRP
+N131,7/20/2013,ERINUD,Eriogonum nudum var.nudum,FULL,3,LCP
+N131,8/1/2013,ERINUD,Eriogonum nudum var.nudum,FINISHING,3,CRP
+N131,6/30/2013,GAYDIF,Gayophytum diffusum ,FULL,3,CK
+N131,7/14/2013,GAYDIF,Gayophytum diffusum ,FULL,3,CRP
+N131,7/20/2013,GAYDIF,Gayophytum diffusum ,FULL,3,LCP
+N131,8/1/2013,GAYDIF,Gayophytum diffusum ,FULL,3,CRP
+N131,6/30/2013,GAYERI,Gayophytum eriospermum,FULL,3,CK
+N131,7/14/2013,GAYERI,Gayophytum eriospermum,FULL,4,CRP
+N131,7/20/2013,GAYERI,Gayophytum eriospermum,FULL,3,LCP
+N131,8/1/2013,GAYERI,Gayophytum eriospermum,FULL,3,CRP
+N131,6/30/2013,MONODO,Monardella odoratissima ssp. pallida,FULL,3,CK
+N131,7/14/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,3,CRP
+N131,7/20/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,LCP
+N131,8/1/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,CRP
+N131,6/30/2013,PHAHAS,Phacelia hastata ssp. compacta,FULL,2,CK
+N131,7/14/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,CRP
+N131,7/20/2013,PHAHAS,Phacelia hastata ssp. compacta,NOT BLOOMING,0,LCP
+N131,8/1/2013,PHAHAS,Phacelia hastata ssp. compacta,NOT BLOOMING,0,CRP
+N131,6/30/2013,Calochortus spp.,Calochortus spp.,FINISHING,1,CK
+N131,7/14/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,,CRP
+N131,7/20/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,,LCP
+N131,8/1/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,,CRP
+N132,6/30/2013,CALUMB,Calyptridium umbellatum,FULL,1,LCP
+N132,7/14/2013,CALUMB,Calyptridium umbellatum,FINISHING,1,GH
+N132,7/20/2013,CALUMB,Calyptridium umbellatum,FINISHING,1,CRP
+N132,8/1/2013,CALUMB,Calyptridium umbellatum,NOT BLOOMING,0,LCP
+N132,6/30/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,LCP
+N132,7/14/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,GH
+N132,7/20/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,CRP
+N132,8/1/2013,ERIBRE,Erigeron brewerii var. brewerii,NOT BLOOMING,0,LCP
+N132,6/30/2013,ERINUD,Eriogonum nudum var.nudum,NOT BLOOMING,0,LCP
+N132,7/14/2013,ERINUD,Eriogonum nudum var.nudum,NOT BLOOMING,0,GH
+N132,7/20/2013,ERINUD,Eriogonum nudum var.nudum,NOT BLOOMING,0,CRP
+N132,8/1/2013,ERINUD,Eriogonum nudum var.nudum,FULL,1,LCP
+N132,6/30/2013,ERISPE,Eriogonum spergulinum var. reddingianum,BEGINNING,1,LCP
+N132,7/14/2013,ERISPE,Eriogonum spergulinum var. reddingianum,BEGINNING,1,GH
+N132,7/20/2013,ERISPE,Eriogonum spergulinum var. reddingianum,FULL,3,CRP
+N132,8/1/2013,ERISPE,Eriogonum spergulinum var. reddingianum,NOT BLOOMING,0,LCP
+N132,6/30/2013,ERIUMB,Eriogonum umbellatum,NOT BLOOMING,0,LCP
+N132,7/14/2013,ERIUMB,Eriogonum umbellatum,BEGINNING,2,GH
+N132,7/20/2013,ERIUMB,Eriogonum umbellatum,BEGINNING,2,CRP
+N132,8/1/2013,ERIUMB,Eriogonum umbellatum,FINISHING,1,LCP
+N132,6/30/2013,GAYDIF,Gayophytum diffusum ,FULL,1,LCP
+N132,7/14/2013,GAYDIF,Gayophytum diffusum ,FULL,1,GH
+N132,7/20/2013,GAYDIF,Gayophytum diffusum ,FULL,1,CRP
+N132,8/1/2013,GAYDIF,Gayophytum diffusum ,FINISHING,1,LCP
+N132,6/30/2013,GAYERI,Gayophytum eriospermum,FULL,4,LCP
+N132,7/14/2013,GAYERI,Gayophytum eriospermum,FULL,4,GH
+N132,7/20/2013,GAYERI,Gayophytum eriospermum,FULL,4,CRP
+N132,8/1/2013,GAYERI,Gayophytum eriospermum,FINISHING,3,LCP
+N132,6/30/2013,LUPBRE,Lupinus breweri var. breweri,FULL,4,LCP
+N132,7/14/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,3,GH
+N132,7/20/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,3,CRP
+N132,8/1/2013,LUPBRE,Lupinus breweri var. breweri,NOT BLOOMING,0,LCP
+N133,7/8/2013,APOAND,Apocynum androsaemifolium ,FULL,5,CRP
+N133,7/11/2013,APOAND,Apocynum androsaemifolium ,FULL,5,GH
+N133,7/22/2013,APOAND,Apocynum androsaemifolium ,FINISHING,4,LCP
+N133,7/25/2013,APOAND,Apocynum androsaemifolium ,FINISHING,4,GH
+N133,7/8/2013,ARAREC,Arabis rectissima var. rectissima,FINISHING,3,CRP
+N133,7/11/2013,ARAREC,Arabis rectissima var. rectissima,NOT BLOOMING,0,GH
+N133,7/22/2013,ARAREC,Arabis rectissima var. rectissima,NOT BLOOMING,0,LCP
+N133,7/25/2013,ARAREC,Arabis rectissima var. rectissima,NOT BLOOMING,0,GH
+N133,7/8/2013,CALUMB,Calyptridium umbellatum,FULL,2,CRP
+N133,7/11/2013,CALUMB,Calyptridium umbellatum,FULL,2,GH
+N133,7/22/2013,CALUMB,Calyptridium umbellatum,FINISHING,1,LCP
+N133,7/25/2013,CALUMB,Calyptridium umbellatum,NOT BLOOMING,0,GH
+N133,7/8/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,CRP
+N133,7/11/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,GH
+N133,7/22/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,LCP
+N133,7/25/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,GH
+N133,7/8/2013,ERIUMB,Eriogonum umbellatum,NOT BLOOMING,0,CRP
+N133,7/11/2013,ERIUMB,Eriogonum umbellatum,NOT BLOOMING,0,GH
+N133,7/22/2013,ERIUMB,Eriogonum umbellatum,BEGINNING,1,LCP
+N133,7/25/2013,ERIUMB,Eriogonum umbellatum,BEGINNING,2,GH
+N133,7/8/2013,GAYDIF,Gayophytum diffusum ,FULL,4,CRP
+N133,7/11/2013,GAYDIF,Gayophytum diffusum ,FULL,4,GH
+N133,7/22/2013,GAYDIF,Gayophytum diffusum ,FULL,4,LCP
+N133,7/25/2013,GAYDIF,Gayophytum diffusum ,FULL,4,GH
+N133,7/8/2013,GAYERI,Gayophytum eriospermum,FULL,4,CRP
+N133,7/11/2013,GAYERI,Gayophytum eriospermum,FULL,4,GH
+N133,7/22/2013,GAYERI,Gayophytum eriospermum,FULL,4,LCP
+N133,7/25/2013,GAYERI,Gayophytum eriospermum,FULL,4,GH
+N133,7/8/2013,Gnaphalium sp.,Pseudognaphalium spp.,NOT BLOOMING,0,CRP
+N133,7/11/2013,Gnaphalium sp.,Pseudognaphalium spp.,BEGINNING,2,GH
+N133,7/22/2013,Gnaphalium sp.,Pseudognaphalium spp.,BEGINNING,2,LCP
+N133,7/25/2013,Gnaphalium sp.,Pseudognaphalium spp.,BEGINNING,2,GH
+N133,7/8/2013,LUPBRE,Lupinus breweri var. breweri,FULL,4,CRP
+N133,7/11/2013,LUPBRE,Lupinus breweri var. breweri,FULL,4,GH
+N133,7/22/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,2,LCP
+N133,7/25/2013,LUPBRE,Lupinus breweri var. breweri,NOT BLOOMING,0,GH
+N133,7/8/2013,PHAHAS,Phacelia hastata ssp. compacta,FULL,3,CRP
+N133,7/11/2013,PHAHAS,Phacelia hastata ssp. compacta,FULL,3,GH
+N133,7/22/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,1,LCP
+N133,7/25/2013,PHAHAS,Phacelia hastata ssp. compacta,NOT BLOOMING,0,GH
+N134,7/8/2013,ACHMIL,Achillea millefolium,FULL,2,LCP
+N134,7/11/2013,ACHMIL,Achillea millefolium,FULL,2,CRP
+N134,7/22/2013,ACHMIL,Achillea millefolium,FULL,2,GH
+N134,7/25/2013,ACHMIL,Achillea millefolium,FULL,2,CRP
+N134,7/8/2013,AQUFOR,Aquilegia formosa,FULL,1,LCP
+N134,7/11/2013,AQUFOR,Aquilegia formosa,FULL,1,CRP
+N134,7/22/2013,AQUFOR,Aquilegia formosa,NOT BLOOMING,0,GH
+N134,7/25/2013,AQUFOR,Aquilegia formosa,NOT BLOOMING,0,CRP
+N134,7/8/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,BEGINNING,3,LCP
+N134,7/11/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FULL,3,CRP
+N134,7/22/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FULL,3,GH
+N134,7/25/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FINISHING,3,CRP
+N134,7/8/2013,GAYDIF,Gayophytum diffusum ,FULL,2,LCP
+N134,7/11/2013,GAYDIF,Gayophytum diffusum ,FULL,2,CRP
+N134,7/22/2013,GAYDIF,Gayophytum diffusum ,FULL,2,GH
+N134,7/25/2013,GAYDIF,Gayophytum diffusum ,FULL,2,CRP
+N134,7/8/2013,GAYERI,Gayophytum eriospermum,FULL,3,LCP
+N134,7/11/2013,GAYERI,Gayophytum eriospermum,FULL,3,CRP
+N134,7/22/2013,GAYERI,Gayophytum eriospermum,FULL,3,GH
+N134,7/25/2013,GAYERI,Gayophytum eriospermum,FULL,3,CRP
+N134,7/8/2013,Gnaphalium sp.,Pseudognaphalium spp.,BEGINNING,2,LCP
+N134,7/11/2013,Gnaphalium sp.,Pseudognaphalium spp.,FULL,2,CRP
+N134,7/22/2013,Gnaphalium sp.,Pseudognaphalium spp.,FULL,2,GH
+N134,7/25/2013,Gnaphalium sp.,Pseudognaphalium spp.,FULL,2,CRP
+N134,7/8/2013,HIEALB,Hieracium albiflorum,FULL,2,LCP
+N134,7/11/2013,HIEALB,Hieracium albiflorum,FULL,2,CRP
+N134,7/22/2013,HIEALB,Hieracium albiflorum,FINISHING,2,GH
+N134,7/25/2013,HIEALB,Hieracium albiflorum,FINISHING,2,CRP
+N134,7/8/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,2,LCP
+N134,7/11/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,2,CRP
+N134,7/22/2013,LUPBRE,Lupinus breweri var. breweri,NOT BLOOMING,0,GH
+N134,7/25/2013,LUPBRE,Lupinus breweri var. breweri,NOT BLOOMING,0,CRP
+N134,7/8/2013,LUPLAT,Lupinus latifolius var.columbianus,FULL,4,LCP
+N134,7/11/2013,LUPLAT,Lupinus latifolius var.columbianus,FULL,4,CRP
+N134,7/22/2013,LUPLAT,Lupinus latifolius var.columbianus,FINISHING,4,GH
+N134,7/25/2013,LUPLAT,Lupinus latifolius var.columbianus,FINISHING,4,CRP
+N134,7/8/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,3,LCP
+N134,7/11/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,3,CRP
+N134,7/22/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,GH
+N134,7/25/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,CRP
+N134,7/8/2013,SOLCAN,Solidago canadensis ssp. elongata,NOT BLOOMING,0,LCP
+N134,7/11/2013,SOLCAN,Solidago canadensis ssp. elongata,NOT BLOOMING,0,CRP
+N134,7/22/2013,SOLCAN,Solidago canadensis ssp. elongata,FULL,2,GH
+N134,7/25/2013,SOLCAN,Solidago canadensis ssp. elongata,FULL,2,CRP
+N135,7/8/2013,APOAND,Apocynum androsaemifolium ,BEGINNING,2,GH
+N135,7/11/2013,APOAND,Apocynum androsaemifolium ,BEGINNING,2,LCP
+N135,7/22/2013,APOAND,Apocynum androsaemifolium ,FINISHING,1,CRP
+N135,7/25/2013,APOAND,Apocynum androsaemifolium ,FINISHING,1,LCP
+N135,7/8/2013,ARCPAT,Arctostaphylos patula,NOT BLOOMING,0,GH
+N135,7/11/2013,ARCPAT,Arctostaphylos patula,NOT BLOOMING,0,LCP
+N135,7/22/2013,ARCPAT,Arctostaphylos patula,NOT BLOOMING,0,CRP
+N135,7/25/2013,ARCPAT,Arctostaphylos patula,NOT BLOOMING,0,LCP
+N135,7/8/2013,CASAPP,Castilleja applegatei ssp. disticha,FULL,2,GH
+N135,7/11/2013,CASAPP,Castilleja applegatei ssp. disticha,FULL,2,LCP
+N135,7/22/2013,CASAPP,Castilleja applegatei ssp. disticha,FINISHING,1,CRP
+N135,7/25/2013,CASAPP,Castilleja applegatei ssp. disticha,FINISHING,1,LCP
+N135,7/8/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,GH
+N135,7/11/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,LCP
+N135,7/22/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,CRP
+N135,7/25/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,1,LCP
+N135,7/8/2013,ERIUMB,Eriogonum umbellatum,BEGINNING,1,GH
+N135,7/11/2013,ERIUMB,Eriogonum umbellatum,FULL,2,LCP
+N135,7/22/2013,ERIUMB,Eriogonum umbellatum,FULL,3,CRP
+N135,7/25/2013,ERIUMB,Eriogonum umbellatum,FINISHING,2,LCP
+N135,7/8/2013,GAYDIF,Gayophytum diffusum ,FULL,3,GH
+N135,7/11/2013,GAYDIF,Gayophytum diffusum ,FULL,3,LCP
+N135,7/22/2013,GAYDIF,Gayophytum diffusum ,FULL,3,CRP
+N135,7/25/2013,GAYDIF,Gayophytum diffusum ,FINISHING,2,LCP
+N135,7/8/2013,GAYERI,Gayophytum eriospermum,FULL,1,GH
+N135,7/11/2013,GAYERI,Gayophytum eriospermum,FULL,1,LCP
+N135,7/22/2013,GAYERI,Gayophytum eriospermum,FULL,2,CRP
+N135,7/25/2013,GAYERI,Gayophytum eriospermum,FULL,2,LCP
+N135,7/8/2013,IPOAGG,Ipomopsis aggregata ssp. formosissima,FULL,2,GH
+N135,7/11/2013,IPOAGG,Ipomopsis aggregata ssp. formosissima,FULL,2,LCP
+N135,7/22/2013,IPOAGG,Ipomopsis aggregata ssp. formosissima,FULL,2,CRP
+N135,7/25/2013,IPOAGG,Ipomopsis aggregata ssp. formosissima,FINISHING,2,LCP
+N135,7/8/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,2,GH
+N135,7/11/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,2,LCP
+N135,7/22/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,1,CRP
+N135,7/25/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,1,LCP
+N135,7/8/2013,MALFLO,Malacothrix floccifera,FULL,2,GH
+N135,7/11/2013,MALFLO,Malacothrix floccifera,FULL,2,LCP
+N135,7/22/2013,MALFLO,Malacothrix floccifera,FINISHING,1,CRP
+N135,7/25/2013,MALFLO,Malacothrix floccifera,FINISHING,1,LCP
+N135,7/8/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,GH
+N135,7/11/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,LCP
+N135,7/22/2013,MONODO,Monardella odoratissima ssp. pallida,NOT BLOOMING,0,CRP
+N135,7/25/2013,MONODO,Monardella odoratissima ssp. pallida,NOT BLOOMING,0,LCP
+N135,7/8/2013,ERIWRI,Eriogonum wrightti var. subscaposum,NOT BLOOMING,0,GH
+N135,7/11/2013,ERIWRI,Eriogonum wrightti var. subscaposum,NOT BLOOMING,0,LCP
+N135,7/22/2013,ERIWRI,Eriogonum wrightti var. subscaposum,NOT BLOOMING,0,CRP
+N135,7/25/2013,ERIWRI,Eriogonum wrightti var. subscaposum,BEGINNING,3,LCP
+N135,7/8/2013,ERIBLO,Ericameria bloomeri,NOT BLOOMING,0,GH
+N135,7/11/2013,ERIBLO,Ericameria bloomeri,NOT BLOOMING,0,LCP
+N135,7/22/2013,ERIBLO,Ericameria bloomeri,NOT BLOOMING,0,CRP
+N135,7/25/2013,ERIBLO,Ericameria bloomeri,BEGINNING,1,LCP
+N135,7/8/2013,PENNEW,Penstemon newberryi var.newberryi,NOT BLOOMING,0,GH
+N135,7/11/2013,PENNEW,Penstemon newberryi var.newberryi,NOT BLOOMING,0,LCP
+N135,7/22/2013,PENNEW,Penstemon newberryi var.newberryi,NOT BLOOMING,0,CRP
+N135,7/25/2013,PENNEW,Penstemon newberryi var.newberryi,NOT BLOOMING,0,LCP
+N136,7/9/2013,ACOCOL,Aconitum columbianum,FULL,3,GH
+N136,7/12/2013,ACOCOL,Aconitum columbianum,FULL,3,LCP
+N136,7/22/2013,ACOCOL,Aconitum columbianum,FINISHING,3,CRP
+N136,7/26/2013,ACOCOL,Aconitum columbianum,FINISHING,3,LCP
+N136,7/9/2013,AQUFOR,Aquilegia formosa,FULL,1,GH
+N136,7/12/2013,AQUFOR,Aquilegia formosa,FULL,1,LCP
+N136,7/22/2013,AQUFOR,Aquilegia formosa,NOT BLOOMING,0,CRP
+N136,7/26/2013,AQUFOR,Aquilegia formosa,NOT BLOOMING,0,LCP
+N136,7/9/2013,EPICIL,Epilobium ciliatum ssp. glandulosum,FULL,3,GH
+N136,7/12/2013,EPICIL,Epilobium ciliatum ssp. glandulosum,FULL,3,LCP
+N136,7/22/2013,EPICIL,Epilobium ciliatum ssp. glandulosum,FULL,3,CRP
+N136,7/26/2013,EPICIL,Epilobium ciliatum ssp. glandulosum,FULL,3,LCP
+N136,7/9/2013,GERRIC,Geranium richardsonii,FULL,3,GH
+N136,7/12/2013,GERRIC,Geranium richardsonii,FULL,3,LCP
+N136,7/22/2013,GERRIC,Geranium richardsonii,FULL,3,CRP
+N136,7/26/2013,GERRIC,Geranium richardsonii,FINISHING,2,LCP
+N136,7/9/2013,HERMAX,Heracleum lanatum,FULL,2,GH
+N136,7/12/2013,HERMAX,Heracleum lanatum,FULL,2,LCP
+N136,7/22/2013,HERMAX,Heracleum lanatum,FINISHING,2,CRP
+N136,7/26/2013,HERMAX,Heracleum lanatum,FINISHING,1,LCP
+N136,7/9/2013,LILPAR,Lilium pardalinum ssp. pardalinum,FULL,2,GH
+N136,7/12/2013,LILPAR,Lilium pardalinum ssp. pardalinum,FULL,2,LCP
+N136,7/22/2013,LILPAR,Lilium pardalinum ssp. pardalinum,NOT BLOOMING,0,CRP
+N136,7/26/2013,LILPAR,Lilium pardalinum ssp. pardalinum,NOT BLOOMING,0,LCP
+N136,7/9/2013,LUPLAT,Lupinus latifolius var.columbianus,FULL,2,GH
+N136,7/12/2013,LUPLAT,Lupinus latifolius var.columbianus,FULL,2,LCP
+N136,7/22/2013,LUPLAT,Lupinus latifolius var.columbianus,FINISHING,2,CRP
+N136,7/26/2013,LUPLAT,Lupinus latifolius var.columbianus,FINISHING,2,LCP
+N136,7/9/2013,MIMFLO,Mimulus florida,FULL,2,GH
+N136,7/12/2013,MIMFLO,Mimulus florida,FULL,2,LCP
+N136,7/22/2013,MIMFLO,Mimulus florida,FULL,2,CRP
+N136,7/26/2013,MIMFLO,Mimulus florida,FULL,2,LCP
+N136,7/9/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,1,GH
+N136,7/12/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,1,LCP
+N136,7/22/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,1,CRP
+N136,7/26/2013,PHAHAS,Phacelia hastata ssp. compacta,NOT BLOOMING,0,LCP
+N136,7/9/2013,POLBIS,Polygonum bistortoides,FULL,3,GH
+N136,7/12/2013,POLBIS,Polygonum bistortoides,FULL,3,LCP
+N136,7/22/2013,POLBIS,Polygonum bistortoides,FINISHING,2,CRP
+N136,7/26/2013,POLBIS,Polygonum bistortoides,FINISHING,2,LCP
+N136,7/9/2013,STAALB,Stachys alba,FULL,3,GH
+N136,7/12/2013,STAALB,Stachys alba,FULL,3,LCP
+N136,7/22/2013,STAALB,Stachys alba,FULL,4,CRP
+N136,7/26/2013,STAALB,Stachys alba,FULL,3,LCP
+N136,7/9/2013,SENTRI,Senecio triangularis,FINISHING,1,GH
+N136,7/12/2013,SENTRI,Senecio triangularis,FINISHING,1,LCP
+N136,7/22/2013,SENTRI,Senecio triangularis,NOT BLOOMING,0,CRP
+N136,7/26/2013,SENTRI,Senecio triangularis,NOT BLOOMING,0,LCP
+N136,7/9/2013,HIEALB,Hieracium albiflorum,FULL,2,GH
+N136,7/12/2013,HIEALB,Hieracium albiflorum,FULL,2,LCP
+N136,7/22/2013,HIEALB,Hieracium albiflorum,FINISHING,2,CRP
+N136,7/26/2013,HIEALB,Hieracium albiflorum,FINISHING,2,LCP
+N136,7/9/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,BEGINNING,1,GH
+N136,7/12/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,BEGINNING,1,LCP
+N136,7/22/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FINISHING,2,CRP
+N136,7/26/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FINISHING,1,LCP
+N136,7/9/2013,VERCAL,Veratrum californicum,BEGINNING,1,GH
+N136,7/12/2013,VERCAL,Veratrum californicum,BEGINNING,1,LCP
+N136,7/22/2013,VERCAL,Veratrum californicum,FULL,2,CRP
+N136,7/26/2013,VERCAL,Veratrum californicum,FULL,2,LCP
+N136,7/9/2013,Osmorhiza sp.,Osmorhiza bertero chilensis,NOT BLOOMING,0,GH
+N136,7/12/2013,Osmorhiza sp.,Osmorhiza bertero chilensis,NOT BLOOMING,0,LCP
+N136,7/22/2013,Osmorhiza sp.,Osmorhiza bertero chilensis,FULL,3,CRP
+N136,7/26/2013,Osmorhiza sp.,Osmorhiza bertero chilensis,FULL,2,LCP
+N136,7/9/2013,SOLCAN,Solidago canadensis ssp. elongata,NOT BLOOMING,0,GH
+N136,7/12/2013,SOLCAN,Solidago canadensis ssp. elongata,NOT BLOOMING,0,LCP
+N136,7/22/2013,SOLCAN,Solidago canadensis ssp. elongata,FULL,2,CRP
+N136,7/26/2013,SOLCAN,Solidago canadensis ssp. elongata,FULL,2,LCP
+N137,7/9/2013,ACHMIL,Achillea millefolium,FULL,3,CRP
+N137,7/12/2013,ACHMIL,Achillea millefolium,FULL,3,GH
+N137,7/24/2013,ACHMIL,Achillea millefolium,FINISHING,2,LCP
+N137,7/26/2013,ACHMIL,Achillea millefolium,,,CRP
+N137,7/9/2013,COLTOR,Collinsia torreyi var. torreyi,FINISHING,4,CRP
+N137,7/12/2013,COLTOR,Collinsia torreyi var. torreyi,FINISHING,4,GH
+N137,7/24/2013,COLTOR,Collinsia torreyi var. torreyi,FINISHING,1,LCP
+N137,7/26/2013,COLTOR,Collinsia torreyi var. torreyi,,,CRP
+N137,7/9/2013,CYMTER,Cymopterus terebinthinus,FULL,4,CRP
+N137,7/12/2013,CYMTER,Cymopterus terebinthinus,FULL,4,GH
+N137,7/24/2013,CYMTER,Cymopterus terebinthinus,FINISHING,1,LCP
+N137,7/26/2013,CYMTER,Cymopterus terebinthinus,,,CRP
+N137,7/9/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,3,CRP
+N137,7/12/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,3,GH
+N137,7/24/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,LCP
+N137,7/26/2013,ERIBRE,Erigeron brewerii var. brewerii,,,CRP
+N137,7/9/2013,GAYERI,Gayophytum eriospermum,FULL,5,CRP
+N137,7/12/2013,GAYERI,Gayophytum eriospermum,FULL,5,GH
+N137,7/24/2013,GAYERI,Gayophytum eriospermum,FULL,4,LCP
+N137,7/26/2013,GAYERI,Gayophytum eriospermum,,,CRP
+N137,7/9/2013,HACMIC,Hackelia micrantha,FULL,2,CRP
+N137,7/12/2013,HACMIC,Hackelia micrantha,FULL,2,GH
+N137,7/24/2013,HACMIC,Hackelia micrantha,FINISHING,1,LCP
+N137,7/26/2013,HACMIC,Hackelia micrantha,,,CRP
+N137,7/9/2013,LUPBRE,Lupinus breweri var. breweri,FULL,4,CRP
+N137,7/12/2013,LUPBRE,Lupinus breweri var. breweri,FULL,4,GH
+N137,7/24/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,2,LCP
+N137,7/26/2013,LUPBRE,Lupinus breweri var. breweri,,,CRP
+N137,7/9/2013,LUPFUL,Lupinus fulcratus,FULL,3,CRP
+N137,7/12/2013,LUPFUL,Lupinus fulcratus,FULL,3,GH
+N137,7/24/2013,LUPFUL,Lupinus fulcratus,FINISHING,2,LCP
+N137,7/26/2013,LUPFUL,Lupinus fulcratus,,,CRP
+N137,7/9/2013,MONODO,Monardella odoratissima ssp. pallida,FULL,2,CRP
+N137,7/12/2013,MONODO,Monardella odoratissima ssp. pallida,FULL,2,GH
+N137,7/24/2013,MONODO,Monardella odoratissima ssp. pallida,FULL,2,LCP
+N137,7/26/2013,MONODO,Monardella odoratissima ssp. pallida,,,CRP
+N137,7/9/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,4,CRP
+N137,7/12/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,4,GH
+N137,7/24/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,3,LCP
+N137,7/26/2013,PHAHAS,Phacelia hastata ssp. compacta,,,CRP
+N137,7/9/2013,SOLCAN,Solidago canadensis ssp. elongata,FULL,2,CRP
+N137,7/12/2013,SOLCAN,Solidago canadensis ssp. elongata,FULL,2,GH
+N137,7/24/2013,SOLCAN,Solidago canadensis ssp. elongata,FULL,2,LCP
+N137,7/26/2013,SOLCAN,Solidago canadensis ssp. elongata,,,CRP
+N137,7/9/2013,APOAND,Apocynum androsaemifolium ,FULL,3,CRP
+N137,7/12/2013,APOAND,Apocynum androsaemifolium ,FULL,3,GH
+N137,7/24/2013,APOAND,Apocynum androsaemifolium ,FINISHING,3,LCP
+N137,7/26/2013,APOAND,Apocynum androsaemifolium ,,,CRP
+N137,7/9/2013,GAYDIF,Gayophytum diffusum ,FULL,4,CRP
+N137,7/12/2013,GAYDIF,Gayophytum diffusum ,FULL,4,GH
+N137,7/24/2013,GAYDIF,Gayophytum diffusum ,FULL,4,LCP
+N137,7/26/2013,GAYDIF,Gayophytum diffusum ,,,CRP
+N137,7/9/2013,CALUMB,Calyptridium umbellatum,FINISHING,1,CRP
+N137,7/12/2013,CALUMB,Calyptridium umbellatum,FINISHING,1,GH
+N137,7/24/2013,CALUMB,Calyptridium umbellatum,FINISHING,1,LCP
+N137,7/26/2013,CALUMB,Calyptridium umbellatum,,,CRP
+N137,7/9/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,NOT BLOOMING,0,CRP
+N137,7/12/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,NOT BLOOMING,0,GH
+N137,7/24/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FULL,1,LCP
+N137,7/26/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,,,CRP
+N137,7/9/2013,MALFLO,Malacothrix floccifera,FULL,2,CRP
+N137,7/12/2013,MALFLO,Malacothrix floccifera,FULL,2,GH
+N137,7/24/2013,MALFLO,Malacothrix floccifera,FINISHING,2,LCP
+N137,7/26/2013,MALFLO,Malacothrix floccifera,,,CRP
+N137,7/9/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,CRP
+N137,7/12/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,GH
+N137,7/24/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,LCP
+N137,7/26/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,CRP
+N137,7/9/2013,ARCPAT,Arctostaphylos patula,NOT BLOOMING,0,CRP
+N137,7/12/2013,ARCPAT,Arctostaphylos patula,NOT BLOOMING,0,GH
+N137,7/24/2013,ARCPAT,Arctostaphylos patula,NOT BLOOMING,0,LCP
+N137,7/26/2013,ARCPAT,Arctostaphylos patula,NOT BLOOMING,0,CRP
+N139,7/9/2013,APOAND,Apocynum androsaemifolium ,BEGINNING,1,LCP
+N139,7/12/2013,APOAND,Apocynum androsaemifolium ,FULL,3,CRP
+N139,7/24/2013,APOAND,Apocynum androsaemifolium ,FINISHING,2,GH
+N139,7/26/2013,APOAND,Apocynum androsaemifolium ,FINISHING,2,GH
+N139,7/9/2013,ARCPAT,Arctostaphylos patula,NOT BLOOMING,0,LCP
+N139,7/12/2013,ARCPAT,Arctostaphylos patula,NOT BLOOMING,0,CRP
+N139,7/24/2013,ARCPAT,Arctostaphylos patula,NOT BLOOMING,0,GH
+N139,7/26/2013,ARCPAT,Arctostaphylos patula,NOT BLOOMING,0,GH
+N139,7/9/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,LCP
+N139,7/12/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,3,CRP
+N139,7/24/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,GH
+N139,7/26/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,GH
+N139,7/9/2013,ERIUMB,Eriogonum umbellatum,BEGINNING,1,LCP
+N139,7/12/2013,ERIUMB,Eriogonum umbellatum,BEGINNING,3,CRP
+N139,7/24/2013,ERIUMB,Eriogonum umbellatum,FULL,3,GH
+N139,7/26/2013,ERIUMB,Eriogonum umbellatum,FULL,3,GH
+N139,7/9/2013,GAYERI,Gayophytum eriospermum,FULL,3,LCP
+N139,7/12/2013,GAYERI,Gayophytum eriospermum,FULL,3,CRP
+N139,7/24/2013,GAYERI,Gayophytum eriospermum,FULL,3,GH
+N139,7/26/2013,GAYERI,Gayophytum eriospermum,FULL,3,GH
+N139,7/9/2013,IVESAN,Ivesia santolinoides,FULL,3,LCP
+N139,7/12/2013,IVESAN,Ivesia santolinoides,FULL,3,CRP
+N139,7/24/2013,IVESAN,Ivesia santolinoides,FULL,2,GH
+N139,7/26/2013,IVESAN,Ivesia santolinoides,FULL,2,GH
+N139,7/9/2013,LUPBRE,Lupinus breweri var. breweri,NOT BLOOMING,0,LCP
+N139,7/12/2013,LUPBRE,Lupinus breweri var. breweri,NOT BLOOMING,0,CRP
+N139,7/24/2013,LUPBRE,Lupinus breweri var. breweri,NOT BLOOMING,0,GH
+N139,7/26/2013,LUPBRE,Lupinus breweri var. breweri,NOT BLOOMING,0,GH
+N139,7/9/2013,MIMWHI,Mimulus whitneyi,FINISHING,1,LCP
+N139,7/12/2013,MIMWHI,Mimulus whitneyi,FINISHING,1,CRP
+N139,7/24/2013,MIMWHI,Mimulus whitneyi,NOT BLOOMING,0,GH
+N139,7/26/2013,MIMWHI,Mimulus whitneyi,NOT BLOOMING,0,GH
+N139,7/9/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,LCP
+N139,7/12/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,CRP
+N139,7/24/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,GH
+N139,7/26/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,GH
+P24,6/27/2013,APOAND,Apocynum androsaemifolium ,NOT BLOOMING,0,CC
+P24,7/13/2013,APOAND,Apocynum androsaemifolium ,NOT BLOOMING,0,CRP
+P24,7/19/2013,APOAND,Apocynum androsaemifolium ,NOT BLOOMING,0,CRP
+P24,7/29/2013,APOAND,Apocynum androsaemifolium ,NOT BLOOMING,0,GH
+P24,6/27/2013,Calochortus spp.,Calochortus spp.,FULL,1,CC
+P24,7/13/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,CRP
+P24,7/19/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,CRP
+P24,7/29/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,GH
+P24,6/27/2013,CHADOU,Chaenactis douglasii var. douglasii,FULL,2,CC
+P24,7/13/2013,CHADOU,Chaenactis douglasii var. douglasii,FINISHING,2,CRP
+P24,7/19/2013,CHADOU,Chaenactis douglasii var. douglasii,FINISHING,2,CRP
+P24,7/29/2013,CHADOU,Chaenactis douglasii var. douglasii,NOT BLOOMING,0,GH
+P24,6/27/2013,COLTOR,Collinsia torreyi var. torreyi,FINISHING,1,CC
+P24,7/13/2013,COLTOR,Collinsia torreyi var. torreyi,NOT BLOOMING,0,CRP
+P24,7/19/2013,COLTOR,Collinsia torreyi var. torreyi,NOT BLOOMING,0,CRP
+P24,7/29/2013,COLTOR,Collinsia torreyi var. torreyi,NOT BLOOMING,0,GH
+P24,6/27/2013,ERIBRE,Erigeron brewerii var. brewerii,BEGINNING,0,CC
+P24,7/13/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,CRP
+P24,7/19/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,1,CRP
+P24,7/29/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,1,GH
+P24,6/27/2013,ERINUD,Eriogonum nudum var.nudum,BEGINNING,2,CC
+P24,7/13/2013,ERINUD,Eriogonum nudum var.nudum,FULL,2,CRP
+P24,7/19/2013,ERINUD,Eriogonum nudum var.nudum,FINISHING,2,CRP
+P24,7/29/2013,ERINUD,Eriogonum nudum var.nudum,NOT BLOOMING,0,GH
+P24,6/27/2013,GAYDIF,Gayophytum diffusum ,FULL,3,CC
+P24,7/13/2013,GAYDIF,Gayophytum diffusum ,FULL,3,CRP
+P24,7/19/2013,GAYDIF,Gayophytum diffusum ,FULL,3,CRP
+P24,7/29/2013,GAYDIF,Gayophytum diffusum ,FULL,3,GH
+P24,6/27/2013,LUPBRE,Lupinus breweri var. breweri,FULL,1,CC
+P24,7/13/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,2,CRP
+P24,7/19/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,1,CRP
+P24,7/29/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,1,GH
+P24,6/27/2013,PEDSEM,Pedicularis semibarbata,FINISHING,1,CC
+P24,7/13/2013,PEDSEM,Pedicularis semibarbata,NOT BLOOMING,0,CRP
+P24,7/19/2013,PEDSEM,Pedicularis semibarbata,NOT BLOOMING,0,CRP
+P24,7/29/2013,PEDSEM,Pedicularis semibarbata,NOT BLOOMING,0,GH
+P24,6/27/2013,PHAHAS,Phacelia hastata ssp. compacta,FULL,2,CC
+P24,7/13/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,CRP
+P24,7/19/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,CRP
+P24,7/29/2013,PHAHAS,Phacelia hastata ssp. compacta,NOT BLOOMING,0,GH
+P310,6/29/2013,Calochortus spp.,Calochortus spp.,FINISHING,1,LCP
+P310,7/13/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,BES
+P310,7/17/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,CRP
+P310,7/31/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,GH
+P310,6/29/2013,KELGAL,Kelloggia galioides,FULL,1,LCP
+P310,7/13/2013,KELGAL,Kelloggia galioides,FULL,1,BES
+P310,7/17/2013,KELGAL,Kelloggia galioides,FINISHING,1,CRP
+P310,7/31/2013,KELGAL,Kelloggia galioides,FINISHING,1,GH
+P310,6/29/2013,ACHMIL,Achillea millefolium,FULL,2,LCP
+P310,7/13/2013,ACHMIL,Achillea millefolium,FULL,2,BES
+P310,7/17/2013,ACHMIL,Achillea millefolium,FULL,2,CRP
+P310,7/31/2013,ACHMIL,Achillea millefolium,FULL,1,GH
+P310,6/29/2013,APOAND,Apocynum androsaemifolium ,NOT BLOOMING,0,LCP
+P310,7/13/2013,APOAND,Apocynum androsaemifolium ,FINISHING,3,BES
+P310,7/17/2013,APOAND,Apocynum androsaemifolium ,FINISHING,3,CRP
+P310,7/31/2013,APOAND,Apocynum androsaemifolium ,FINISHING,2,GH
+P310,6/29/2013,CASAPP,Castilleja applegatei ssp. disticha,FULL,2,LCP
+P310,7/13/2013,CASAPP,Castilleja applegatei ssp. disticha,FULL,2,BES
+P310,7/17/2013,CASAPP,Castilleja applegatei ssp. disticha,FULL,2,CRP
+P310,7/31/2013,CASAPP,Castilleja applegatei ssp. disticha,FINISHING,1,GH
+P310,6/29/2013,CEACOR,Ceanothus cordulatus,FINISHING,2,LCP
+P310,7/13/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,BES
+P310,7/17/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,CRP
+P310,7/31/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,GH
+P310,6/29/2013,ERIBRE,Erigeron brewerii var. brewerii,BEGINNING,2,LCP
+P310,7/13/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,BES
+P310,7/17/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,3,CRP
+P310,7/31/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,3,GH
+P310,6/29/2013,ERIUMB,Eriogonum umbellatum,NOT BLOOMING,0,LCP
+P310,7/13/2013,ERIUMB,Eriogonum umbellatum,FULL,3,BES
+P310,7/17/2013,ERIUMB,Eriogonum umbellatum,FULL,2,CRP
+P310,7/31/2013,ERIUMB,Eriogonum umbellatum,FULL,2,GH
+P310,6/29/2013,GAYERI,Gayophytum eriospermum,FULL,3,LCP
+P310,7/13/2013,GAYERI,Gayophytum eriospermum,FULL,3,BES
+P310,7/17/2013,GAYERI,Gayophytum eriospermum,FULL,3,CRP
+P310,7/31/2013,GAYERI,Gayophytum eriospermum,FULL,3,GH
+P310,6/29/2013,LUPBRE,Lupinus breweri var. breweri,FULL,4,LCP
+P310,7/13/2013,LUPBRE,Lupinus breweri var. breweri,FULL,4,BES
+P310,7/17/2013,LUPBRE,Lupinus breweri var. breweri,FULL,4,CRP
+P310,7/31/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,2,GH
+P310,6/29/2013,MONODO,Monardella odoratissima ssp. pallida,BEGINNING,1,LCP
+P310,7/13/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,3,BES
+P310,7/17/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,3,CRP
+P310,7/31/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,3,GH
+P310,6/29/2013,SOLCAN,Solidago canadensis ssp. elongata,NOT BLOOMING,0,LCP
+P310,7/13/2013,SOLCAN,Solidago canadensis ssp. elongata,NOT BLOOMING,0,BES
+P310,7/17/2013,SOLCAN,Solidago canadensis ssp. elongata,BEGINNING,2,CRP
+P310,7/31/2013,SOLCAN,Solidago canadensis ssp. elongata,FULL,2,GH
+P33,6/27/2013,CEACOR,Ceanothus cordulatus,FINISHING,3,CRP
+P33,7/13/2013,CEACOR,Ceanothus cordulatus,FINISHING,2,RW
+P33,7/18/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,GH
+P33,7/29/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,CRP
+P33,6/27/2013,CIRAND,Cirsium andersonii,NOT BLOOMING,0,CRP
+P33,7/13/2013,CIRAND,Cirsium andersonii,BEGINNING,1,RW
+P33,7/18/2013,CIRAND,Cirsium andersonii,BEGINNING,1,GH
+P33,7/29/2013,CIRAND,Cirsium andersonii,FULL,2,CRP
+P33,6/27/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,CRP
+P33,7/13/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,RW
+P33,7/18/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,GH
+P33,7/29/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,4,CRP
+P33,6/27/2013,ERINUD,Eriogonum nudum var.nudum,FULL,1,CRP
+P33,7/13/2013,ERINUD,Eriogonum nudum var.nudum,FULL,1,RW
+P33,7/18/2013,ERINUD,Eriogonum nudum var.nudum,FULL,1,GH
+P33,7/29/2013,ERINUD,Eriogonum nudum var.nudum,FULL,3,CRP
+P33,6/27/2013,GAYDIF,Gayophytum diffusum ,FULL,3,CRP
+P33,7/13/2013,GAYDIF,Gayophytum diffusum ,FULL,3,RW
+P33,7/18/2013,GAYDIF,Gayophytum diffusum ,FULL,3,GH
+P33,7/29/2013,GAYDIF,Gayophytum diffusum ,FULL,4,CRP
+P33,6/27/2013,GAYERI,Gayophytum eriospermum,FULL,2,CRP
+P33,7/13/2013,GAYERI,Gayophytum eriospermum,FULL,2,RW
+P33,7/18/2013,GAYERI,Gayophytum eriospermum,FULL,2,GH
+P33,7/29/2013,GAYERI,Gayophytum eriospermum,FULL,3,CRP
+P33,6/27/2013,HACMIC,Hackelia micrantha,FULL,2,CRP
+P33,7/13/2013,HACMIC,Hackelia micrantha,FINISHING,1,RW
+P33,7/18/2013,HACMIC,Hackelia micrantha,FINISHING,1,GH
+P33,7/29/2013,HACMIC,Hackelia micrantha,FINISHING,1,CRP
+P33,6/27/2013,MONODO,Monardella odoratissima ssp. pallida,NOT BLOOMING,0,CRP
+P33,7/13/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,RW
+P33,7/18/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,GH
+P33,7/29/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,2,CRP
+P33,6/27/2013,PHAHAS,Phacelia hastata ssp. compacta,FULL,2,CRP
+P33,7/13/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,RW
+P33,7/18/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,GH
+P33,7/29/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,CRP
+P33,6/27/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,NOT BLOOMING,0,CRP
+P33,7/13/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,NOT BLOOMING,0,RW
+P33,7/18/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FULL,1,GH
+P33,7/29/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FINISHING,1,CRP
+P33,6/27/2013,ACHMIL,Achillea millefolium,FULL,2,CRP
+P33,7/13/2013,ACHMIL,Achillea millefolium,FULL,2,RW
+P33,7/18/2013,ACHMIL,Achillea millefolium,FULL,2,GH
+P33,7/29/2013,ACHMIL,Achillea millefolium,FULL,2,CRP
+P33,6/27/2013,ERIUMB,Eriogonum umbellatum,NOT BLOOMING,0,CRP
+P33,7/13/2013,ERIUMB,Eriogonum umbellatum,NOT BLOOMING,0,RW
+P33,7/18/2013,ERIUMB,Eriogonum umbellatum,BEGINNING,2,GH
+P33,7/29/2013,ERIUMB,Eriogonum umbellatum,FULL,3,CRP
+P33,6/27/2013,ERIBLO,Ericameria bloomeri,NOT BLOOMING,0,CRP
+P33,7/13/2013,ERIBLO,Ericameria bloomeri,NOT BLOOMING,0,RW
+P33,7/18/2013,ERIBLO,Ericameria bloomeri,NOT BLOOMING,0,GH
+P33,7/29/2013,ERIBLO,Ericameria bloomeri,FULL,3,CRP
+P33,6/27/2013,Stephanomeria sp.,Stephanomeria sp.,NOT BLOOMING,0,CRP
+P33,7/13/2013,Stephanomeria sp.,Stephanomeria sp.,NOT BLOOMING,0,RW
+P33,7/18/2013,Stephanomeria sp.,Stephanomeria sp.,NOT BLOOMING,0,GH
+P33,7/29/2013,Stephanomeria sp.,Stephanomeria sp.,FULL,2,CRP
+P37,6/28/2013,CALUMB,Calyptridium umbellatum,FULL,1,CRP
+P37,7/13/2013,CALUMB,Calyptridium umbellatum,NOT BLOOMING,0,LCP
+P37,7/19/2013,CALUMB,Calyptridium umbellatum,NOT BLOOMING,0,GH
+P37,7/30/2013,CALUMB,Calyptridium umbellatum,NOT BLOOMING,0,GH
+P37,6/28/2013,ACHMIL,Achillea millefolium,FULL,2,CRP
+P37,7/13/2013,ACHMIL,Achillea millefolium,FINISHING,2,LCP
+P37,7/19/2013,ACHMIL,Achillea millefolium,FINISHING,2,GH
+P37,7/30/2013,ACHMIL,Achillea millefolium,FINISHING,2,GH
+P37,6/28/2013,Calochortus spp.,Calochortus spp.,FULL,1,CRP
+P37,7/13/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,LCP
+P37,7/19/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,GH
+P37,7/30/2013,Calochortus spp.,Calochortus spp.,NOT BLOOMING,0,GH
+P37,6/28/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,CRP
+P37,7/13/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,LCP
+P37,7/19/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,GH
+P37,7/30/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,GH
+P37,6/28/2013,CHADOU,Chaenactis douglasii var. douglasii,FULL,1,CRP
+P37,7/13/2013,CHADOU,Chaenactis douglasii var. douglasii,FULL,1,LCP
+P37,7/19/2013,CHADOU,Chaenactis douglasii var. douglasii,FINISHING,1,GH
+P37,7/30/2013,CHADOU,Chaenactis douglasii var. douglasii,NOT BLOOMING,0,GH
+P37,6/28/2013,ASTINT,Aster integrifolius,FULL,1,CRP
+P37,7/13/2013,ASTINT,Aster integrifolius,FULL,1,LCP
+P37,7/19/2013,ASTINT,Aster integrifolius,FULL,1,GH
+P37,7/30/2013,ASTINT,Aster integrifolius,FULL,1,GH
+P37,6/28/2013,GAYDIF,Gayophytum diffusum ,FULL,2,CRP
+P37,7/13/2013,GAYDIF,Gayophytum diffusum ,FULL,2,LCP
+P37,7/19/2013,GAYDIF,Gayophytum diffusum ,FULL,2,GH
+P37,7/30/2013,GAYDIF,Gayophytum diffusum ,FULL,2,GH
+P37,6/28/2013,HORTRI,Horkelia fusca ,FULL,5,CRP
+P37,7/13/2013,HORTRI,Horkelia fusca ,FINISHING,4,LCP
+P37,7/19/2013,HORTRI,Horkelia fusca ,FINISHING,3,GH
+P37,7/30/2013,HORTRI,Horkelia fusca ,FINISHING,3,GH
+P37,6/28/2013,LUPBRE,Lupinus breweri var. breweri,FULL,3,CRP
+P37,7/13/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,2,LCP
+P37,7/19/2013,LUPBRE,Lupinus breweri var. breweri,NOT BLOOMING,0,GH
+P37,7/30/2013,LUPBRE,Lupinus breweri var. breweri,NOT BLOOMING,0,GH
+P37,6/28/2013,PHAHAS,Phacelia hastata ssp. compacta,FULL,2,CRP
+P37,7/13/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,1,LCP
+P37,7/19/2013,PHAHAS,Phacelia hastata ssp. compacta,NOT BLOOMING,0,GH
+P37,7/30/2013,PHAHAS,Phacelia hastata ssp. compacta,NOT BLOOMING,0,GH
+P37,6/28/2013,POTGLA,Potentilla glandulosa,FULL,2,CRP
+P37,7/13/2013,POTGLA,Potentilla glandulosa,FINISHING,1,LCP
+P37,7/19/2013,POTGLA,Potentilla glandulosa,NOT BLOOMING,0,GH
+P37,7/30/2013,POTGLA,Potentilla glandulosa,NOT BLOOMING,0,GH
+P37,6/28/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,NOT BLOOMING,0,CRP
+P37,7/13/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,BEGINNING,1,LCP
+P37,7/19/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FULL,1,GH
+P37,7/30/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FINISHING,1,GH
+P43,6/28/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,LCP
+P43,7/13/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,TS
+P43,7/17/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,GH
+P43,7/30/2013,ERIBRE,Erigeron brewerii var. brewerii,NOT BLOOMING,0,CRP
+P43,6/28/2013,ERIUMB,Eriogonum umbellatum,NOT BLOOMING,0,LCP
+P43,7/13/2013,ERIUMB,Eriogonum umbellatum,BEGINNING,2,TS
+P43,7/17/2013,ERIUMB,Eriogonum umbellatum,BEGINNING,2,GH
+P43,7/30/2013,ERIUMB,Eriogonum umbellatum,FINISHING,2,CRP
+P43,6/28/2013,GAYDIF,Gayophytum diffusum ,FULL,4,LCP
+P43,7/13/2013,GAYDIF,Gayophytum diffusum ,FULL,4,TS
+P43,7/17/2013,GAYDIF,Gayophytum diffusum ,FULL,4,GH
+P43,7/30/2013,GAYDIF,Gayophytum diffusum ,FINISHING,2,CRP
+P43,6/28/2013,MONODO,Monardella odoratissima ssp. pallida,FULL,1,LCP
+P43,7/13/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,1,TS
+P43,7/17/2013,MONODO,Monardella odoratissima ssp. pallida,FINISHING,1,GH
+P43,7/30/2013,MONODO,Monardella odoratissima ssp. pallida,NOT BLOOMING,0,CRP
+W04,6/30/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,NOT BLOOMING,0,CRP
+W04,7/14/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,BEGINNING,1,LCP
+W04,7/20/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FULL,1,GH
+W04,8/1/2013,EPIANG,Epilobium angustifloium ssp. circumvagum,FINISHING,1,GH
+W04,6/30/2013,ACHMIL,Achillea millefolium,NOT BLOOMING,0,CRP
+W04,7/14/2013,ACHMIL,Achillea millefolium,FULL,2,LCP
+W04,7/20/2013,ACHMIL,Achillea millefolium,FULL,2,GH
+W04,8/1/2013,ACHMIL,Achillea millefolium,FULL,2,GH
+W04,6/30/2013,APOAND,Apocynum androsaemifolium ,NOT BLOOMING,0,CRP
+W04,7/14/2013,APOAND,Apocynum androsaemifolium ,FULL,2,LCP
+W04,7/20/2013,APOAND,Apocynum androsaemifolium ,FINISHING,2,GH
+W04,8/1/2013,APOAND,Apocynum androsaemifolium ,FINISHING,2,GH
+W04,6/30/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,CRP
+W04,7/14/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,LCP
+W04,7/20/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,GH
+W04,8/1/2013,CEACOR,Ceanothus cordulatus,NOT BLOOMING,0,GH
+W04,6/30/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,CRP
+W04,7/14/2013,ERIBRE,Erigeron brewerii var. brewerii,FULL,2,LCP
+W04,7/20/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,GH
+W04,8/1/2013,ERIBRE,Erigeron brewerii var. brewerii,FINISHING,2,GH
+W04,6/30/2013,GAYDIF,Gayophytum diffusum ,FULL,2,CRP
+W04,7/14/2013,GAYDIF,Gayophytum diffusum ,FULL,2,LCP
+W04,7/20/2013,GAYDIF,Gayophytum diffusum ,FULL,2,GH
+W04,8/1/2013,GAYDIF,Gayophytum diffusum ,FULL,4,GH
+W04,6/30/2013,GAYERI,Gayophytum eriospermum,FULL,1,CRP
+W04,7/14/2013,GAYERI,Gayophytum eriospermum,FULL,1,LCP
+W04,7/20/2013,GAYERI,Gayophytum eriospermum,FULL,1,GH
+W04,8/1/2013,GAYERI,Gayophytum eriospermum,FULL,3,GH
+W04,6/30/2013,KELGAL,Kelloggia galioides,NOT BLOOMING,0,CRP
+W04,7/14/2013,KELGAL,Kelloggia galioides,FULL,2,LCP
+W04,7/20/2013,KELGAL,Kelloggia galioides,FULL,2,GH
+W04,8/1/2013,KELGAL,Kelloggia galioides,NOT BLOOMING,0,GH
+W04,6/30/2013,LUPBRE,Lupinus breweri var. breweri,FULL,2,CRP
+W04,7/14/2013,LUPBRE,Lupinus breweri var. breweri,FULL,2,LCP
+W04,7/20/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,2,GH
+W04,8/1/2013,LUPBRE,Lupinus breweri var. breweri,FINISHING,2,GH
+W04,6/30/2013,PHAHAS,Phacelia hastata ssp. compacta,FULL,2,CRP
+W04,7/14/2013,PHAHAS,Phacelia hastata ssp. compacta,FULL,2,LCP
+W04,7/20/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,GH
+W04,8/1/2013,PHAHAS,Phacelia hastata ssp. compacta,FINISHING,2,GH
+W04,6/30/2013,SOLCAN,Solidago canadensis ssp. elongata,NOT BLOOMING,0,CRP
+W04,7/14/2013,SOLCAN,Solidago canadensis ssp. elongata,FULL,1,LCP
+W04,7/20/2013,SOLCAN,Solidago canadensis ssp. elongata,FULL,1,GH
+W04,8/1/2013,SOLCAN,Solidago canadensis ssp. elongata,FULL,2,GH
