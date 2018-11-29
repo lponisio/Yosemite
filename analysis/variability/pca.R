@@ -8,8 +8,8 @@ species.roles <- calcSpec(nets, spec, dist.metric="chao")
 
 ## vector of pca loadings of interest
 loadings <- c(1)
-metrics <- c("degree", "weighted.betweenness", "weighted.closeness",
-             "niche.overlap", "species.strength")
+metrics <- c("rare.degree", "betweenness", "closeness",
+             "niche.overlap", "species.strength", "d")
 
 ## the metrics used in the PCA
 var.method <- sd
@@ -38,6 +38,5 @@ plant.pca.scores <- calcPcaMeanVar(species.roles=plants,
                                    loadings=loadings,
                                    ave.method=ave.method,
                                    agg.col = "Year")
-
 
 save(pol.pca.scores, plant.pca.scores, file="saved/results/pcaVar.Rdata")

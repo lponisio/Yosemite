@@ -1,3 +1,4 @@
+library(fossil)
 
 getSpec <- function(species.lev, names.net, seps="[.]"){
     ## extract specialization scores from specieslevel function and
@@ -46,7 +47,8 @@ calcSpec <- function(nets, spec, dist.metric){
         diag(pol.niche.overlap) <- NA
         sl$'higher level'$niche.overlap <- apply(pol.niche.overlap, 1, mean,
                                                  na.rm=TRUE)
-
+        sl$'higher level'$rare.degree <- apply(x, 2, chao1)
+        sl$'lower level'$rare.degree <- apply(x, 1, chao1)
         return(sl)
     })
 

@@ -20,7 +20,6 @@ calcPcaMeanVar <- function(species.roles, var.method, metrics,
         all.na <- apply(zs, 2, function(x) all(!is.finite(x)))
         zs[, all.na] <- 0
 
-        ## zs <- zs[!apply(zs, 1, function(x) any(is.na(x))),]
         ## runs the pca
         all.pca[[y]] <- prcomp(zs)
         ## make a nice dataframe
@@ -33,7 +32,7 @@ calcPcaMeanVar <- function(species.roles, var.method, metrics,
         ## calculate the variance of the pc1 scores within a site
         ## across years
         var.pca[[y]] <- tapply(all.spp[[y]]$pca,
-                               all.spp[[y]]$GenusSpecies, var.method, na.rm=TRUE)
+                               all.spp[[y]]$GenusSpecies, var.method,...)
 
         names(var.pca)[y] <- sites[y]
     }
@@ -50,15 +49,14 @@ calcPcaMeanVar <- function(species.roles, var.method, metrics,
         pca.var$Year <- sapply(strsplit(rownames(pca.var), "[.]"),
                                function(x) x[1])
     }
-    ## pca.var$GenusSpecies <- sapply(strsplit(rownames(pca.var), "[.]"),
-    ##                                function(x) x[2])
     pca.mean <- do.call(rbind, all.spp)
-    pca.mean <- aggregate(pca.mean$pca,
+    pca.mean <- aggregate(list(mean.pca1=pca.mean$pca),
                           by = list(GenusSpecies = pca.mean$GenusSpecies,
-                                    Site = pca.mean$Site),
+                                    Site = pca.mean$Site,
+                                    Year = pca.mean$Year),
                           FUN=mean, na.rm=TRUE)
     rownames(pca.mean) <- NULL
     rownames(pca.var) <- NULL
 
-    return(list(pca.mean=pca.mean, pca.var=pca.var))
+    return(list(pca.mean=pca.mean, pca.var=pca.var, pca.loadings = all.pca))
 }

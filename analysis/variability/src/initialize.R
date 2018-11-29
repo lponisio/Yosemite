@@ -1,6 +1,7 @@
 library(igraph)
 library(bipartite)
-
+library(lme4)
+library(lmerTest)
 source('src/misc.R')
 source('src/cvCalc.R')
 source('src/calcPca.R')

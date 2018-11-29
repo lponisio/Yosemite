@@ -1,7 +1,7 @@
 
 calcSiteBeta <- function(x, species.type, spec, species.type.int,
-                         date.cut.off = 2,
-                         observation.cut.off = 2){
+                         date.cut.off = 3,
+                         observation.cut.off = 3){
 
     this.spec <- spec[spec$Year == x,]
     prep.comm <- aggregate(list(Abund=this.spec[, species.type]),
