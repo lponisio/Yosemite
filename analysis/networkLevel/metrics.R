@@ -18,13 +18,15 @@ N <- 999
 
 ## ************************************************************
 load(file='saved/corMets.Rdata')
+cor.dats$SiteStatus <- factor(cor.dats$SiteStatus,
+                              levels=c("LOW", "MOD", "HIGH"))
 
-ys <- c("zNODF", "zmod.met.R", "zH2", "connectance")
+ys <- c("zNODF", "zmod.met.R", "zH2", "connectance", "number.of.species.HL")
 
 ## simpson's diversity of fire history
 formulas.div <-lapply(ys, function(x) {
     as.formula(paste(x, "~",
-                     paste("s.simpson.div*Year*SiteStatus",
+                     paste("scale(simpson.div)*SiteStatus*Year",
                            "(1|Site)",
                            sep="+")))
 })
@@ -42,7 +44,7 @@ lapply(mods.div, summary)
 ## functional dispersion fo fire history
 formulas.dis <-lapply(ys, function(x) {
     as.formula(paste(x, "~",
-                     paste("s.FuncDis*Year*SiteStatus",
+                     paste("scale(FuncDis)*Year*SiteStatus",
                            "(1|Site)",
                            sep="+")))
 })

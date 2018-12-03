@@ -32,32 +32,34 @@ plot.panel <- function(dats,
             points(x=jitter(ys$x, factor=0.25),
                    y=ys$y,
                    pch=pchs[i],
-                   col=col.lines[i],
+                   col=col.lines[treatments[i]],
                    cex=1.5)
             ## plots CI
             lines(x=sub.dd[,xs],
                   y=sub.dd[,y1],
-                  col=col.lines[i],
+                  col=col.lines[treatments[i]],
                   lwd=2)
             lines(x=sub.dd[,xs],
                   y=sub.dd$plo,
-                  col=col.lines[i],
+                  col=col.lines[treatments[i]],
                   lty="dashed")
             lines(x=sub.dd[,xs],
                   y=sub.dd$phi,
-                  col=col.lines[i],
+                  col=col.lines[treatments[i]],
                   lty="dashed")
             ## add fill from ci.up to ci.lb
             polygon(c(sub.dd[,xs],
                       rev(sub.dd[,xs])),
                     c(sub.dd$phi,
                       rev(sub.dd$plo)),
-                    col=col.fill[i], border=NA)
+                    col=col.fill[treatments[i]], border=NA)
         }
     }
     if(!is.na(year)){
         plot(NA, xlim=range(dats[dats$Year == year, xs]),
-             ylim=range(c(new.dd$plo, new.dd$phi), na.rm=TRUE),
+             ylim=range(c(new.dd$plo, new.dd$phi, new.dd$phi +
+                                                  new.dd$phi/10),
+                        na.rm=TRUE),
              xlab="",
              ylab="",
              xaxt="n",
@@ -65,7 +67,9 @@ plot.panel <- function(dats,
              las=1)
     }else{
         plot(NA, xlim=range(dats[, xs], na.rm=TRUE),
-             ylim=range(c(new.dd$plo, new.dd$phi), na.rm=TRUE),
+             ylim=range(c(new.dd$plo, new.dd$phi, new.dd$phi +
+                                                  new.dd$phi/10) ,
+                        na.rm=TRUE),
              xlab="",
              ylab="",
              xaxt="n",
@@ -73,12 +77,13 @@ plot.panel <- function(dats,
              las=1)
     }
     if(year == "2013" | is.na(year)){
-        axis(2, pretty(c(new.dd[, "plo"], new.dd[, "phi"],
+        axis(2, pretty(c(new.dd$phi + new.dd$phi/10,
+                         new.dd$plo, new.dd$phi,
                          FUN(dats[,y2])), 4), las=1)
         mtext(ylabel, 2, line=4, cex=1.5)
     }
     if(plot.x){
-            axis(1, pretty(dats[,xs], 4))
+        axis(1, pretty(dats[,xs], 4))
     }
     plotting.loop()
     ## add year labels
@@ -96,7 +101,7 @@ plot.predict.div <- function(new.dd,
                              y1,
                              y2=y1,
                              xs="",
-                             legend.loc="bottomright",
+                             legend.loc="bottomleft",
                              legend.loc.year="topleft",
                              by.year=TRUE,
                              x.adj=-0.5,
@@ -108,6 +113,7 @@ plot.predict.div <- function(new.dd,
         col.lines <- rev(brewer.pal(4, "RdYlGn"))[c(2,3,4)]
         col.fill <- add.alpha(col.lines, alpha=0.3)
         treatments <- c("LOW", "MOD", "HIGH")
+        names(col.lines) <- names(col.fill) <- treatments
         if(by.year){
             layout(matrix(1:2, ncol=2))
             par(oma=c(6, 7, 2, 1),
@@ -135,11 +141,11 @@ plot.predict.div <- function(new.dd,
                        legend.loc.year=NA,
                        ylabel)
         }
-        mtext(xlabel, 1, line=3.5, cex=1.5, at=-2)
+        mtext(xlabel, 1, line=3.5, cex=1.5, at=0.25)
         legend(legend.loc,
                legend=c("Low", "Moderate", "High"),
                col=col.lines,
-               pch=16, bty="n", cex=0.8)
+               pch=c(15,16,17), bty="n", cex=0.8)
     }
     pdf.f(plot.ci, file=file.path(f.path,
                                   sprintf("%s.pdf", paste(

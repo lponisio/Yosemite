@@ -3,29 +3,57 @@ rm(list=ls())
 setwd('analysis/networkLevel')
 source('src/initialize.R')
 
-## either "abund" or "degree"
-extinction.method <- "abund"
+extinction.methods <- c("abund")
+participants<- c("lower")
 
 ## **********************************************************
 ## robustness
 ## **********************************************************
 ## simulate plant extinction
 ## simmpson div pyrodiversity
-res <- simExtinction(nets, extinction.method, dat.mods)
 
-mod.div <- lmer(Robustness ~ s.simpson.div*Year*SiteStatus
-                + (1|Site),
-                data=res)
+for(sp.level in participants){
+    for(ex.method in extinction.methods){
+        res <- simExtinction(nets, extinction.method=ex.method,
+                             dat.mods, participant=sp.level)
+        res$SiteStatus <- factor(res$SiteStatus, levels=c("LOW", "MOD", "HIGH"))
 
-summary(mod.div)
+        res.ave <- aggregate(list(Robustness = res$Robustness),
+                             list(Site=res$Site,
+                                  Year=res$Year,
+                                  SiteStatus=res$SiteStatus,
+                                  simpson.div=res$simpson.div),
+                             mean, na.rm=TRUE)
+        res.delta <- res.ave[res.ave$Year == "2013",]
+        res.2014 <- res.ave[res.ave$Year == "2014",]
+        res.delta$Robustness.2014 <- res.2014$Robustness[match(res.delta$Site,
+                                                     res.2014$Site)]
+        res.delta$delta <-
+            res.delta$Robustness - res.delta$Robustness.2014
 
-## functional disperson pyrodiversity
-mod.dis <- lmer(Robustness ~ s.FuncDis*Year*SiteStatus
-                + (1|Site),
-                data=res)
+        mod.diff <- lm(delta ~ scale(simpson.div)*SiteStatus,
+                       data=res.delta)
 
-summary(mod.dis)
+        mod.div <- lmer(Robustness ~ scale(simpson.div)*SiteStatus + Year
+                        + (1|Site),
+                        data=res)
 
-save(mod.dis, mod.div, res, file=file.path(save.path,
-                             sprintf('mods/robustness_%s.Rdata',
-                                     extinction.method)))
+        print(paste("*******", ex.method, sp.level, "*******"))
+        print(summary(mod.div))
+
+        print(paste("*******", "Delta robustness", "*******"))
+        print(summary(mod.diff))
+
+        ## functional disperson pyrodiversity
+        ## mod.dis <- lmer(Robustness ~ scale(FuncDis)*SiteStatus + Year
+        ##                 + (1|Site),
+        ##                 data=res)
+
+        ## print(summary(mod.dis))
+
+        save(mod.div, res, mod.diff, res.delta,
+             file=file.path(save.path,
+                            sprintf('mods/robustness_%s_%s.Rdata',
+                                    ex.method, sp.level)))
+    }
+}

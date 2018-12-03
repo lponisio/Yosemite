@@ -16,6 +16,9 @@ load('../data/pyrodiv_buffers/all150.Rdata')
 
 save.path <- 'saved'
 
+spec <- spec[spec$NetPan == "net",]
+spec <- spec[!spec$PlantGenusSpecies == "",]
+
 nets <- break.net(spec)
 nets <- unlist(nets, recursive=FALSE)
 
