@@ -1,7 +1,6 @@
 library(lme4)
 library(vegan)
 library(lmerTest)
-library(nlme)
 source('src/misc.R')
 source('src/beta.R')
 
@@ -11,8 +10,7 @@ if(type == "pols"){
     speciesType <- "plants"
 }
 
-if(!binary & alpha){
-  occ <- "abund"
+if(occ == "abund"){
   dis.method <- "chao"
   load(file=file.path('saved/communities',
          sprintf('%s-abund.Rdata', type)))
@@ -20,16 +18,7 @@ if(!binary & alpha){
          sprintf('%s-alpha.Rdata', type)))
 }
 
-if(!binary & !alpha){
-  occ <- "indiv"
-  dis.method <- "chao"
-  load(file=file.path('saved/communities',
-         sprintf('%s-abund.Rdata', type)))
-  load(file=file.path('saved/nulls',
-         sprintf('%s-indiv.Rdata', type)))
-}
-
-if(binary){
+if(occ == "occ"){
   occ <- "occ"
   dis.method <- "jaccard"
   load(file=file.path('saved/communities',
