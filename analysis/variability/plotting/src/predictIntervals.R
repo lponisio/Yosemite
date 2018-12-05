@@ -1,3 +1,9 @@
+## inverse logit
+inv.logit <- function(a){
+    exp(a)/(exp(a) + 1)
+}
+
+
 ## computes confidence intervals for mixed models
 ## taktes model, prediction data, name of the response variable, and
 ## the family of the model so the inverse link function can be applied

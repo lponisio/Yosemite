@@ -1,17 +1,19 @@
+library(RColorBrewer)
+
 plot.panel <- function(dats,
                        new.dd,
                        y1,
-                       y2,
+                       y2=y1,
                        xs,
                        treatments,
-                       year,
+                       year=NA,
                        col.lines,
                        col.fill,
                        legend.loc.year=NA,
                        ylabel,
                        ag.col="SiteStatus",
                        plot.x=TRUE,
-                       FUN=mean,
+                       plot.y = TRUE,
                        pchs=c(15, 16, 17)){
     plotting.loop <- function(){
         for(i in 1:length(treatments)){
@@ -24,7 +26,7 @@ plot.panel <- function(dats,
                 sub.dd <- sub.dd[sub.dd$Year==year,]
                 sub.dats <- sub.dats[sub.dats$Year==year,]
             }
-            ## take means of ys for each plot
+            ## take means of ys
             ys <- aggregate(list(y=sub.dats[,y1]),
                             list(x=sub.dats[,xs]),
                             mean, na.rm=TRUE)
@@ -57,8 +59,7 @@ plot.panel <- function(dats,
     }
     if(!is.na(year)){
         plot(NA, xlim=range(dats[dats$Year == year, xs]),
-             ylim=range(c(new.dd$plo, new.dd$phi, new.dd$phi +
-                                                  new.dd$phi/10),
+             ylim=range(c(new.dd$plo, new.dd$phi, dats[,y1]),
                         na.rm=TRUE),
              xlab="",
              ylab="",
@@ -67,8 +68,7 @@ plot.panel <- function(dats,
              las=1)
     }else{
         plot(NA, xlim=range(dats[, xs], na.rm=TRUE),
-             ylim=range(c(new.dd$plo, new.dd$phi, new.dd$phi +
-                                                  new.dd$phi/10),
+             ylim=range(c(new.dd$plo, new.dd$phi, dats[,y1]),
                         na.rm=TRUE),
              xlab="",
              ylab="",
@@ -76,10 +76,9 @@ plot.panel <- function(dats,
              yaxt="n",
              las=1)
     }
-    if(year == "2013" | is.na(year)){
-        axis(2, pretty(c(new.dd$phi + new.dd$phi/10,new.dd$plo, new.dd$phi,
-                         FUN(dats[,y2])), 4), las=1)
-        mtext(ylabel, 2, line=3, cex=1.5)
+    if(plot.y){
+        axis(2, pretty(c(dats[,y1], new.dd$plo, new.dd$phi), 4), las=1)
+        mtext(ylabel, 2, line=4, cex=1.5)
     }
     if(plot.x){
             axis(1, pretty(dats[,xs], 4))

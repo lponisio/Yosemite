@@ -29,8 +29,7 @@ calcYearDiff <- function(spec.abund){
     colnames(year.two) <- colnames(empty.mat)
     year.two[is.na(year.two)] <- 0
     year.one[is.na(year.one)] <- 0
-    ## delta.year <- log(year.two + 1)/log(year.one + 1)
-    delta.year <- year.one - year.two
+    delta.year <- log(year.two + 1)/log(year.one + 1)
     ## in sites where the species was never detected, NA
     delta.year[year.two == 0 & year.one == 0] <- NA
     delta <- convertMatrix2Sample(delta.year)
@@ -38,7 +37,7 @@ calcYearDiff <- function(spec.abund){
 }
 
 
-prepDeltaVar <- function(delta, spec.abund, site.char){
+prepDeltaVar <- function(delta, spec.abund, site.char, veg){
     spec.abund <- spec.abund[spec.abund$Year == "2013",]
     delta.sp.char <- merge(delta, spec.abund)
 
@@ -59,19 +58,29 @@ prepDeltaVar <- function(delta, spec.abund, site.char){
                                 SiteStatus=site.data$SiteStatus,
                                 Year=site.data$Year),
                            mean)
-
+    ## floral richness delta
     site.data.2013 <- site.data[site.data$Year == "2013",]
     site.data.2014 <- site.data[site.data$Year == "2014",]
-
     ## calculate the change in floral richness
     site.data.2013$deltaFloralRichness <-
         log(site.data.2014$FloralRichness)/log(site.data.2013$FloralRichness)
-
     delta.site.sp.char <- merge(delta.sp.char, site.data.2013)
 
+    ## floral abundance delta
+    veg.ave <- aggregate(list(logFlowerNum=veg$logFlowerNum),
+                         list(Site=veg$Site,
+                              Year=veg$Year),
+                         mean)
+
+    veg.2013 <- veg.ave[veg.ave$Year == "2013",]
+    veg.2014 <- veg.ave[veg.ave$Year == "2014",]
+    ## calculate the change in floral richness
+    veg.2013$deltaFloralAbund <-
+        veg.2014$logFlowerNum/veg.2013$logFlowerNum
+    delta.site.sp.char <- merge(delta.site.sp.char, veg.2013)
     delta.site.sp.char <- merge(delta.site.sp.char, traits)
     delta.site.sp.char$SiteStatus <- factor(delta.site.sp.char$SiteStatus,
-                               level=c("LOW", "MOD", "HIGH"))
+                                            level=c("LOW", "MOD", "HIGH"))
     return(list(delta=delta.site.sp.char, site.data= site.data.2013))
 
 }
