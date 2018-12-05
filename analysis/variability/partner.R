@@ -2,10 +2,14 @@
 rm(list=ls())
 setwd('analysis/variability')
 
-binary <- FALSE
-alpha <- TRUE
-## ints or pols
-type <- "pols"
+args <- commandArgs(trailingOnly=TRUE)
+if(length(args) > 0){
+    type <- args[1]
+    occ <- args[2]
+} else{
+    type <- "pol"
+    occ <- "abund"
+}
 
 source('src/initialize_beta.R')
 
