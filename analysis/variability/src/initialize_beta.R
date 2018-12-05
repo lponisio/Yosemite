@@ -11,28 +11,30 @@ if(type == "pols"){
 }
 
 if(occ == "abund"){
-  dis.method <- "chao"
-  load(file=file.path('saved/communities',
-         sprintf('%s-abund.Rdata', type)))
-  load(file=file.path('saved/nulls',
-         sprintf('%s-alpha.Rdata', type)))
+    binary <- FALSE
+    dis.method <- "chao"
+    load(file=file.path('saved/communities',
+                        sprintf('%s-abund.Rdata', type)))
+    load(file=file.path('saved/nulls',
+                        sprintf('%s-alpha.Rdata', type)))
 }
 
 if(occ == "occ"){
-  occ <- "occ"
-  dis.method <- "jaccard"
-  load(file=file.path('saved/communities',
-         sprintf('%s-abund.Rdata', type)))
-  load(file=file.path('saved/nulls',
-         sprintf('%s-occ.Rdata', type)))
+    occ <- "occ"
+    binary <- TRUE
+    dis.method <- "jaccard"
+    load(file=file.path('saved/communities',
+                        sprintf('%s-abund.Rdata', type)))
+    load(file=file.path('saved/nulls',
+                        sprintf('%s-occ.Rdata', type)))
 }
 
 if(type=="pols"){
-  ylabel <- "Pollinator species turnover"
+    ylabel <- "Pollinator species turnover"
 }
 if(type=="ints"){
-  ylabel <- "Interaction turnover"
+    ylabel <- "Interaction turnover"
 }
 if(type=="plants"){
-  ylabel <- "Plant species turnover"
+    ylabel <- "Plant species turnover"
 }
