@@ -2,6 +2,7 @@ rm(list=ls())
 library(vegan)
 library(fields)
 library(bipartite)
+library(fossil)
 
 setwd('~/Dropbox/Yosemite/data')
 source('speciesIDs/src/AssignSpecies.R')
@@ -18,6 +19,11 @@ ref <- read.csv('../original/YoseReference.csv')
 setwd('~/Dropbox/Yosemite/analysis/data')
 source('src/misc.R')
 traits <-  read.csv('functionalTraits/bees.csv')
+
+bee.fams <- c("Halictidae", "Andrenidae", "Apidae", "Megachilidae",
+              "Colletidae")
+
+spec <- spec[spec$Family %in% bee.fams,]
 
 ##******************************************************
 ## prep reference data
@@ -46,8 +52,10 @@ ref.comm$GenusSpeciesSex <- fix.white.space(paste(ref.comm$GenusSpecies,
 net <- samp2site.spp(ref.comm$PlantGenusSpecies,
                       ref.comm$GenusSpeciesSex, ref.comm$Abund)
 
-## d.yose <- specieslevel(net, index='d')
-## save(d.yose, file="specimens/dYose.Rdata")
+d.yose <- specieslevel(net, index='degree')
+rare.pols.degree <- apply(net, 2, chao1)
+
+save(d.yose, file="specimens/dYose.Rdata")
 
 ##******************************************************
 ## add traits to specimens database
@@ -57,7 +65,6 @@ spec$Date <- as.Date(spec$Date, format='%m/%d/%y')
 spec$doy <- as.numeric(strftime(spec$Date, format='%j'))
 spec$Year <- as.factor(spec$Year)
 ## get specimen data ready
-spec <-  spec[spec$Species != '',]
 extra.round <- spec$Site == 'L21' & spec$Date == '2014-07-01'
 spec <- spec[!extra.round,]
 
@@ -70,6 +77,9 @@ spec$PlantGenusSpecies <-  fix.white.space(paste(spec$PlantGenus,
                                                  spec$PlantSpecies,
                                                  spec$PlantVar,
                                                  spec$PlantSubSpecies))
+## spec <- spec[!spec$GenusSpecies == "Apis mellifera",]
+spec <-  spec[spec$GenusSpecies != '',]
+
 
 ## match trait data
 keep.trait <- c('Sociality',
@@ -120,7 +130,7 @@ load(file="specimens/dYose.Rdata")
 spec$GenusSpeciesSex <- fix.white.space(paste(spec$Genus,
                                               spec$Species,
                                               spec$Sex))
-spec$YoseSpec <- d.yose$'higher level'$'d'[match(spec$GenusSpeciesSex,
+spec$YoseDegree <- d.yose$'higher level'$'degree'[match(spec$GenusSpeciesSex,
                                            rownames(d.yose$'higher level'))]
 
 d.yose$'higher level'$Sex <-
@@ -132,21 +142,24 @@ d.yose$'higher level'$GenusSpecies <-
 d.yose$'higher level'$Genus <-
   sapply(strsplit(rownames(d.yose$'higher level'),' '),
          function(x) x[1])
-genus.mean <- tapply(d.yose$'higher level'$d,
+genus.mean <- tapply(d.yose$'higher level'$degree,
                      d.yose$'higher level'$Genus, mean)
 
-spec$YoseSpec[is.na(spec$YoseSpec)] <-
-  d.yose$'higher level'$'d'[match(spec$GenusSpecies[is.na(spec$YoseSpec)],
+spec$YoseDegree[is.na(spec$YoseDegree)] <-
+  d.yose$'higher level'$'degree'[match(spec$GenusSpecies[is.na(spec$YoseDegree)],
        d.yose$'higher level'$GenusSpecies)]
 
-spec$YoseSpec[is.na(spec$YoseSpec)] <-
-  genus.mean[match(spec$Genus[is.na(spec$YoseSpec)],
+spec$YoseDegree[is.na(spec$YoseDegree)] <-
+  genus.mean[match(spec$Genus[is.na(spec$YoseDegree)],
                    rownames(genus.mean))]
-spec$YoseSpec[spec$Genus == "Hylaeus"] <-
+spec$YoseDegree[spec$Genus == "Hylaeus"] <-
   genus.mean[rownames(genus.mean) =="Hylaeus"]
 
-traits$YoseSpec <-  spec$YoseSpec[match(traits$GenusSpecies,
+traits$YoseDegree <-  spec$YoseDegree[match(traits$GenusSpecies,
                                       spec$GenusSpecies)]
+
+traits$YoseRareDegree <- rare.pols.degree[match(traits$GenusSpecies, sapply(strsplit(names(rare.pols.degree),' '),
+         function(x) paste(x[1], x[2])))]
 
 save(traits, file='functionalTraits/bees.Rdata')
 write.csv(spec, 'specimens/spec.csv', row.names=FALSE)

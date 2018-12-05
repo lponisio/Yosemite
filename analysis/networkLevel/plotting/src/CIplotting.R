@@ -80,7 +80,7 @@ plot.panel <- function(dats,
         axis(2, pretty(c(new.dd$phi + new.dd$phi/10,
                          new.dd$plo, new.dd$phi,
                          FUN(dats[,y2])), 4), las=1)
-        mtext(ylabel, 2, line=4, cex=1.5)
+        mtext(ylabel, 2, line=3.5, cex=1.5)
     }
     if(plot.x){
         axis(1, pretty(dats[,xs], 4))
@@ -128,6 +128,7 @@ plot.predict.div <- function(new.dd,
                            col.fill,
                            legend.loc.year,
                            ylabel)
+                mtext(xlabel, 1, line=3.5, cex=1.5, at=0.25)
             }
         } else{
             layout(matrix(1, ncol=1))
@@ -140,8 +141,8 @@ plot.predict.div <- function(new.dd,
                        col.fill,
                        legend.loc.year=NA,
                        ylabel)
+            mtext(xlabel, 1, line=3.5, cex=1.5)
         }
-        mtext(xlabel, 1, line=3.5, cex=1.5, at=0.25)
         legend(legend.loc,
                legend=c("Low", "Moderate", "High"),
                col=col.lines,

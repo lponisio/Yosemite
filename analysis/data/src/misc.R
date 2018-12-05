@@ -1,8 +1,8 @@
 ## site by species matrix
-samp2site.spp <- function(site,spp,abund) { 
+samp2site.spp <- function(site,spp,abund) {
   x <- tapply(abund, list(site=site,spp=spp), sum)
   x[is.na(x)] <- 0
-  
+
   return(x)
 }
 
@@ -26,7 +26,7 @@ fix.white.space <- function(d) {
   d <- gsub("    ", " ", d, fixed=TRUE)
   d <- gsub("   ", " ", d, fixed=TRUE)
   d <- gsub("  ", " ", d, fixed=TRUE)
-  
+
   tmp <- strsplit(as.character(d), " ")
   d <- sapply(tmp, function(x) paste(x, collapse=" "))
 
@@ -96,7 +96,7 @@ make.by.species <- function(spec, sr.sched,
                           levels=c("LOW", "MOD", "HIGH"))
   sp$FirePerim <- spec$FirePerim[match(sp$Site,
                                        spec$Site)]
-  traits.2.keep <- c(keep.trait, "PolSpec", "YoseSpec")
+  traits.2.keep <- c(keep.trait, "PolSpec")
   sp <- cbind(sp, spec[, traits.2.keep][match(paste(sp$GenusSpecies),
                                               paste(spec[,type])),])
   apis <- sp[sp$GenusSpecies == "Apis mellifera",]
@@ -120,7 +120,7 @@ make.by.species <- function(spec, sr.sched,
   pollinator.id <- id(d$pollinator)
   mats <- make.mats(pollinator.id,
                     null.mat,
-                    pollinator=as.vector(d$pollinator), 
+                    pollinator=as.vector(d$pollinator),
                     var1=as.vector(d$site),
                     var2=d$date)
   sites <- rownames(mats[[1]])
@@ -175,3 +175,5 @@ match.d <- function(prep.comm, col.name, col.name.plant, spec, traits){
                                                  rownames(d$'lower level'))]
   return(spec)
 }
+
+

@@ -1,13 +1,12 @@
-library(igraph)
-library(bipartite)
-library(lme4)
-library(lmerTest)
-library(RColorBrewer)
+library(igraph, quietly = TRUE)
+library(bipartite, quietly = TRUE)
+library(lme4, quietly = TRUE)
+library(lmerTest, quietly = TRUE)
 
 source('src/vaznull2.R')
 source('src/CalcMetrics.R')
 source('src/misc.R')
-source("src/resilience.R")
+source("src/robustness.R")
 source('src/diffs.R')
 source('src/prepNets.R')
 

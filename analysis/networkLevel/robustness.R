@@ -3,14 +3,14 @@ rm(list=ls())
 setwd('analysis/networkLevel')
 source('src/initialize.R')
 
-extinction.methods <- c("abund")
+extinction.methods <- c("abund", "degree")
 participants<- c("lower")
 
 ## **********************************************************
 ## robustness
 ## **********************************************************
 ## simulate plant extinction
-## simmpson div pyrodiversity
+## Simpson div pyrodiversity
 
 for(sp.level in participants){
     for(ex.method in extinction.methods){
@@ -29,12 +29,12 @@ for(sp.level in participants){
         res.delta$Robustness.2014 <- res.2014$Robustness[match(res.delta$Site,
                                                      res.2014$Site)]
         res.delta$delta <-
-            res.delta$Robustness - res.delta$Robustness.2014
+            log(res.delta$Robustness.2014)/log(res.delta$Robustness)
 
         mod.diff <- lm(delta ~ scale(simpson.div)*SiteStatus,
                        data=res.delta)
 
-        mod.div <- lmer(Robustness ~ scale(simpson.div)*SiteStatus + Year
+        mod.div <- lmer(Robustness ~ scale(simpson.div)*SiteStatus
                         + (1|Site),
                         data=res)
 
@@ -44,16 +44,11 @@ for(sp.level in participants){
         print(paste("*******", "Delta robustness", "*******"))
         print(summary(mod.diff))
 
-        ## functional disperson pyrodiversity
-        ## mod.dis <- lmer(Robustness ~ scale(FuncDis)*SiteStatus + Year
-        ##                 + (1|Site),
-        ##                 data=res)
-
-        ## print(summary(mod.dis))
-
         save(mod.div, res, mod.diff, res.delta,
              file=file.path(save.path,
                             sprintf('mods/robustness_%s_%s.Rdata',
                                     ex.method, sp.level)))
     }
 }
+
+
