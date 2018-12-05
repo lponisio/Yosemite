@@ -14,8 +14,14 @@ years <- unique(spec$Year)
 spec$Int <- paste(spec$GenusSpecies,
                   spec$PlantGenusSpecies)
 
-type <- "pols"
-nnull <- 99
+args <- commandArgs(trailingOnly=TRUE)
+if(length(args) > 0){
+    type <- args[1]
+    nnull <- args[2]
+} else{
+    type <- "pol"
+    nnull <- 99
+}
 
 if(type=="pols"){
     species.type="GenusSpecies"
@@ -50,8 +56,6 @@ nulls <- rapply(comm$comm, vaznull.2, N=nnull, how="replace")
 save(nulls, file=file.path(save.dir.nulls,
                            sprintf('%s-alpha.Rdata', type)))
 
-
-
 ## ************************************************************
 ## occurrence nulls
 ## ************************************************************
@@ -71,12 +75,3 @@ nulls <- rapply(comm$comm, rep.occ.null, N=nnull, how="replace")
 save(nulls, file=file.path(save.dir.nulls,
                            sprintf('%s-occ.Rdata', type)))
 
-
-## ************************************************************
-## individuals nulls
-## ************************************************************
-## load(file=file.path(save.dir.comm,
-##        sprintf('%s-abund.Rdata', type)))
-## nulls <- rapply(comm$comm, swap.web, N=nnull, how="replace")
-## save(nulls, file=file.path(save.dir.nulls,
-##               sprintf('%s-indiv.Rdata', type)))
