@@ -6,6 +6,7 @@ source("plotting/src/predictIntervals.R")
 source("plotting/src/CIplotting.R")
 source("plotting/src/plotPanels.R")
 source("plotting/src/diagnostics.R")
+source("plotting/src/plotInteractions.R")
 
 ## ************************************************************
 ## delta abund
@@ -131,3 +132,4 @@ pdf.f(plotPersistDiag, file="figures/diagnostics/persist.pdf",
 
 
 plot.panels()
+plotInteractionsPyroDiv()

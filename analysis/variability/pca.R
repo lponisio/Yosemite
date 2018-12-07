@@ -8,11 +8,11 @@ species.roles <- calcSpec(nets, spec, dist.metric="chao")
 
 ## vector of pca loadings of interest
 loadings <- c(1)
-metrics <- c("rare.degree", "betweenness", "closeness",
+metrics <- c("rare.degree", "weighted.betweenness", "weighted.closeness",
              "niche.overlap", "species.strength", "d")
 
 ## the metrics used in the PCA
-var.method <- sd
+var.method <- cv
 ave.method <- mean
 
 ## *********************************************************************

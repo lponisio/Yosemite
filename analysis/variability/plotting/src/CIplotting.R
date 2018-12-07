@@ -14,7 +14,8 @@ plot.panel <- function(dats,
                        ag.col="SiteStatus",
                        plot.x=TRUE,
                        plot.y = TRUE,
-                       pchs=c(15, 16, 17)){
+                       pchs=c(15, 16, 17),
+                       cexs= c(1, 1.2, 1)){
     plotting.loop <- function(){
         for(i in 1:length(treatments)){
             print(treatments[i])
@@ -35,7 +36,7 @@ plot.panel <- function(dats,
                    y=ys$y,
                    pch=pchs[i],
                    col=col.lines[i],
-                   cex=1)
+                   cex=cexs[i])
             ## plots CI
             lines(x=sub.dd[,xs],
                   y=sub.dd[,y1],

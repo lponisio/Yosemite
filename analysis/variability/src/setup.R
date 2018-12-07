@@ -1,3 +1,7 @@
+zscore <- function(x){
+    y <- (x - mean(x, na.rm=TRUE))/sd(x, na.rm=TRUE)
+    return(y)
+}
 
 calcSpecABund <- function(spec){
     ## format spec data and subset to net data
@@ -39,8 +43,8 @@ getScorePrepDrought <- function(pol.pca.scores, beta.dist, spec.abund ){
     ## add partner varaibility data from 2013
     mean.beta.dist <- tapply(beta.dist$dist[beta.dist$Year == "2013"],
                              beta.dist$GenusSpecies[beta.dist$Year == "2013"],
-                             mean,
-                             na.rm=TRUE)
+                             cv)
+    ## mean.beta.dist <- sapply(mean.beta.dist, median, na.rm=TRUE)
     spec.abund$beta.dist <- mean.beta.dist[match(spec.abund$GenusSpecies,
                                                  names(mean.beta.dist))]
     return(spec.abund)
