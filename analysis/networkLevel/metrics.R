@@ -4,7 +4,7 @@ setwd('analysis/networkLevel')
 source('src/initialize.R')
 
 ## ## number of null communities
-N <- 999
+N <- 99
 
 ## ## ************************************************************
 ## ## calculate metrics and zscores ## beware this takes a while!
@@ -21,12 +21,15 @@ load(file='saved/corMets.Rdata')
 cor.dats$SiteStatus <- factor(cor.dats$SiteStatus,
                               levels=c("LOW", "MOD", "HIGH"))
 
-ys <- c("zNODF", "zmod.met.R", "zH2", "connectance", "number.of.species.HL")
+ys <- c("zNODF", "zmod.met.R", "zH2", "connectance",
+        "number.of.species.HL", "zgenerality.HL",
+        "mean.number.of.shared.partners.HL",
+        "zniche.overlap.HL", "partner.diversity.HL")
 
 ## simpson's diversity of fire history
 formulas.div <-lapply(ys, function(x) {
     as.formula(paste(x, "~",
-                     paste("scale(simpson.div)*SiteStatus*Year",
+                     paste("scale(simpson.div)*SiteStatus + Year",
                            "(1|Site)",
                            sep="+")))
 })
@@ -42,23 +45,23 @@ lapply(mods.div, summary)
 
 
 ## functional dispersion fo fire history
-formulas.dis <-lapply(ys, function(x) {
-    as.formula(paste(x, "~",
-                     paste("scale(FuncDis)*Year*SiteStatus",
-                           "(1|Site)",
-                           sep="+")))
-})
+## formulas.dis <-lapply(ys, function(x) {
+##     as.formula(paste(x, "~",
+##                      paste("scale(FuncDis)*Year*SiteStatus",
+##                            "(1|Site)",
+##                            sep="+")))
+## })
 
-mods.dis <- lapply(formulas.dis, function(x){
-    lmer(x,
-         data=cor.dats)
-})
+## mods.dis <- lapply(formulas.dis, function(x){
+##     lmer(x,
+##          data=cor.dats)
+## })
 
-names(mods.dis) <- ys
-## results
-lapply(mods.dis, summary)
+## names(mods.dis) <- ys
+## ## results
+## lapply(mods.dis, summary)
 
 
 
-save(mods.dis, mods.div, cor.dats,
+save(mods.div, cor.dats,
      file=file.path(save.path, 'mods/metrics.Rdata'))

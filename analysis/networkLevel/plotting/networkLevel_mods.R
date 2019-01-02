@@ -20,8 +20,10 @@ load('~/Dropbox/Yosemite/analysis/networkLevel/saved/mods/metrics.Rdata')
 
 ys <- names(mods.div)
 ylabs <- c("Nestedness", "Modularity", "Specialization",
-           "Connectance", "Richness")
-mods <- list(mods.div, mods.dis)
+           "Connectance", "Richness", "Vulnerability", "Mean shared
+partners", "Mean niche overlap", "Partner Diversity")
+
+mods <- list(mods.div)
 
 for(j in 1:length(xvars)){
     x <- xvars[j]

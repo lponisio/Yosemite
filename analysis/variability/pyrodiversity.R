@@ -59,7 +59,8 @@ spec.abund$SiteStatus <- factor(spec.abund$SiteStatus,
                                 level=c("LOW", "MOD", "HIGH"))
 
 yvars <- c("beta.dist", "var.pca1")
-spec.abund <- spec.abund[!apply(spec.abund[, yvars], 1, function(x) any(is.na(x))),]
+spec.abund <- spec.abund[!apply(spec.abund[, yvars], 1,
+                                function(x) any(is.na(x))),]
 
 xvars <- c("scale(FloralRichness)", "scale(Richness)",
            "scale(simpson.div)*SiteStatus")

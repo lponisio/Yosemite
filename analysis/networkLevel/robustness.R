@@ -12,43 +12,54 @@ participants<- c("lower")
 ## simulate plant extinction
 ## Simpson div pyrodiversity
 
-for(sp.level in participants){
-    for(ex.method in extinction.methods){
-        res <- simExtinction(nets, extinction.method=ex.method,
-                             dat.mods, participant=sp.level)
-        res$SiteStatus <- factor(res$SiteStatus, levels=c("LOW", "MOD", "HIGH"))
+split.pol <- split(spec, spec$GenusSpecies)
+all.plant <- lapply(split.pol, function(x) unique(x$PlantGenusSpecies))
 
-        res.ave <- aggregate(list(Robustness = res$Robustness),
-                             list(Site=res$Site,
-                                  Year=res$Year,
-                                  SiteStatus=res$SiteStatus,
-                                  simpson.div=res$simpson.div),
-                             mean, na.rm=TRUE)
-        res.delta <- res.ave[res.ave$Year == "2013",]
-        res.2014 <- res.ave[res.ave$Year == "2014",]
-        res.delta$Robustness.2014 <- res.2014$Robustness[match(res.delta$Site,
-                                                     res.2014$Site)]
-        res.delta$delta <-
-            log(res.delta$Robustness.2014)/log(res.delta$Robustness)
+filled.nets <- lapply(nets, function(y){
+    for(sp in colnames(y)){
+        this.int <- y[,sp]
+        this.ref <- all.plant[[sp]]
+        in.ref <- names(this.int) %in% this.ref
+        y[,sp][in.ref] <- 1
+    }
+    return(y)
+})
 
-        mod.diff <- lm(delta ~ scale(simpson.div)*SiteStatus,
-                       data=res.delta)
+all.nets <- list(nets, filled.nets)
+names(all.nets) <- c("obs", "potential")
 
-        mod.div <- lmer(Robustness ~ scale(simpson.div)*SiteStatus
-                        + (1|Site),
-                        data=res)
+for(net.type in names(all.nets)){
+    for(sp.level in participants){
+        for(ex.method in extinction.methods){
+            res <- simExtinction(all.nets[[net.type]], extinction.method=ex.method,
+                                 dat.mods, participant=sp.level)
+            res$SiteStatus <- factor(res$SiteStatus, levels=c("LOW", "MOD", "HIGH"))
 
-        print(paste("*******", ex.method, sp.level, "*******"))
-        print(summary(mod.div))
+            res.ave <- aggregate(list(Robustness = res$Robustness),
+                                 list(Site=res$Site,
+                                      Year=res$Year,
+                                      SiteStatus=res$SiteStatus,
+                                      simpson.div=res$simpson.div),
+                                 mean, na.rm=TRUE)
+            ## res.delta <- res.ave[res.ave$Year == "2013",]
+            ## res.2014 <- res.ave[res.ave$Year == "2014",]
+            ## res.delta$Robustness.2014 <- res.2014$Robustness[match(res.delta$Site,
+            ##                                              res.2014$Site)]
+            ## res.delta$delta <-
+            ##     log(res.delta$Robustness.2014)/log(res.delta$Robustness)
 
-        print(paste("*******", "Delta robustness", "*******"))
-        print(summary(mod.diff))
 
-        save(mod.div, res, mod.diff, res.delta,
-             file=file.path(save.path,
-                            sprintf('mods/robustness_%s_%s.Rdata',
-                                    ex.method, sp.level)))
+            mod.div <- lmer(Robustness ~ scale(simpson.div)*SiteStatus
+                            + (1|Site),
+                            data=res)
+
+            print(paste("*******", net.type, ex.method, sp.level, "*******"))
+            print(summary(mod.div))
+
+            save(mod.div, res, mod.div,
+                 file=file.path(save.path,
+                                sprintf('mods/robustness_%s_%s_%s.Rdata',
+                                        ex.method, sp.level, net.type)))
+        }
     }
 }
-
-

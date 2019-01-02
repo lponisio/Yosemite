@@ -56,6 +56,16 @@ plotInteractionsPyroDiv <- function(){
                   lwd=2,
                   add=TRUE)
         }
+
+        curve(means['(Intercept)'] +
+              means["scale(simpson.div)"] * x,
+              from=range(delta$delta$simpson.div)[1],
+              to=range(delta$delta$simpson.div)[2],
+              col="red",
+              lty=2,
+              lwd=2,
+              add=TRUE)
+
         mtext("Pyrodiversity", 1, line=3, cex=1.3)
         mtext("Log Ratio \n  Abundance", 2, line=4, cex=1.3)
 
@@ -80,6 +90,16 @@ plotInteractionsPyroDiv <- function(){
                   lwd=2,
                   add=TRUE)
         }
+
+        curve(means['(Intercept)'] +
+              means["scale(simpson.div)"] * x,
+              from=range(delta$delta$simpson.div)[1],
+              to=range(delta$delta$simpson.div)[2],
+              col="red",
+              lty=2,
+              lwd=2,
+              add=TRUE)
+
 
         mtext("Pyrodiversity", 1, line=3, cex=1.3)
     }
