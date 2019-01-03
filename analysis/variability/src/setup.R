@@ -28,7 +28,8 @@ calcSpecABund <- function(spec){
 }
 
 
-getScorePrepDrought <- function(pol.pca.scores, beta.dist, spec.abund ){
+getScorePrepDrought <- function(pol.pca.scores, beta.dist, spec.abund,
+                                var.method=cv){
 
     ## match pca var and pca mean scores from 2013 (for var)
     pca.var <- pol.pca.scores$pca.var[pol.pca.scores$pca.var$Year ==
@@ -43,7 +44,7 @@ getScorePrepDrought <- function(pol.pca.scores, beta.dist, spec.abund ){
     ## add partner varaibility data from 2013
     mean.beta.dist <- tapply(beta.dist$dist[beta.dist$Year == "2013"],
                              beta.dist$GenusSpecies[beta.dist$Year == "2013"],
-                             cv)
+                             var.method)
     ## mean.beta.dist <- sapply(mean.beta.dist, median, na.rm=TRUE)
     spec.abund$beta.dist <- mean.beta.dist[match(spec.abund$GenusSpecies,
                                                  names(mean.beta.dist))]

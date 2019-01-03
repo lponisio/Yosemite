@@ -8,31 +8,27 @@ calcPcaMeanVar <- function(species.roles, var.method, metrics,
     ## standardizing variables (zscore) and doing the pca
     for(y in 1:length(sites)){
         this.site <- species.roles[species.roles[,agg.col] == sites[y],]
-        this.site <- this.site[!apply(this.site[,metrics], 1, function(x) any(is.na(x))),]
-        ## for each site, across years
-        ## calculate z scores (xi - mean(x))/sd)
+        this.site <- this.site[!apply(this.site[,metrics], 1,
+                                      function(x) any(is.na(x))),]
+        ## for each year calculate z scores (xi - mean(x))/sd)
         zs <- apply(this.site[, metrics], 2,
                     function(x){
-                        (x - mean(x, na.rm=TRUE)) / sd(x, na.rm=TRUE)
+                        (x - mean(x, na.rm=TRUE)) / (sd(x, na.rm=TRUE) +10^-10)
                     })
-        ## if all the scores are zero, cannot divide by zero, just set
-        ## to zero
-        all.na <- apply(zs, 2, function(x) all(!is.finite(x)))
-        zs[, all.na] <- 0
-
         ## runs the pca
         all.pca[[y]] <- prcomp(zs)
         ## make a nice dataframe
-        all.spp[[y]] <- this.site[, c("Site", "Year", "GenusSpecies", "SpSiteYear")]
+        all.spp[[y]] <- this.site[, c("Site", "Year",
+                                      "GenusSpecies",
+                                      "SpSiteYear")]
         names(all.pca)[y] <- sites[y]
         names(all.spp)[y] <- sites[y]
         all.spp[[y]] <- cbind(all.spp[[y]],
                               pca=all.pca[[y]]$x[,loadings])
-
-        ## calculate the variance of the pc1 scores within a site
-        ## across years
+        ## calculate the variance of the pc1 scores
         var.pca[[y]] <- tapply(all.spp[[y]]$pca,
-                               all.spp[[y]]$GenusSpecies, var.method,...)
+                               all.spp[[y]]$GenusSpecies,
+                               var.method,...)
 
         names(var.pca)[y] <- sites[y]
     }
@@ -43,7 +39,9 @@ calcPcaMeanVar <- function(species.roles, var.method, metrics,
     if(agg.col == "Site"){
         pca.var$Site <- sapply(strsplit(rownames(pca.var), "[.]"),
                                function(x) x[1])
-        pca.var$SiteStatus <- species.roles$SiteStatus[match(pca.var$Site, species.roles$Site)]
+        pca.var$SiteStatus <- species.roles$SiteStatus[match(
+                                                pca.var$Site,
+                                                species.roles$Site)]
     }
     if(agg.col == "Year"){
         pca.var$Year <- sapply(strsplit(rownames(pca.var), "[.]"),
@@ -54,9 +52,11 @@ calcPcaMeanVar <- function(species.roles, var.method, metrics,
                           by = list(GenusSpecies = pca.mean$GenusSpecies,
                                     Site = pca.mean$Site,
                                     Year = pca.mean$Year),
-                          FUN=mean, na.rm=TRUE)
+                          FUN=ave.method, na.rm=TRUE)
     rownames(pca.mean) <- NULL
     rownames(pca.var) <- NULL
 
-    return(list(pca.mean=pca.mean, pca.var=pca.var, pca.loadings = all.pca))
+    return(list(pca.mean=pca.mean,
+                pca.var=pca.var,
+                pca.loadings = all.pca))
 }

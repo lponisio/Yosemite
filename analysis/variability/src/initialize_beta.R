@@ -1,14 +1,13 @@
-library(lme4)
 library(vegan)
-library(lmerTest)
 source('src/misc.R')
 source('src/beta.R')
 
-if(type == "pols"){
+if(type == "pol"){
     speciesType <- "pollinator"
 } else{
     speciesType <- "plants"
 }
+
 
 if(occ == "abund"){
     binary <- FALSE

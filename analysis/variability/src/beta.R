@@ -1,10 +1,10 @@
 
 calcBeta <- function(comm,
-                           dis.method,
-                           nulls,
-                           sub= "pol",
-                           occ= FALSE,
-                           zscore=FALSE){ ## calculate zscores?
+                     dis.method,
+                     nulls,
+                     sub= "pol",
+                     occ= FALSE,
+                     zscore=FALSE){ ## calculate zscores?
     ## computes dispersion of community matrices, returns output of
     ## vegan function
     ## create community dissimilarity matrix
@@ -19,8 +19,8 @@ calcBeta <- function(comm,
             as.matrix(vegdist(x, method= dis.method, diag=TRUE))
         })
         null.dis[[i]][[length(nulls[[i]]) + 1]] <- comm.dis[[i]]
-
     }
+
     beta.disper.result <- vector("list", length(comm))
     for(i in 1:length(comm)){
         arr <- array(unlist(null.dis[[i]]), c(dim(comm.dis[[i]])[1],
@@ -36,6 +36,7 @@ calcBeta <- function(comm,
             })
             cor.dis <- as.dist((less.than + 0.5*equal.2)/
                                length(null.dis[[i]]), diag= TRUE)
+
         }else{
             cor.dis  <-  (comm.dis[[i]] -
                           apply(arr , 1:2 , mean))/
@@ -44,8 +45,11 @@ calcBeta <- function(comm,
                                 diag= TRUE)
         }
         ## run model
-        beta.disper.result[[i]] <- betadisper(cor.dis, rep("all", nrow(as.matrix(cor.dis))),
+        beta.disper.result[[i]] <- betadisper(cor.dis,
+                                              rep("all",
+                                                  nrow(as.matrix(cor.dis))),
                                               type="centroid")
+
     }
     return(beta.disper.result)
 }

@@ -9,7 +9,7 @@ plot.panels <- function(){
 
 
         plot.panel(dats=
-                       delta$delta[delta$delta$deltaAbund != 0,],
+                       delta[delta$deltaAbund != 0,],
                    new.dd=abund.beta.dist.pi,
                    xs="beta.dist",
                    y1="deltaAbund",
@@ -27,7 +27,7 @@ plot.panels <- function(){
                bty="n", cex=1)
 
         plot.panel(dats=
-                       delta$delta,
+                       delta,
                    new.dd=persist.beta.dist.pi,
                    xs="beta.dist",
                    y1="Persist",
@@ -44,7 +44,7 @@ plot.panels <- function(){
         mtext("Partner variability", 1, line=3.5, cex=1.5)
 
         plot.panel(dats=
-                       delta$delta[delta$delta$deltaAbund != 0,],
+                       delta[delta$deltaAbund != 0,],
                    new.dd=abund.var.pca.pi,
                    xs="var.pca1",
                    y1="deltaAbund",
@@ -63,7 +63,7 @@ plot.panels <- function(){
                pch=c(15, 16, 17), cex=0.7)
 
         plot.panel(dats=
-                       delta$delta,
+                       delta,
                    new.dd=persist.var.pca.pi,
                    xs="var.pca1",
                    y1="Persist",

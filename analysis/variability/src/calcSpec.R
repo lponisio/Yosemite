@@ -51,7 +51,6 @@ calcSpec <- function(nets, spec, dist.metric){
         sl$'lower level'$rare.degree <- apply(x, 1, chao1)
         return(sl)
     })
-
     ## extract the values and make a dataframe
     specs  <-  mapply(function(a, b)
         getSpec(species.lev = a,
@@ -60,7 +59,6 @@ calcSpec <- function(nets, spec, dist.metric){
         a = species.lev,
         b = names(nets),
         SIMPLIFY = FALSE)
-
     specs <- do.call(rbind, specs)
     rownames(specs) <- NULL
     specs$SiteStatus <- spec$SiteStatus[match(specs$Site,

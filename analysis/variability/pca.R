@@ -23,9 +23,10 @@ pol <- species.roles[species.roles$speciesType == "pollinator",]
 
 pol.pca.scores <- calcPcaMeanVar(species.roles=pol,
                                  var.method=var.method,
+                                 ave.method=ave.method,
                                  metrics= metrics,
                                  loadings=loadings,
-                                agg.col = "Year")
+                                 agg.col = "Year")
 
 ## *********************************************************************
 ## plants
