@@ -20,7 +20,6 @@ ave.method <- mean
 ## *********************************************************************
 
 pol <- species.roles[species.roles$speciesType == "pollinator",]
-
 pol.pca.scores <- calcPcaMeanVar(species.roles=pol,
                                  var.method=var.method,
                                  ave.method=ave.method,
