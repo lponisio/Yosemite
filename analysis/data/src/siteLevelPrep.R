@@ -1,24 +1,4 @@
-rm(list=ls())
-library(vegan)
-setwd('~/Dropbox/Yosemite/analysis/data')
-source('src/misc.R')
-load('specimens/spec.Rdata')
 load('veg/vegSp.Rdata')
-cond <-
-  read.csv("../../data/relational/relational/tables/conditions.csv")
-cond$Date <- as.Date(cond$Date, format='%m/%d/%y')
-extra.round <- cond$Site == 'L21' & cond$Date == '2014-07-01'
-cond <- cond[!extra.round,]
-
-
-cond$doy <- as.numeric(strftime(cond$Date, format="%j"))
-samp.sr <- data.frame(doy=cond$doy,
-                      Site=cond$Site,
-                      Year=cond$Year,
-                      Richness=0,
-                      Abund=0,
-                      Div=0)
-samp.sr <- unique(samp.sr, MARGIN=1)
 
 ## abundance, diversity, and richness at each site
 prep.site <- function(dats,

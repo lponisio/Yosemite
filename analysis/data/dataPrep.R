@@ -4,25 +4,28 @@ library(fields)
 library(bipartite)
 library(fossil)
 
-setwd('~/Dropbox/Yosemite/data')
+## setwd('~/Dropbox/Yosemite/')
+setwd("data")
 source('speciesIDs/src/AssignSpecies.R')
 
-setwd('~/Dropbox/Yosemite/data/relational/relational')
+setwd('relational/relational')
 source('../src/relational_prep.R')
 source('../src/relational_make.R')
 source('../src/make_traditional.R')
 sr.sched <- read.csv('tables/conditions.csv')
 spec <- read.csv('traditional/specimens-complete.csv')
 veg <- read.csv('traditional/veg-complete.csv')
+cond <- read.csv("tables/conditions.csv")
 
-setwd('~/Dropbox/Yosemite/analysis/data')
+setwd('../../../analysis/data/')
 source('src/misc.R')
 
+## drop pan data
+spec <- spec[spec$NetPan == "net",]
+## drop non-bees
 bee.fams <- c("Halictidae", "Andrenidae", "Apidae", "Megachilidae",
               "Colletidae")
-
 spec <- spec[spec$Family %in% bee.fams,]
-
 ## correct date format
 spec$Date <- as.Date(spec$Date, format='%m/%d/%y')
 spec$doy <- as.numeric(strftime(spec$Date, format='%j'))
@@ -30,11 +33,20 @@ spec$Year <- as.factor(spec$Year)
 ## get specimen data ready
 
 ## drop extra round
+# from specimens
 extra.round <- spec$Site == 'L21' & spec$Date == '2014-07-01'
 spec <- spec[!extra.round,]
+## from sampling schedule
 sr.sched$Date <- as.Date(sr.sched$Date, format='%m/%d/%y')
 extra.round <- sr.sched$Site == 'L21' & sr.sched$Date == '2014-07-01'
 sr.sched <- sr.sched[!extra.round,]
+## from veg data
+extra.round <- veg$Site == 'L21' & veg$Date == '2014-07-01'
+veg <- veg[!extra.round,]
+## from conditions
+cond$Date <- as.Date(cond$Date, format='%m/%d/%y')
+extra.round <- cond$Site == 'L21' & cond$Date == '2014-07-01'
+cond <- cond[!extra.round,]
 
 ## create genus species columns
 spec$GenusSpecies <- fix.white.space(paste(spec$Genus,
@@ -68,7 +80,6 @@ prep.comm <- aggregate(spec$GenusSpecies,
                             Year=spec$Year),
                        length)
 
-write.csv(spec, 'specimens/spec.csv', row.names=FALSE)
 save(spec, file='specimens/spec.Rdata')
 
 ##******************************************************
@@ -105,5 +116,14 @@ save(veg, file='veg/veg.Rdata')
 ##******************************************************
 ## site level data
 ##******************************************************
+cond$doy <- as.numeric(strftime(cond$Date, format="%j"))
+samp.sr <- data.frame(doy=cond$doy,
+                      Site=cond$Site,
+                      Year=cond$Year,
+                      Richness=0,
+                      Abund=0,
+                      Div=0)
+samp.sr <- unique(samp.sr, MARGIN=1)
+
 source('~/Dropbox/yosemite/analysis/data/src/siteLevelPrep.R')
 
