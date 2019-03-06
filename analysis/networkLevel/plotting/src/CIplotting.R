@@ -12,7 +12,7 @@ plot.panel <- function(dats,
                        ag.col="SiteStatus",
                        plot.x=TRUE,
                        FUN=mean,
-                       pchs=c(15, 16, 17)){
+                       pchs=c(16)){
     plotting.loop <- function(){
         for(i in 1:length(treatments)){
             print(treatments[i])
@@ -33,7 +33,7 @@ plot.panel <- function(dats,
                    y=ys$y,
                    pch=pchs[i],
                    col=col.lines[treatments[i]],
-                   cex=1.5)
+                   cex=1)
             ## plots CI
             lines(x=sub.dd[,xs],
                   y=sub.dd[,y1],
@@ -57,8 +57,8 @@ plot.panel <- function(dats,
     }
     if(!is.na(year)){
         plot(NA, xlim=range(dats[dats$Year == year, xs]),
-             ylim=range(c(new.dd$plo, new.dd$phi, new.dd$phi +
-                                                  new.dd$phi/10),
+             ylim=range(c(new.dd$plo, new.dd$phi,
+                          dats[dats$Year == year, y1]),
                         na.rm=TRUE),
              xlab="",
              ylab="",
@@ -67,8 +67,7 @@ plot.panel <- function(dats,
              las=1)
     }else{
         plot(NA, xlim=range(dats[, xs], na.rm=TRUE),
-             ylim=range(c(new.dd$plo, new.dd$phi, new.dd$phi +
-                                                  new.dd$phi/10) ,
+             ylim=range(c(new.dd$plo, new.dd$phi, dats[dats$Year == year, y1]) ,
                         na.rm=TRUE),
              xlab="",
              ylab="",
@@ -77,10 +76,10 @@ plot.panel <- function(dats,
              las=1)
     }
     if(year == "2013" | is.na(year)){
-        axis(2, pretty(c(new.dd$phi + new.dd$phi/10,
-                         new.dd$plo, new.dd$phi,
-                         FUN(dats[,y2])), 4), las=1)
-        mtext(ylabel, 2, line=3.5, cex=1.5)
+        axis(2, pretty(range(c(new.dd$plo, new.dd$phi,
+                          dats[dats$Year == year, y1]),
+                        na.rm=TRUE)), las=1)
+        mtext(ylabel, 2, line=3.5, cex=1)
     }
     if(plot.x){
         axis(1, pretty(dats[,xs], 4))
@@ -90,7 +89,7 @@ plot.panel <- function(dats,
     if(!is.na(year)){
         legend(legend.loc.year,
                legend=year,
-               bty="n", cex=1.5)
+               bty="n", cex=1)
     }
 }
 
@@ -110,9 +109,12 @@ plot.predict.div <- function(new.dd,
                              xlabel="Pyrodiversity",
                              f.path = 'figures'){
     plot.ci <- function(){
-        col.lines <- rev(brewer.pal(4, "RdYlGn"))[c(2,3,4)]
+        ## col.lines <- rev(brewer.pal(4, "RdYlGn"))[c(2,3,4)]
+        ## treatments <- c("LOW", "MOD", "HIGH")
+
+        col.lines <- "black"
         col.fill <- add.alpha(col.lines, alpha=0.3)
-        treatments <- c("LOW", "MOD", "HIGH")
+        treatments <- c("all")
         names(col.lines) <- names(col.fill) <- treatments
         if(by.year){
             layout(matrix(1:2, ncol=2))
@@ -128,7 +130,7 @@ plot.predict.div <- function(new.dd,
                            col.fill,
                            legend.loc.year,
                            ylabel)
-                mtext(xlabel, 1, line=3.5, cex=1.5, at=0.25)
+                mtext(xlabel, 1, line=3, cex=1)
             }
         } else{
             layout(matrix(1, ncol=1))
@@ -141,12 +143,12 @@ plot.predict.div <- function(new.dd,
                        col.fill,
                        legend.loc.year=NA,
                        ylabel)
-            mtext(xlabel, 1, line=3.5, cex=1.5)
+            mtext(xlabel, 1, line=3, cex=1)
         }
-        legend(legend.loc,
-               legend=c("Low", "Moderate", "High"),
-               col=col.lines,
-               pch=c(15,16,17), bty="n", cex=0.8)
+        ## legend(legend.loc,
+        ##        legend=c("Low", "Moderate", "High"),
+        ##        col=col.lines,
+        ##        pch=c(15,16,17), bty="n", cex=0.8)
     }
     pdf.f(plot.ci, file=file.path(f.path,
                                   sprintf("%s.pdf", paste(

@@ -1,52 +1,53 @@
 
+mut.adj <- function(x) {
+    nr <- dim(x)[1]
+    nc <- dim(x)[2]
+    to.fill <- matrix(0, ncol=nc + nr, nrow=nc + nr)
+    to.fill[1:nr,(nr+1):(nc+nr)] <- x
+    adj.mat <- graph.adjacency(to.fill, mode= "upper", weighted=TRUE)
+    return(adj.mat)
+}
+
+calc.mod <- function(dat.web){
+    ## converts a p-a matrix to a graph for modularity computation
+    graph <- mut.adj(dat.web)
+    weights <- as.vector(dat.web)
+    weights <- weights[weights != 0]
+
+    ## if matrix is binary, modularity calculate is not affected by
+    ## the weights
+    greedy <- modularity(graph,
+                         membership(fastgreedy.community(graph,
+                                                         weights=weights)),
+                         weights=weights)
+
+    random.walk <-  modularity(graph,
+                               membership(walktrap.community(graph,
+                                                             weights=weights)),
+                               weights=weights)
+    return(c(G=greedy,
+             R=random.walk))
+}
+
 calcMetric <- function(dat.web, ...) {
     ## calculates modularity
-    calc.mod <- function(dat.web){
-        ## converts a p-a matrix to a graph for modularity computation
-        mut.adj <- function(x) {
-            nr <- dim(x)[1]
-            nc <- dim(x)[2]
-            to.fill <- matrix(0, ncol=nc + nr, nrow=nc + nr)
-            to.fill[1:nr,(nr+1):(nc+nr)] <- x
-            adj.mat <- graph.adjacency(to.fill, mode= "upper", weighted=TRUE)
-            return(adj.mat)
-        }
-        graph <- mut.adj(dat.web)
-        weights <- as.vector(dat.web)
-        weights <- weights[weights != 0]
-
-        ## if matrix is binary, modularity calculate is not affected by
-        ## the weights
-        greedy <- modularity(graph,
-                             membership(fastgreedy.community(graph,
-                                                             weights=weights)),
-                             weights=weights)
-
-        random.walk <-  modularity(graph,
-                                   membership(walktrap.community(graph,
-                                                                 weights=weights)),
-                                   weights=weights)
-        dendro <-  modularity(graph,
-                              membership(edge.betweenness.community(graph,
-                                                                    weights=
-                                                                        weights)),
-                              weights=weights)
-        return(c(G=greedy,
-                 R=random.walk,
-                 D=dendro))
-    }
-
     dat.web <- as.matrix(empty(dat.web))
     ## matrix of all the same number
     if(min(dat.web) == max(dat.web)){
         return(c(mets=rep(0, 1),
-                 mod.met=rep(0,3)))
+                 mod.met=rep(0,2)))
     } else{
-        nodf <- nestednodf(dat.web,
-                           weighted=TRUE,
-                           wbinary=TRUE)$statistic["NODF"]
-        mets <-  c(nodf,
-                   networklevel(dat.web, ...))
+        mets <-  networklevel(dat.web, ...)
+        spec.mets <- specieslevel(dat.web, c("d", "normalised degree"))
+        mets <- c(mets, d.HL=mean(spec.mets$`higher level`$d,
+                                  na.rm=TRUE))
+        mets <- c(mets, ND.HL=mean(spec.mets$`higher level`$normalised.degree,
+                                  na.rm=TRUE))
+        mets <- c(mets, d.LL=mean(spec.mets$`lower level`$d,
+                                  na.rm=TRUE))
+        mets <- c(mets, ND.LL=mean(spec.mets$`lower level`$normalised.degree,
+                                  na.rm=TRUE))
+
     }
     mod.met <- calc.mod(dat.web)
     return(c(mets, mod.met= mod.met))
@@ -65,11 +66,19 @@ calcNullStat <- function(dat.web,
 ##  (nulls simulated from web N times)
 calcNetworkMetrics <- function (dat.web, N,
                                 H2_integer=TRUE,
-                                index= c("H2", "connectance",
-                                         "weighted connectance", "niche overlap",
+                                index= c("H2",
+                                         "connectance",
+                                         "weighted connectance",
+                                         "niche overlap",
                                          "number of species",
                                          "mean number of shared partners",
-                                         "vulnerability", "partner diversity")) {
+                                         "vulnerability",
+                                         "partner diversity",
+                                         "functional complementarity",
+                                         "weighted NODF",
+                                         "interaction evenness",
+                                         "links per species"),
+                                dist="chao") {
     ## calculate pvalues
     pvals <- function(stats, nnull){
         rowSums(stats >= stats[, rep(1, ncol(stats))])/(nnull + 1)
@@ -91,8 +100,10 @@ calcNetworkMetrics <- function (dat.web, N,
         if(is.matrix(dat.web)){
             if(all(dim(dat.web) >= 2)) {
                 ## calculate null metrics
-                null.stat <- replicate(N, calcNullStat(dat.web,  H2_integer=H2_integer,
-                                                       index=index),
+                null.stat <- replicate(N, calcNullStat(dat.web,
+                                                       H2_integer=H2_integer,
+                                                       index=index,
+                                                       dist=dist),
                                        simplify=TRUE)
                 ## calculate metrics from data
                 true.stat <- calcMetric(dat.web, H2_integer=H2_integer,
@@ -109,7 +120,7 @@ calcNetworkMetrics <- function (dat.web, N,
             }
         }
     }
-    return(rep(NA,5*3))
+    return(rep(NA, (length(index) + 4)*3))
 }
 
 prepDat <- function(cor.stats, spec.dat){
@@ -123,5 +134,3 @@ prepDat <- function(cor.stats, spec.dat){
     rownames(out) <- NULL
     return(out)
 }
-
-

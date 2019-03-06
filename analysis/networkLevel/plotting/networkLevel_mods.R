@@ -7,6 +7,7 @@ source("plotting/src/predictIntervals.R")
 source("plotting/src/CIplotting.R")
 source("plotting/src/plotPanels.R")
 source("plotting/src/diagnostics.R")
+library(RColorBrewer)
 
 xvars <- c("simpson.div")
 type <- "all"
@@ -19,41 +20,51 @@ xlabel <- "Pyrodiversity"
 load('~/Dropbox/Yosemite/analysis/networkLevel/saved/mods/metrics.Rdata')
 
 ys <- names(mods.div)
-ylabs <- c("Nestedness", "Modularity", "Specialization",
-           "Connectance", "Richness", "Vulnerability", "Mean shared
-partners", "Mean niche overlap", "Partner Diversity")
+## ylabs <- c("Nestedness", "Modularity", "Specialization",
+##            "Connectance", "Interaction evenness",
+##            "Pollinator richness", "Pollinator Vulnerability",
+##            "Pollinator  mean shared partners",
+##            "Pollinator mean niche overlap",
+##            "Pollinator partner Diversity",
+##            "Pollinator complementarity",
+##            "Pollinator mean d'",
+##            "Plant richness",
+##            "Plant  mean shared partners",
+##            "Plant mean niche overlap",
+##            "Plant partner Diversity",
+##            "Plant complementarity", "Plant mean d'")
 
-mods <- list(mods.div)
 
-for(j in 1:length(xvars)){
-    x <- xvars[j]
-    print(x)
-    for(i in 1:length(ys)){
-        print(ys[i])
-        dd.met <- expand.grid(xvar =seq(
-                                  from=  min(dat.mods[, x]),
-                                  to= max(dat.mods[, x]),
-                                  length=10),
-                              SiteStatus= c("LOW", "MOD", "HIGH"),
-                              Year= c("2013", "2014"),
-                              yvar=0)
-        colnames(dd.met)[1] <- x
-        colnames(dd.met)[4] <- ys[i]
+ylabs <- ys
 
-        met.pi <- predict.int(mod= mods[[j]][[ys[i]]],
-                              dd=dd.met,
-                              y=ys[i],
-                              family="guassian")
+x <- xvars
 
-        plot.predict.div(new.dd=met.pi,
-                         ylabel=ylabs[i],
-                         dats=cor.dats,
-                         xs=x,
-                         y1=ys[i],
-                         type=type,
-                         xlabel=xlabel,
-                         legend.loc="bottomleft",
-                         legend.loc.year="topright")
+for(i in 1:length(ys)){
+    print(ys[i])
+    dd.met <- expand.grid(xvar =seq(
+                              from=  min(cor.dats[, x]),
+                              to= max(cor.dats[, x]),
+                              length=10),
+                          SiteStatus= c("all"),
+                          Year= c("2013", "2014"),
+                          yvar=0)
+    colnames(dd.met)[1] <- x
+    colnames(dd.met)[4] <- ys[i]
 
-    }
+    met.pi <- predict.int(mod= mods.div[[ys[i]]],
+                          dd=dd.met,
+                          y=ys[i],
+                          family="guassian")
+    cor.dats$SiteStatus <- "all"
+    plot.predict.div(new.dd=met.pi,
+                     ylabel=ylabs[i],
+                     dats=cor.dats,
+                     xs=x,
+                     y1=ys[i],
+                     type=type,
+                     xlabel=xlabel,
+                     legend.loc="bottomleft",
+                     legend.loc.year="topright")
+
 }
+

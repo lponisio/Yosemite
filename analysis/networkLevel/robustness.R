@@ -31,32 +31,24 @@ names(all.nets) <- c("obs", "potential")
 for(net.type in names(all.nets)){
     for(sp.level in participants){
         for(ex.method in extinction.methods){
-            res <- simExtinction(all.nets[[net.type]], extinction.method=ex.method,
+            res <- simExtinction(all.nets[[net.type]],
+                                 extinction.method=ex.method,
                                  dat.mods, participant=sp.level)
-            res$SiteStatus <- factor(res$SiteStatus, levels=c("LOW", "MOD", "HIGH"))
+            res$SiteStatus <- factor(res$SiteStatus,
+                                     levels=c("LOW", "MOD", "HIGH"))
+            res$Year <- factor(res$Year,
+                                     levels=c("2014", "2013"))
 
-            res.ave <- aggregate(list(Robustness = res$Robustness),
-                                 list(Site=res$Site,
-                                      Year=res$Year,
-                                      SiteStatus=res$SiteStatus,
-                                      simpson.div=res$simpson.div),
-                                 mean, na.rm=TRUE)
-            ## res.delta <- res.ave[res.ave$Year == "2013",]
-            ## res.2014 <- res.ave[res.ave$Year == "2014",]
-            ## res.delta$Robustness.2014 <- res.2014$Robustness[match(res.delta$Site,
-            ##                                              res.2014$Site)]
-            ## res.delta$delta <-
-            ##     log(res.delta$Robustness.2014)/log(res.delta$Robustness)
-
-
-            mod.div <- lmer(Robustness ~ scale(simpson.div)*SiteStatus
-                            + (1|Site),
+            mod.div <- lmer(Robustness ~
+                                scale(simpson.div)*Year
+                                + (1|Site),
                             data=res)
 
-            print(paste("*******", net.type, ex.method, sp.level, "*******"))
+            print(paste("*******", net.type, ex.method, sp.level,
+                        "Robustness", "*******"))
             print(summary(mod.div))
-
-            save(mod.div, res, mod.div,
+            print(anova(mod.div))
+            save(mod.div, res,
                  file=file.path(save.path,
                                 sprintf('mods/robustness_%s_%s_%s.Rdata',
                                         ex.method, sp.level, net.type)))
