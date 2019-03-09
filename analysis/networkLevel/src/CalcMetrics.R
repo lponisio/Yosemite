@@ -38,16 +38,6 @@ calcMetric <- function(dat.web, ...) {
                  mod.met=rep(0,2)))
     } else{
         mets <-  networklevel(dat.web, ...)
-        spec.mets <- specieslevel(dat.web, c("d", "normalised degree"))
-        mets <- c(mets, d.HL=mean(spec.mets$`higher level`$d,
-                                  na.rm=TRUE))
-        mets <- c(mets, ND.HL=mean(spec.mets$`higher level`$normalised.degree,
-                                  na.rm=TRUE))
-        mets <- c(mets, d.LL=mean(spec.mets$`lower level`$d,
-                                  na.rm=TRUE))
-        mets <- c(mets, ND.LL=mean(spec.mets$`lower level`$normalised.degree,
-                                  na.rm=TRUE))
-
     }
     mod.met <- calc.mod(dat.web)
     return(c(mets, mod.met= mod.met))
@@ -67,16 +57,8 @@ calcNullStat <- function(dat.web,
 calcNetworkMetrics <- function (dat.web, N,
                                 H2_integer=TRUE,
                                 index= c("H2",
-                                         "connectance",
-                                         "weighted connectance",
-                                         "niche overlap",
-                                         "number of species",
-                                         "mean number of shared partners",
-                                         "vulnerability",
                                          "partner diversity",
                                          "functional complementarity",
-                                         "weighted NODF",
-                                         "interaction evenness",
                                          "links per species"),
                                 dist="chao") {
     ## calculate pvalues

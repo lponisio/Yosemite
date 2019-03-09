@@ -4,7 +4,7 @@ setwd('analysis/networkLevel')
 source('src/initialize.R')
 
 ## ## number of null communities
-N <- 99
+N <- 999
 
 ## ## ************************************************************
 ## ## calculate metrics and zscores ## beware this takes a while!
@@ -22,7 +22,7 @@ load(file='saved/corMets.Rdata')
 cor.dats$Year <- factor(cor.dats$Year,
                               levels=c("2013", "2014"))
 
-ys <- c("zweighted.NODF", "zH2", "zmod.met.R",
+ys <- c("partner diversity", "zH2", "links.per.species",
         "functional.complementarity.HL",
         "functional.complementarity.LL")
 
@@ -37,7 +37,6 @@ formulas.div <-lapply(ys, function(x) {
 mods.div <- lapply(formulas.div, function(x){
     lmer(x,
          data=cor.dats)
-    ## data=cor.dats[cor.dats$Year == "2013",])
 })
 
 names(mods.div) <- ys

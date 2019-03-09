@@ -104,7 +104,8 @@ SimSecondExtinction <- function (web, participant = "higher", method = "abun", n
 simExtinction <- function(nets,
                           extinction.method,
                           spec,
-                          participant){
+                          participant,
+                          ext.row){
     ## calculates the robustness of a network using Memmot et al.'s method
     ## takes the adjacency matrix, whether to drop species by abundance or
     ## degree and whther to drop the "higer" or "lower" level of the
@@ -115,7 +116,9 @@ simExtinction <- function(nets,
     for(i in 1:length(nets)){
         if(all(dim(nets) > 3)){
             this.ext <- try(SimSecondExtinction(nets[[i]], participant=participant,
-                                                method=extinction.method, nrep=100))
+                                                method=extinction.method,
+                                                ext.row=ext.row[[i]],
+                                                nrep=1000))
             if(inherits(this.ext, "try-error")){
                 print(i)
                 next
