@@ -9,18 +9,18 @@ plotInteractionsPyroDiv <- function(){
         nbreaks <- 15
         h1 <- hist(delta$beta.dist, breaks=nbreaks, plot=FALSE)
         h2 <- hist(delta$var.pca1, breaks=nbreaks, plot=FALSE)
-        cols1 <- rev(viridis(length(h1$density)))
-        cols2 <- rev(viridis(length(h2$density)))
+        cols1 <- rev(inferno(length(h1$density) + 1))[-1]
+        cols2 <- rev(inferno(length(h2$density) + 1))[-1]
         plot(h1, col=cols1,
              xlab="", main="", ylab="", las=1)
         mtext("Frequency", 2, line=4, cex=1.3)
         mtext("Partner variability", 1, line=3, cex=1.3)
         legend("topright", legend="(a)", bty="n", cex=1.2)
 
-        abline(v=mean(delta$beta.dist), lty=2, col="red", lwd=3)
+        abline(v=mean(delta$beta.dist), lty=2, col="black", lwd=3)
         plot(h2, col=cols2,
              xlab="", main="", ylab="", las=1)
-        abline(v=mean(delta$var.pca1), lty=2, col="red", lwd=3)
+        abline(v=mean(delta$var.pca1), lty=2, col="black", lwd=3)
         mtext("Role variability", 1, line=3, cex=1.3)
         legend("topright", legend="(b)", bty="n", cex=1.2)
 
@@ -61,7 +61,7 @@ plotInteractionsPyroDiv <- function(){
               means["scale(simpson.div)"] * x,
               from=range(delta$simpson.div)[1],
               to=range(delta$simpson.div)[2],
-              col="red",
+              col="black",
               lty=2,
               lwd=2,
               add=TRUE)
@@ -95,7 +95,7 @@ plotInteractionsPyroDiv <- function(){
               means["scale(simpson.div)"] * x,
               from=range(delta$simpson.div)[1],
               to=range(delta$simpson.div)[2],
-              col="red",
+              col="black",
               lty=2,
               lwd=2,
               add=TRUE)

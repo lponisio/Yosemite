@@ -30,23 +30,10 @@ delta$delta <- delta$delta[delta$delta$var.pca1 !=
 ## ************************************************************
 ## delta abund
 ## ************************************************************
-mods <- lmer(deltaAbund ~ scale(beta.dist)*scale(simpson.div) +
-                 scale(var.pca1)*scale(simpson.div) +
-                 + SiteStatus*scale(simpson.div)  +
-                 scale(deltaFloralAbund) +
-                 (1|GenusSpecies), na.action = "na.fail",
-             data=delta$delta[delta$delta$deltaAbund != 0,])
-vif.mer(mods)
-summary(mods)
-
 print("******** delta abund **********")
-## removed pyrodiversity*Site status bec VIF high, does not change sig
-## of the results
-
-
 mods <- lmer(deltaAbund ~ scale(beta.dist)*scale(simpson.div) +
                  scale(var.pca1)*scale(simpson.div) +
-                 + SiteStatus  + scale(deltaFloralAbund) +
+                 scale(deltaFloralAbund) +
                  (1|GenusSpecies), na.action = "na.fail",
              data=delta$delta[delta$delta$deltaAbund != 0,])
 vif.mer(mods)
@@ -55,14 +42,14 @@ summary(mods)
 ## ************************************************************
 ## persist or go extinct?
 ## ************************************************************
-
+print("******** prob persist  **********")
 delta$delta$Persist <- delta$delta$deltaAbund
 delta$delta$Persist[delta$delta$Persist != 0] <- 1
 
 
 mods.ext <- glmer(Persist ~ scale(beta.dist)*scale(simpson.div) +
-                      scale(var.pca1)*scale(simpson.div) + scale(Abund)
-                  + SiteStatus*scale(simpson.div)  +
+                      scale(var.pca1)*scale(simpson.div) +
+                      scale(Abund) +
                   scale(deltaFloralAbund) +
                   (1|GenusSpecies), na.action = "na.fail",
                   data=delta$delta, family="binomial",
@@ -72,20 +59,24 @@ mods.ext <- glmer(Persist ~ scale(beta.dist)*scale(simpson.div) +
 vif.mer(mods.ext)
 summary(mods.ext)
 
-print("******** prob persist  **********")
-## removed pyrodiversity * site status bec VIF high, also site random
-## effect due to singularity of convergence. Neither change the
-## significance of the results
-mods.ext <- glmer(Persist ~ scale(beta.dist)*scale(simpson.div) +
-                      scale(var.pca1)*scale(simpson.div) + scale(Abund) +
-                      + SiteStatus  + scale(deltaFloralAbund) +
-                      (1|GenusSpecies), na.action = "na.fail",
-                  data=delta$delta, family="binomial",
-                  control=glmerControl(optimizer="bobyqa",
-                                       optCtrl=list(maxfun=1e9),
-                                       tolPwrss=1e-5))
-vif.mer(mods.ext)
-summary(mods.ext)
-
 save(delta, mods.ext, mods, file="saved/mods/drought.Rdata")
+
+
+plotHist <- function(){
+      par(oma=c(4, 4, 0.5, 0.5),
+      mar=c(2, 2, 2, 2),
+      cex.axis=1.5)
+    hist(delta$site.data$simpson.div,
+         xlab="",
+         ylab="",
+         las=1,
+         col="grey",
+         main="",
+         lwd=1.5)
+    mtext("Frequency", 2, line=4.5, cex=1.5)
+    mtext("Fire history diversity", 1, line=3, cex=1.5)
+}
+
+pdf.f(plotHist, file= file.path("figures/div.pdf"),
+      width=10, height=7)
 

@@ -6,7 +6,7 @@ source('plotting/src/initialize.R')
 ## ************************************************************
 ## delta abund
 ## ************************************************************
-load('~/Dropbox/Yosemite/analysis/variability/saved/mods/drought.Rdata')
+load('saved/mods/drought.Rdata')
 delta <- delta$delta
 
 ## network role
@@ -57,7 +57,6 @@ dd.persist.var.pca <- expand.grid(var.pca1=seq(
                                   Abund=mean(delta$Abund),
                                   deltaFloralAbund=
                                       mean(delta$deltaFloralAbund),
-                                  SiteStatus= c("LOW", "MOD", "HIGH"),
                                   Persist=0)
 persist.var.pca.pi <- predict.int(mod= mods.ext,
                                   dd=dd.persist.var.pca,
@@ -74,7 +73,6 @@ dd.persist.beta.dist <- expand.grid(beta.dist=seq(
                                     var.pca1=mean(delta$var.pca1),
                                     deltaFloralAbund=
                                         mean(delta$deltaFloralAbund),
-                                    SiteStatus= c("LOW", "MOD", "HIGH"),
                                     Persist=0)
 persist.beta.dist.pi <- predict.int(mod= mods.ext,
                                     dd=dd.persist.beta.dist,
@@ -84,5 +82,4 @@ persist.beta.dist.pi <- predict.int(mod= mods.ext,
 pdf.f(plotPersistDiag, file="figures/diagnostics/persist.pdf",
       height=9, width=3)
 
-plot.panels()
 plotInteractionsPyroDiv()

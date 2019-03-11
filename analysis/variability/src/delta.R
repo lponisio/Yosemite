@@ -78,7 +78,7 @@ prepDeltaVar <- function(delta, spec.abund, site.char, veg){
     veg.2013$deltaFloralAbund <-
         veg.2014$logFlowerNum/veg.2013$logFlowerNum
     delta.site.sp.char <- merge(delta.site.sp.char, veg.2013)
-    delta.site.sp.char <- merge(delta.site.sp.char, traits)
+    ## delta.site.sp.char <- merge(delta.site.sp.char, traits)
     delta.site.sp.char$SiteStatus <- factor(delta.site.sp.char$SiteStatus,
                                             level=c("LOW", "MOD", "HIGH"))
     return(list(delta=delta.site.sp.char, site.data= site.data.2013))
