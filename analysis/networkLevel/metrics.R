@@ -9,12 +9,12 @@ N <- 999
 ## ## ************************************************************
 ## ## calculate metrics and zscores ## beware this takes a while!
 ## ## ************************************************************
-mets <- lapply(nets, calcNetworkMetrics,  N)
+## mets <- lapply(nets, calcNetworkMetrics,  N)
 
-cor.dats <- prepDat(mets,  spec)
-cor.dats <- merge(cor.dats, dat.mods)
+## cor.dats <- prepDat(mets,  spec)
+## cor.dats <- merge(cor.dats, dat.mods)
 
-save(cor.dats, file='saved/corMets.Rdata')
+## save(cor.dats, file='saved/corMets.Rdata')
 
 ## ************************************************************
 load(file='saved/corMets.Rdata')
@@ -22,9 +22,11 @@ load(file='saved/corMets.Rdata')
 cor.dats$Year <- factor(cor.dats$Year,
                               levels=c("2013", "2014"))
 
-ys <- c("partner diversity", "zH2", "links.per.species",
+ys <- c("partner.diversity.LL",
+        "partner.diversity.HL",
+        "functional.complementarity.LL",
         "functional.complementarity.HL",
-        "functional.complementarity.LL")
+        "zH2", "links.per.species")
 
 ## simpson's diversity of fire history
 formulas.div <-lapply(ys, function(x) {
@@ -43,6 +45,7 @@ names(mods.div) <- ys
 ## results
 lapply(mods.div, summary)
 
+## check sig levels with method other than wald CI
 lapply(mods.div, anova)
 
 save(mods.div, cor.dats,

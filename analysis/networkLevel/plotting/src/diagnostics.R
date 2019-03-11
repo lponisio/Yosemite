@@ -1,5 +1,5 @@
 plotDiagnostics  <- function(mods, dats){
-    layout(matrix(1:3))
+    layout(matrix(1:2))
     plot(fitted(mods), residuals(mods),
          xlab = "Fitted Values", ylab = "Residuals",
     main="Residuals ~ fitted")
@@ -9,9 +9,9 @@ plotDiagnostics  <- function(mods, dats){
 
     hist(residuals(mods))
 
-    boxplot(residuals(mods) ~ Site,
-            data = dats, main = "Site",
-            ylab = "Residuals")
+    ## boxplot(residuals(mods) ~ Site,
+    ##         data = dats, main = "Site",
+    ##         ylab = "Residuals")
 
 
 }

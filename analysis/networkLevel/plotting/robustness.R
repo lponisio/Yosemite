@@ -6,7 +6,6 @@ source("src/misc.R")
 source("plotting/src/predictIntervals.R")
 source("plotting/src/CIplotting.R")
 source("plotting/src/diagnostics.R")
-library(RColorBrewer)
 
 xvars <- c("simpson.div")
 type <- "all"
@@ -18,7 +17,7 @@ xlabel <- "Pyrodiversity"
 
 ys <- "Robustness"
 ylabs <- c("Co-extinction cascade resistance")
-extinction.methods <- c("degree", "abund")
+extinction.methods <- c("degree")
 participants<- c("lower")
 net.type <- c("obs", "potential")
 
@@ -46,6 +45,9 @@ for(net in net.type){
                                       dd=dd.met,
                                       y=ys,
                                       family="guassian")
+                leg.labs <- c("Drought",
+                              "Extreme drought")
+                names(leg.labs) <- c("2013", "2014")
 
                 res$SiteStatus <-  "all"
                 plot.predict.div(new.dd=met.pi,
@@ -58,7 +60,8 @@ for(net in net.type){
                                  legend.loc="topleft",
                                  legend.loc.year="topright",
                                  by.year=TRUE,
-                                 height=4, width=6)
+                                 height=4, width=6,
+                                 leg.labs=leg.labs)
 
 
                 plotDiag <- function(){

@@ -12,7 +12,8 @@ plot.panel <- function(dats,
                        ag.col="SiteStatus",
                        plot.x=TRUE,
                        FUN=mean,
-                       pchs=c(16)){
+                       pchs=c(16),
+                       leg.labs){
     plotting.loop <- function(){
         for(i in 1:length(treatments)){
             print(treatments[i])
@@ -77,9 +78,9 @@ plot.panel <- function(dats,
     }
     if(year == "2013" | is.na(year)){
         axis(2, pretty(range(c(new.dd$plo, new.dd$phi,
-                          dats[dats$Year == year, y1]),
-                        na.rm=TRUE)), las=1)
-        mtext(ylabel, 2, line=3.5, cex=1)
+                               dats[dats$Year == year, y1]),
+                             na.rm=TRUE)), las=1)
+        mtext(ylabel, 2, line=4, cex=1)
     }
     if(plot.x){
         axis(1, pretty(dats[,xs], 4))
@@ -88,7 +89,7 @@ plot.panel <- function(dats,
     ## add year labels
     if(!is.na(year)){
         legend(legend.loc.year,
-               legend=year,
+               legend=leg.labs[year],
                bty="n", cex=1)
     }
 }
@@ -107,11 +108,9 @@ plot.predict.div <- function(new.dd,
                              width=7, height=4.5,
                              type="all",
                              xlabel="Pyrodiversity",
-                             f.path = 'figures'){
+                             f.path = 'figures',
+                             leg.labs){
     plot.ci <- function(){
-        ## col.lines <- rev(brewer.pal(4, "RdYlGn"))[c(2,3,4)]
-        ## treatments <- c("LOW", "MOD", "HIGH")
-
         col.lines <- "black"
         col.fill <- add.alpha(col.lines, alpha=0.3)
         treatments <- c("all")
@@ -129,7 +128,8 @@ plot.predict.div <- function(new.dd,
                            col.lines,
                            col.fill,
                            legend.loc.year,
-                           ylabel)
+                           ylabel,
+                           leg.labs=leg.labs)
                 mtext(xlabel, 1, line=3, cex=1)
             }
         } else{
@@ -142,14 +142,12 @@ plot.predict.div <- function(new.dd,
                        col.lines,
                        col.fill,
                        legend.loc.year=NA,
-                       ylabel)
+                       ylabel,
+                       leg.labs=leg.labs)
             mtext(xlabel, 1, line=3, cex=1)
         }
-        ## legend(legend.loc,
-        ##        legend=c("Low", "Moderate", "High"),
-        ##        col=col.lines,
-        ##        pch=c(15,16,17), bty="n", cex=0.8)
     }
+
     pdf.f(plot.ci, file=file.path(f.path,
                                   sprintf("%s.pdf", paste(
                                                         type,
