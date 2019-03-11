@@ -39,29 +39,6 @@ mods <- lmer(deltaAbund ~ scale(beta.dist)*scale(simpson.div) +
 vif.mer(mods)
 summary(mods)
 
-## ************************************************************
-## persist or go extinct?
-## ************************************************************
-print("******** prob persist  **********")
-delta$delta$Persist <- delta$delta$deltaAbund
-delta$delta$Persist[delta$delta$Persist != 0] <- 1
-
-
-mods.ext <- glmer(Persist ~ scale(beta.dist)*scale(simpson.div) +
-                      scale(var.pca1)*scale(simpson.div) +
-                      scale(Abund) +
-                  scale(deltaFloralAbund) +
-                  (1|GenusSpecies), na.action = "na.fail",
-                  data=delta$delta, family="binomial",
-                  control=glmerControl(optimizer="bobyqa",
-                                       optCtrl=list(maxfun=1e9),
-                                       tolPwrss=1e-5))
-vif.mer(mods.ext)
-summary(mods.ext)
-
-save(delta, mods.ext, mods, file="saved/mods/drought.Rdata")
-
-
 plotHist <- function(){
       par(oma=c(4, 4, 0.5, 0.5),
       mar=c(2, 2, 2, 2),
