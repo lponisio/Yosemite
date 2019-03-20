@@ -9,6 +9,7 @@ source('src/misc.R')
 source("src/robustness.R")
 source('src/diffs.R')
 source('src/prepNets.R')
+source('src/extOrder.R')
 
 load('../data/specimens/spec.Rdata')
 load('../data/pyrodiv_buffers/all150.Rdata')

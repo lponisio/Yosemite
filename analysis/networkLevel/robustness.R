@@ -5,6 +5,7 @@ source('src/initialize.R')
 
 extinction.methods <- c("degree")
 participants<- c("lower")
+by.degree <- TRUE
 
 ## **********************************************************
 ## robustness
@@ -35,13 +36,10 @@ nets <- lapply(nets, function(y){
 all.nets <- list(nets, filled.nets)
 names(all.nets) <- c("obs", "potential")
 
-
-ext.rows <- lapply(nets, function(x){
-    plant.degree <- rowSums(x)
-    ext.row <- order(plant.degree,
-                     decreasing=TRUE)
-    return(ext.row)
-})
+ext.rows <- getExtinctionOrder(by.degree,
+                               nets,
+                               spec,
+                               decreasing=FALSE)
 
 for(net.type in names(all.nets)){
     for(sp.level in participants){
