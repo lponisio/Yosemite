@@ -13,6 +13,7 @@ source('src/extOrder.R')
 
 load('../data/specimens/spec.Rdata')
 load('../data/pyrodiv_buffers/all150.Rdata')
+load('../data/veg/veg.Rdata')
 
 save.path <- 'saved'
 

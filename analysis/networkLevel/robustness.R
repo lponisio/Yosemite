@@ -3,9 +3,9 @@ rm(list=ls())
 setwd('analysis/networkLevel')
 source('src/initialize.R')
 
-extinction.methods <- c("degree")
+extinction.methods <- c("degree", "visit", "veg")
 participants<- c("lower")
-by.degree <- TRUE
+by.abund <- c("LR abund", "abund")
 
 ## **********************************************************
 ## robustness
@@ -28,43 +28,41 @@ filled.nets <- lapply(nets, function(y){
 })
 
 
-nets <- lapply(nets, function(y){
-    y[y > 1] <- 1
-    y
-})
 
 all.nets <- list(nets, filled.nets)
 names(all.nets) <- c("obs", "potential")
 
-ext.rows <- getExtinctionOrder(by.degree,
-                               nets,
-                               spec,
-                               decreasing=FALSE)
-
 for(net.type in names(all.nets)){
     for(sp.level in participants){
         for(ex.method in extinction.methods){
-            res <- simExtinction(all.nets[[net.type]],
-                                 extinction.method="external",
-                                 dat.mods,
-                                 participant=sp.level,
-                                 ext.row=ext.rows)
-            res$Year <- factor(res$Year,
-                               levels=c("2013", "2014"))
+            for(ab in by.abund){
+                print(paste("*******", net.type, ex.method, sp.level, ab, "*******"))
+                ext.rows <- getExtinctionOrder(ex.method,
+                                               by.abund=ab,
+                                               nets,
+                                               spec,
+                                               veg)
+                res <- simExtinction(all.nets[[net.type]],
+                                     extinction.method="external",
+                                     dat.mods,
+                                     participant=sp.level,
+                                     ext.row=ext.rows)
+                res$Year <- factor(res$Year,
+                                   levels=c("2013", "2014"))
 
-            mod.div <- lmer(Robustness ~
-                                scale(simpson.div)*Year
-                            + (1|Site),
-                            data=res)
+                mod.div <- lmer(Robustness ~
+                                    scale(simpson.div)*Year
+                                + (1|Site),
+                                data=res)
 
-            print(paste("*******", net.type, ex.method, sp.level,
-                        "Robustness", "*******"))
-            print(summary(mod.div))
-            print(anova(mod.div))
-            save(mod.div, res,
-                 file=file.path(save.path,
-                                sprintf('mods/robustness_%s_%s_%s.Rdata',
-                                        ex.method, sp.level, net.type)))
+                print(paste("*******", net.type, ex.method, sp.level, ab, "*******"))
+                ## print(summary(mod.div))
+                ## print(anova(mod.div))
+                save(mod.div, res,
+                     file=file.path(save.path,
+                                    sprintf('mods/robustness_%s_%s_%s_%s.Rdata',
+                                            ex.method, sp.level, net.type, ab)))
+            }
         }
     }
 }
