@@ -3,9 +3,9 @@ rm(list=ls())
 setwd('analysis/networkLevel')
 source('src/initialize.R')
 
-extinction.methods <- c("degree", "visit", "veg")
+extinction.methods <- c("veg", "degree", "visit")
 participants<- c("lower")
-by.abund <- c("LR abund", "abund")
+by.abund <- c("abund")
 
 ## **********************************************************
 ## robustness
@@ -36,7 +36,6 @@ for(net.type in names(all.nets)){
     for(sp.level in participants){
         for(ex.method in extinction.methods){
             for(ab in by.abund){
-                print(paste("*******", net.type, ex.method, sp.level, ab, "*******"))
                 ext.rows <- getExtinctionOrder(ex.method,
                                                by.abund=ab,
                                                nets,
@@ -56,7 +55,7 @@ for(net.type in names(all.nets)){
                                 data=res)
 
                 print(paste("*******", net.type, ex.method, sp.level, ab, "*******"))
-                ## print(summary(mod.div))
+                print(summary(mod.div))
                 ## print(anova(mod.div))
                 save(mod.div, res,
                      file=file.path(save.path,

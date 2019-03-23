@@ -3,8 +3,7 @@
 getOrder <- function(i, sites, nets, ext.order){
     this.site <- sites[i]
     these.plants <- rownames(nets[[i]])
-    ## this.order <- ext.by.site[[this.site]]
-    this.order <- ext.order
+    this.order <- ext.order[[this.site]]
     this.order <- this.order[this.order %in% these.plants]
     if(length(this.order) == 0){
         return(order(rowSums(nets[[i]])))
@@ -24,8 +23,8 @@ getLogAbund <- function(abund){
     abund.2014 <- abund[abund$Year == "2014",]
 
     abund.2013$abund.drought <-
-        abund.2014$abund[match(abund.2013$PlantGenusSpecies,
-                               abund.2014$PlantGenusSpecies)]
+        abund.2014$abund[match(paste0(abund.2013$Site, abund.2013$PlantGenusSpecies),
+                               paste0(abund.2014$Site, abund.2014$PlantGenusSpecies))]
 
     abund.2013$abund.drought[is.na(abund.2013$abund.drought)] <- 0
     abund.2013$lrabund <- log(abund.2013$abund.drought +
@@ -45,33 +44,44 @@ getExtinctionOrder <- function(veg.visit.degree,## visit/veg/degree
     ## If by.abund = TRUE, the plants are ranked from least to most
     ## abundant in 2013. Otherwise they are ranked by their log ratio
     ## change in abundance between 2013 and 2014.
-
     ## order by difference in drought abund
     if(veg.visit.degree == "visit"){
         abund <- aggregate(list(abund=spec$PlantGenusSpecies),
                            list(Year=spec$Year,
+                                Site=spec$Site,
                                 PlantGenusSpecies=spec$PlantGenusSpecies),
                            length)
     } else if(veg.visit.degree == "veg"){
         abund <- aggregate(list(abund =veg$logFlowerNum),
                            list(Year=veg$Year,
+                                Site=veg$Site,
                                 PlantGenusSpecies=veg$PlantGenusSpecies),
                            mean)
     } else if(veg.visit.degree == "degree"){
         abund <- aggregate(list(abund=spec$GenusSpecies),
                            list(Year=spec$Year,
+                                Site=spec$Site,
                                 PlantGenusSpecies=spec$PlantGenusSpecies),
                            function(x)length(unique(x)))
     }
     abund.dats <- getLogAbund(abund)
+    abund.dats <- split(abund.dats, abund.dats$Site)
+
     if(by.abund == "abund"){
-        ord <-  abund.dats[order(abund.dats$abund),]
-    } else{
-        ord <-  abund.dats[order(abund.dats$lrabund),]
-        ord[ord$lrabund == 0,] <-
-            ord[ord$lrabund == 0,][order(ord$abund[ord$lrabund == 0]),]
+        ord <- lapply(abund.dats, function(x){
+            out <-  x[order(x$abund),]
+            return(out)
+        })
+    } else if(by.abund == "LR abund"){
+        ord <- lapply(abund.dats, function(x){
+            x[is.na(x)] <- 0
+            out <-  x[order(x$lrabund),]
+            out[out$lrabund == 0,] <-
+                out[out$lrabund == 0,][order(out$abund[out$lrabund == 0]),]
+            return(out)
+        })
     }
-    gen.sp.order <- ord$GenusSpecies
+    gen.sp.order <- lapply(ord, function(x) x$PlantGenusSpecies)
     sites <- sapply(strsplit(names(nets),  "\\."), function(x) x[[1]])
 
     ext.rows <- lapply(1:length(nets), getOrder,
