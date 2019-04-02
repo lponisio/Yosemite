@@ -17,7 +17,8 @@ xlabel <- "Pyrodiversity"
 
 ys <- "Robustness"
 ylabs <- c("Co-extinction cascade resistance")
-extinction.methods <- c("degree")
+
+extinction.methods <- c("veg", "degree", "visit")
 participants<- c("lower")
 net.type <- c("obs", "potential")
 
@@ -58,7 +59,7 @@ for(net in net.type){
                                  type=paste0(ex.method, sp.level, net),
                                  xlabel=xlabel,
                                  legend.loc="topleft",
-                                 legend.loc.year="topright",
+                                 legend.loc.year="bottomleft",
                                  by.year=TRUE,
                                  height=4, width=6,
                                  leg.labs=leg.labs)

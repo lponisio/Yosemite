@@ -29,13 +29,22 @@ x <- xvars
 
 
 f <- function(){
-    col.lines <- "black"
-    col.fill <- add.alpha(col.lines, alpha=0.3)
+    col.lines.2013 <- rep("black", length(ys))
+    col.lines.2014 <-  rep("black", length(ys))
+    col.fill.2013 <- add.alpha(col.lines.2013, alpha=0.3)
+    col.fill.2014 <- add.alpha(c("black", rep("white", length(ys)-1)), alpha=0.3)
+
+    years <- c("2013", "2014")
     treatments <- c("all")
-    names(col.lines) <- names(col.fill) <- treatments
+    names(col.lines.2013) <- names(col.fill.2013) <- ys
+    names(col.lines.2014) <- names(col.fill.2014) <- ys
+    col.lines <- list(col.lines.2013, col.lines.2014)
+    col.fill <- list(col.fill.2013, col.fill.2014)
+    names(col.lines) <- names(col.fill) <- c("2013", "2014")
+
     leg.labs <- c("Drought",
                   "Extreme drought")
-    names(leg.labs) <- c("2013", "2014")
+    names(leg.labs) <- years
 
     layout(matrix(1:8, ncol=2, byrow=TRUE))
     par(oma=c(6, 7, 2, 1),
@@ -48,7 +57,7 @@ f <- function(){
                                   to= max(cor.dats[, x]),
                                   length=10),
                               SiteStatus= c("all"),
-                              Year= c("2013", "2014"),
+                              Year= years,
                               yvar=0)
         colnames(dd.met)[1] <- x
         colnames(dd.met)[4] <- y
@@ -59,16 +68,18 @@ f <- function(){
                               family="guassian")
         cor.dats$SiteStatus <- "all"
 
-        years <- c("2013", "2014")
         for(yr in years){
+            cols <- col.lines[[yr]][y]
+            cols.fill=col.fill[[yr]][y]
+            names(cols) <- names(cols.fill) <- "all"
             plot.panel(dats=cor.dats,
                        new.dd=met.pi,
                        xs=x,
                        y1=y,
                        treatments=treatments,
                        year=yr,
-                       col.lines=col.lines,
-                       col.fill=col.fill,
+                       col.lines=cols,
+                       col.fill=cols.fill,
                        legend.loc.year="topleft",
                        ylabel= ylabs[y],
                        plot.x=FALSE,

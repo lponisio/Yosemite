@@ -29,6 +29,12 @@ plot.panel <- function(dats,
             ys <- aggregate(list(y=sub.dats[,y1]),
                             list(x=sub.dats[,xs]),
                             mean, na.rm=TRUE)
+            ## add fill from ci.up to ci.lb
+            polygon(c(sub.dd[,xs],
+                      rev(sub.dd[,xs])),
+                    c(sub.dd$phi,
+                      rev(sub.dd$plo)),
+                    col=col.fill[treatments[i]], border=NA)
             ## plots means
             points(x=jitter(ys$x, factor=0.25),
                    y=ys$y,
@@ -48,12 +54,7 @@ plot.panel <- function(dats,
                   y=sub.dd$phi,
                   col=col.lines[treatments[i]],
                   lty="dashed")
-            ## add fill from ci.up to ci.lb
-            polygon(c(sub.dd[,xs],
-                      rev(sub.dd[,xs])),
-                    c(sub.dd$phi,
-                      rev(sub.dd$plo)),
-                    col=col.fill[treatments[i]], border=NA)
+
         }
     }
     if(!is.na(year)){
