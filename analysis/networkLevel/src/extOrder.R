@@ -34,17 +34,13 @@ getLogAbund <- function(abund){
 
 
 getExtinctionOrder <- function(veg.visit.degree,## visit/veg/degree
-                               by.abund, ## "abund" or "LR abund"
                                nets,
                                spec,
                                veg){
     ## function for simulating the extinction order of plants.
     ## if by visit, then abundaunce is calculated from networks,
     ## otherwise it is calculated from veg data.
-    ## If by.abund = TRUE, the plants are ranked from least to most
-    ## abundant in 2013. Otherwise they are ranked by their log ratio
-    ## change in abundance between 2013 and 2014.
-    ## order by difference in drought abund
+
     if(veg.visit.degree == "visit"){
         abund <- aggregate(list(abund=spec$PlantGenusSpecies),
                            list(Year=spec$Year,
@@ -67,20 +63,10 @@ getExtinctionOrder <- function(veg.visit.degree,## visit/veg/degree
     abund.dats <- getLogAbund(abund)
     abund.dats <- split(abund.dats, abund.dats$Site)
 
-    if(by.abund == "abund"){
-        ord <- lapply(abund.dats, function(x){
-            out <-  x[order(x$abund),]
-            return(out)
-        })
-    } else if(by.abund == "LR abund"){
-        ord <- lapply(abund.dats, function(x){
-            x[is.na(x)] <- 0
-            out <-  x[order(x$lrabund),]
-            out[out$lrabund == 0,] <-
-                out[out$lrabund == 0,][order(out$abund[out$lrabund == 0]),]
-            return(out)
-        })
-    }
+    ord <- lapply(abund.dats, function(x){
+        out <-  x[order(x$abund),]
+        return(out)
+    })
     gen.sp.order <- lapply(ord, function(x) x$PlantGenusSpecies)
     sites <- sapply(strsplit(names(nets),  "\\."), function(x) x[[1]])
 

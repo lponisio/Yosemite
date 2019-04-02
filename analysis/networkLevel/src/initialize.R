@@ -10,6 +10,7 @@ source("src/robustness.R")
 source('src/diffs.R')
 source('src/prepNets.R')
 source('src/extOrder.R')
+source('src/makeNets.R')
 
 load('../data/specimens/spec.Rdata')
 load('../data/pyrodiv_buffers/all150.Rdata')
@@ -33,3 +34,12 @@ getNetData <- function(nets){
                       Site=sites,
                       Year=years))
 }
+
+
+
+filled.nets <-  makeFilledNets(spec, nets)
+in.both.nets <- makeInBothNets(spec, nets)
+fill.nets.in.both <- makeFilledNets(spec, in.both.nets)
+
+all.nets <- list(nets, filled.nets, in.both.nets, fill.nets.in.both)
+names(all.nets) <- c("obs", "potential", "both", "filledBoth")
