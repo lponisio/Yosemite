@@ -4,21 +4,21 @@ library(fields)
 library(bipartite)
 library(fossil)
 
-## setwd('~/Dropbox/Yosemite/')
+setwd('~/Dropbox/Yosemite/')
 setwd("data")
 source('speciesIDs/src/AssignSpecies.R')
+source('../analysis/data/src/misc.R')
 
 setwd('relational/relational')
 source('../src/relational_prep.R')
 source('../src/relational_make.R')
 source('../src/make_traditional.R')
+
 sr.sched <- read.csv('tables/conditions.csv')
 spec <- read.csv('traditional/specimens-complete.csv')
 veg <- read.csv('traditional/veg-complete.csv')
 cond <- read.csv("tables/conditions.csv")
-
 setwd('../../../analysis/data/')
-source('src/misc.R')
 
 ## drop pan data
 spec <- spec[spec$NetPan == "net",]
