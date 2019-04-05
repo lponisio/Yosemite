@@ -1,12 +1,6 @@
 ## *******************************************************
 ## create relational database
 ## *******************************************************
-
-## setwd("~/Documents/Yosemite/Yosemite/data/relational/relational")
-
-## source('~/Documents/Yosemite/Yosemite/analysis/occupancy/src/misc.R')
-source('~/Dropbox/Yosemite/analysis/occupancy/src/misc.R')
-
 library(RSQLite)
 
 specimens <- read.csv('../preped_data/specimen.csv', as.is=TRUE)
