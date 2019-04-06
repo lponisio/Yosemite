@@ -113,7 +113,7 @@ plot.predict.div <- function(new.dd,
                              leg.labs){
     plot.ci <- function(){
         col.lines <- "black"
-        col.fill <- add.alpha(col.lines, alpha=0.3)
+        col.fill <- add.alpha("white", alpha=0.3)
         treatments <- c("all")
         names(col.lines) <- names(col.fill) <- treatments
         if(by.year){

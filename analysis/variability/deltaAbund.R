@@ -34,6 +34,7 @@ print("******** delta abund **********")
 mods <- lmer(deltaAbund ~ scale(beta.dist)*scale(simpson.div) +
                  scale(var.pca1)*scale(simpson.div) +
                  scale(deltaFloralAbund) +
+                  scale(mean.pca1) +
                  (1|GenusSpecies), na.action = "na.fail",
              data=delta$delta[delta$delta$deltaAbund != 0,])
 vif.mer(mods)

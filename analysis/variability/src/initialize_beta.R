@@ -28,7 +28,7 @@ if(occ == "occ"){
                         sprintf('%s-occ.Rdata', type)))
 }
 
-if(type=="pols"){
+if(type=="pol"){
     ylabel <- "Pollinator species turnover"
 }
 if(type=="ints"){
