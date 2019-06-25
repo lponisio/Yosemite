@@ -25,7 +25,7 @@ for(net.type in names(all.nets)){
                                  participant=sp.level,
                                  ext.row=ext.rows)
             res$Year <- factor(res$Year,
-                               levels=c("2013", "2014"))
+                               levels=c("2014", "2013"))
 
             mod.div <- lmer(Robustness ~
                                 scale(simpson.div)*Year
@@ -34,7 +34,6 @@ for(net.type in names(all.nets)){
 
             print(paste("*******", net.type, ex.method, sp.level, "*******"))
             print(summary(mod.div))
-            ## print(anova(mod.div))
             save(mod.div, res,
                  file=file.path(save.path,
                                 sprintf('mods/robustness_%s_%s_%s.Rdata',

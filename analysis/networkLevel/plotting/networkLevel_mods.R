@@ -18,9 +18,7 @@ xlabel <- "Pyrodiversity"
 load('saved/mods/metrics.Rdata')
 
 ys <- names(mods.div)
-ylabs <- c("Plant \n partner diversity",
-           "Pollinator \n  partner diversity",
-           "Plant functional \n complementarity",
+ylabs <- c("Plant functional \n complementarity",
            "Pollinator functional \n complementarity",
            "Reciprocal \n specialization (H2)",
            "Niche breadth")
@@ -32,7 +30,8 @@ f <- function(){
     col.lines.2013 <- rep("black", length(ys))
     col.lines.2014 <-  rep("black", length(ys))
     col.fill.2013 <- add.alpha(col.lines.2013, alpha=0.3)
-    col.fill.2014 <- add.alpha(c("black", rep("white", length(ys)-1)), alpha=0.3)
+    col.fill.2013[3]  <- "white"
+    col.fill.2014 <- rep("white", length(ys))
 
     years <- c("2013", "2014")
     treatments <- c("all")
@@ -52,6 +51,7 @@ f <- function(){
 
     for(y in ys){
         print(y)
+        ## create a matrix of possible variable values
         dd.met <- expand.grid(xvar =seq(
                                   from=  min(cor.dats[, x]),
                                   to= max(cor.dats[, x]),
@@ -62,6 +62,8 @@ f <- function(){
         colnames(dd.met)[1] <- x
         colnames(dd.met)[4] <- y
 
+        ## "predict" data using model coefficient to draw predicted
+        ## relationship and CI
         met.pi <- predict.int(mod= mods.div[[y]],
                               dd=dd.met,
                               y=y,
@@ -84,7 +86,7 @@ f <- function(){
                        ylabel= ylabs[y],
                        plot.x=FALSE,
                        leg.labs=leg.labs)
-            if(y == "functional.complementarity.HL" | y == "links.per.species"){
+            if(y == "links.per.species"){
                 axis(1, pretty(cor.dats[,x], 4))
                 mtext(xlabel, 1, line=3, cex=1)
             }
