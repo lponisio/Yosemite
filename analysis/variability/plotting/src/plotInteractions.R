@@ -21,7 +21,7 @@ plotInteractionsPyroDiv <- function(){
         plot(h2, col=cols2,
              xlab="", main="", ylab="", las=1)
         abline(v=mean(delta$var.pca1), lty=2, col="black", lwd=3)
-        mtext("Role variability", 1, line=3, cex=1.3)
+        mtext("Network niche variability", 1, line=3, cex=1.3)
         legend("topright", legend="(b)", bty="n", cex=1.2)
 
         quantiles.partner <- (h1$mids - mean(delta$beta.dist))/sd(delta$beta.dist)
