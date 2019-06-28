@@ -20,7 +20,8 @@ xvars <- c("beta.dist", "var.pca1")
 delta$delta <- delta$delta[!apply(delta$delta[, xvars], 1, function(x)
     any(is.na(x))),]
 
-## drop extreme role var value
+## drop extreme role var value. Does not affect results but residuals
+## do not look nice
 delta$delta <- delta$delta[delta$delta$var.pca1 !=
                            min(delta$delta$var.pca1),]
 
@@ -32,7 +33,7 @@ delta$delta <- delta$delta[delta$delta$var.pca1 !=
 ## ************************************************************
 print("******** delta abund **********")
 mods <- lmer(deltaAbund ~ scale(beta.dist)*scale(simpson.div) +
-                 scale(var.pca1)*scale(simpson.div) +
+                 scale(sqrt(var.pca1))*scale(simpson.div) +
                  scale(deltaFloralAbund) +
                   scale(mean.pca1) +
                  (1|GenusSpecies), na.action = "na.fail",
@@ -40,6 +41,7 @@ mods <- lmer(deltaAbund ~ scale(beta.dist)*scale(simpson.div) +
 vif.mer(mods)
 summary(mods)
 
+## historgram for manucript figure 1
 plotHist <- function(){
       par(oma=c(4, 4, 0.5, 0.5),
       mar=c(2, 2, 2, 2),
@@ -52,7 +54,7 @@ plotHist <- function(){
          main="",
          lwd=1.5)
     mtext("Frequency", 2, line=4.5, cex=1.5)
-    mtext("Fire history diversity", 1, line=3, cex=1.5)
+    mtext("Pyrodiversity", 1, line=3, cex=1.5)
 }
 
 pdf.f(plotHist, file= file.path("figures/div.pdf"),
