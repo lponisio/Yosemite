@@ -2,10 +2,8 @@ library(lme4)
 library(lmerTest)
 source('src/misc.R')
 src.dir <- '../beta-div/saved/'
-load('../data/matrices/combined/bees/sp.Rdata')
 load('../data/siteLevel/floral/bySite.Rdata')
 load('../data/veg/veg.Rdata')
-load('../data/matrices/combined/bees/sp.Rdata')
 
 veg$s.doy <- scale(veg$doy)
 by.site$s.doy <- scale(by.site$doy)
