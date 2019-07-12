@@ -8,6 +8,7 @@ setwd('~/Dropbox/Yosemite/')
 setwd("data")
 source('speciesIDs/src/AssignSpecies.R')
 source('../analysis/data/src/misc.R')
+source('../analysis/data/src/prepNets.R')
 
 setwd('relational/relational')
 source('../src/relational_prep.R')
@@ -20,6 +21,8 @@ veg <- read.csv('traditional/veg-complete.csv')
 cond <- read.csv("tables/conditions.csv")
 setwd('../../../analysis/data/')
 
+##******************************************************
+## get specimen data ready
 ## drop pan data
 spec <- spec[spec$NetPan == "net",]
 ## drop non-bees
@@ -30,10 +33,9 @@ spec <- spec[spec$Family %in% bee.fams,]
 spec$Date <- as.Date(spec$Date, format='%m/%d/%y')
 spec$doy <- as.numeric(strftime(spec$Date, format='%j'))
 spec$Year <- as.factor(spec$Year)
-## get specimen data ready
 
-## drop extra round
-# from specimens
+## drop extra round at L21 when field crew did not sample correctly
+                                        # from specimens
 extra.round <- spec$Site == 'L21' & spec$Date == '2014-07-01'
 spec <- spec[!extra.round,]
 ## from sampling schedule
@@ -63,8 +65,6 @@ spec <-  spec[spec$PlantGenusSpecies != '',]
 ## interactions
 spec$Int <-  fix.white.space(paste(spec$GenusSpecies,
                                    spec$PlantGenusSpecies))
-spec$IntGen <-  fix.white.space(paste(spec$Genus,
-                                      spec$PlantGenus))
 
 print(paste("Bee species", length(unique(spec$GenusSpecies))))
 print(paste("Plant species", length(unique(spec$PlantGenusSpecies))))
@@ -90,7 +90,7 @@ veg$Date <- as.Date(veg$Date, format='%m/%d/%y')
 veg$Year <- format(veg$Date, format='%Y')
 veg$doy <- as.numeric(strftime(veg$Date, format='%j'))
 
-## drop data from incomplete sampling round
+## drop data from incomplete sampling round from veg data
 extra.round <- veg$Site == 'L21' & veg$Date == '2014-07-01'
 veg <- veg[!extra.round,]
 
@@ -98,16 +98,18 @@ veg$FlowerNum[is.na(veg$FlowerNum)] <- 0
 veg$Occ <- veg$FlowerNum
 veg$Occ[veg$Occ > 0] <- 1
 
+## convert color number catagory coding toactual values
 veg$logFlowerNum <- veg$FlowerNum
 veg$logFlowerNum[veg$logFlowerNum == 2] <- 10
 veg$logFlowerNum[veg$logFlowerNum == 3] <- 100
 veg$logFlowerNum[veg$logFlowerNum == 4] <- 1000
 veg$logFlowerNum[veg$logFlowerNum == 5] <- 10000
 
-veg$PlantGenusSpecies <-  fix.white.space(paste(veg$PlantGenus,
-                                                veg$PlantSpecies,
-                                                veg$PlantVar,
-                                                veg$PlantSubSpecies))
+veg$PlantGenusSpecies <-
+    fix.white.space(paste(veg$PlantGenus,
+                          veg$PlantSpecies,
+                          veg$PlantVar,
+                          veg$PlantSubSpecies))
 veg$SiteStatus <- spec$SiteStatus[match(veg$Site,
                                         spec$Site)]
 write.csv(veg, 'veg/veg.csv', row.names=FALSE)
@@ -125,5 +127,15 @@ samp.sr <- data.frame(doy=cond$doy,
                       Div=0)
 samp.sr <- unique(samp.sr, MARGIN=1)
 
-source('~/Dropbox/yosemite/analysis/data/src/siteLevelPrep.R')
+source('src/siteLevelPrep.R')
 
+##******************************************************
+## networks
+##******************************************************
+spec <- spec[spec$NetPan == "net",]
+spec <- spec[!spec$PlantGenusSpecies == "",]
+
+nets <- break.net(spec)
+nets <- unlist(nets, recursive=FALSE)
+
+save(nets, file='specimens/nets.Rdata')
