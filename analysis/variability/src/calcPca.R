@@ -1,62 +1,49 @@
-calcPcaMeanVar <- function(species.roles, var.method, metrics,
-                           loadings, ave.method, agg.col="Year", ...){
-    ## to select spp in the same site / creating lists to store the results
-    sites <- unique(species.roles[,agg.col])
-    all.pca <- list()
-    all.spp <- list()
-    var.pca <- list()
-    ## standardizing variables (zscore) and doing the pca
-    for(y in 1:length(sites)){
-        this.site <- species.roles[species.roles[,agg.col] == sites[y],]
-        this.site <- this.site[!apply(this.site[,metrics], 1,
-                                      function(x) any(is.na(x))),]
-        ## for each year calculate z scores (xi - mean(x))/sd)
-        zs <- apply(this.site[, metrics], 2,
-                    function(x){
-                        (x - mean(x, na.rm=TRUE)) / (sd(x, na.rm=TRUE) +10^-10)
-                    })
-        ## runs the pca
-        all.pca[[y]] <- prcomp(zs)
-        ## make a nice dataframe
-        all.spp[[y]] <- this.site[, c("Site", "Year",
-                                      "GenusSpecies",
-                                      "SpSiteYear")]
-        names(all.pca)[y] <- sites[y]
-        names(all.spp)[y] <- sites[y]
-        all.spp[[y]] <- cbind(all.spp[[y]],
-                              pca=all.pca[[y]]$x[,loadings])
-        ## calculate the variance of the pc1 scores
-        var.pca[[y]] <- tapply(all.spp[[y]]$pca,
-                               all.spp[[y]]$GenusSpecies,
-                               var.method,...)
-
-        names(var.pca)[y] <- sites[y]
-    }
-    ## create a dataframe for the variance for pc1 values per site
-    genus.sp <- sapply(var.pca, names)
-    pca.var <- data.frame(var.pca1 = do.call(c, var.pca))
-    pca.var$GenusSpecies <- unlist(genus.sp)
-    if(agg.col == "Site"){
-        pca.var$Site <- sapply(strsplit(rownames(pca.var), "[.]"),
-                               function(x) x[1])
-        pca.var$SiteStatus <- species.roles$SiteStatus[match(
-                                                pca.var$Site,
-                                                species.roles$Site)]
-    }
-    if(agg.col == "Year"){
-        pca.var$Year <- sapply(strsplit(rownames(pca.var), "[.]"),
-                               function(x) x[1])
-    }
-    pca.mean <- do.call(rbind, all.spp)
-    pca.mean <- aggregate(list(mean.pca1=pca.mean$pca),
-                          by = list(GenusSpecies = pca.mean$GenusSpecies,
-                                    Site = pca.mean$Site,
-                                    Year = pca.mean$Year),
-                          FUN=ave.method, na.rm=TRUE)
-    rownames(pca.mean) <- NULL
-    rownames(pca.var) <- NULL
-
-    return(list(pca.mean=pca.mean,
-                pca.var=pca.var,
+calcNetworkPca <- function(y, species.roles, agg.col,
+                           ave.method, var.method, loadings){
+    ## this function calculates a pca of network roles, then takes the
+    ## mean, and var (methods passed in as arguments) for each
+    ## species. It returns the mean and variable for each species, as
+    ## well as the pca loadings
+    this.site <- species.roles[species.roles[,agg.col] == y,]
+    this.site <- this.site[!apply(this.site[,metrics], 1,
+                                  function(x) any(is.na(x))),]
+    mets.only <- this.site[, metrics]
+    ## runs the pca
+    all.pca <- prcomp(mets.only, scale. = TRUE, center = TRUE)
+    ## make a nice dataframe
+    all.spp <- this.site[, c("Site", "Year",
+                             "GenusSpecies",
+                             "SpSiteYear")]
+    all.spp <- cbind(all.spp,
+                     pca=all.pca$x[,loadings])
+    ## calculate the variance/mean of the pcX scores
+    ## variance is across all sites/samplings rounds
+    pca.var <- tapply(all.spp$pca, all.spp$GenusSpecies,
+                      var.method)
+    ## mean is site-specific
+    pcas <- aggregate(list(mean.pca1= all.spp$pca),
+                      by = list(GenusSpecies = all.spp$GenusSpecies,
+                                Site = all.spp$Site,
+                                Year = all.spp$Year),
+                      FUN=ave.method, na.rm=TRUE)
+    pcas$var.pca1 <- pca.var[match(pcas$GenusSpecies,
+                                   names(pca.var))]
+    return(list(pcas=pcas,
                 pca.loadings = all.pca))
 }
+
+calcPcaMeanVar <- function(species.roles, var.method, metrics,
+                           loadings, ave.method, agg.col="Year"){
+    ## this function applies over the "sites" (which can be with sites
+    ## for taking the mean/variance of PCx scores across years within
+    ## a site, or years for taking the mean/varaince of PCx scores
+    ## across sites within a year
+    sites <- unique(species.roles[,agg.col])
+    out.pca <- lapply(sites, calcNetworkPca,
+                      species.roles, agg.col,
+                      ave.method, var.method, loadings)
+    names(out.pca) <- sites
+    return(out.pca)
+}
+
+
