@@ -4,6 +4,7 @@ source("plotting/src/CIplotting.R")
 source("plotting/src/plotPanels.R")
 source("plotting/src/diagnostics.R")
 source("plotting/src/plotInteractions.R")
+source("plotting/src/sppPlot.R")
 
 
 plotDeltaDiag <- function(){
