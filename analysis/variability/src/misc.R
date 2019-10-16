@@ -1,4 +1,20 @@
 
+## standardize a vector
+standardize <- function(x)
+  (x-mean(x, na.rm=TRUE))/sd(x, na.rm=TRUE)
+
+
+getNetData <- function(nets){
+    sites <- sapply(strsplit(nets, "[.]"),
+                       function(x) x[1])
+    dates <-  sapply(strsplit(nets, "[.]"),
+                        function(x) x[2])
+    years <- format(as.Date(dates), "%Y")
+    return(data.frame(Date=dates,
+                      Site=sites,
+                      Year=years))
+}
+
 add.alpha <- function(col, alpha=0.2){
     apply(sapply(col, col2rgb)/255, 2,
           function(x)
@@ -42,6 +58,7 @@ vif.mer <- function (fit) {
 }
 
 cv <- function(x) sd(x, na.rm=TRUE)/mean(x, na.rm=TRUE)
+
 corCv <- function(x,...){
     cv(x)*(1 + (1/4*length(x)))
 }
@@ -51,6 +68,7 @@ convertMatrix2Sample <- function(z){
                        as.vector(as.matrix(z)))
     temp <- temp[!is.na(temp[, 3]), ]
     temp <- temp[sort.list(temp[, 1]), ]
-    data.frame(Site = temp[, 1], deltaAbund = temp[, 3], GenusSpecies = temp[, 2])
+    data.frame(Site = temp[, 1], deltaAbund = temp[, 3],
+               GenusSpecies = temp[, 2])
 }
 

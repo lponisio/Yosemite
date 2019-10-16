@@ -1,19 +1,33 @@
-calcYearDiff <- function(spec.abund){
-    ## create an empty matrix of all the sites and species
-    empty.mat <- matrix(0, nrow=length(levels(spec.abund$Site)),
-                        ncol=length(unique(spec.abund$GenusSpecies)))
-    rownames(empty.mat) <- levels(spec.abund$Site)
-    colnames(empty.mat) <- unique(spec.abund$GenusSpecies)
+calcDelta <- function(yr, spec.abund){
+    print(yr)
+    ## sites sampled both years
+    sites.yr1 <- unique(spec.abund$Site[spec.abund$Year == yr])
+    sites.yr2 <- unique(spec.abund$Site[spec.abund$Year == yr + 1])
+    sites.both.yrs <- sites.yr1[sites.yr1 %in% sites.yr2]
 
-    abund.yr.one <- spec.abund[spec.abund$Year == "2013",]
+    ## species found in the first year
+    sp.yr1 <- unique(spec.abund$GenusSpecies[spec.abund$Year == yr &
+                                 spec.abund$Site %in% sites.both.yrs])
+
+    empty.mat <- matrix(0, nrow=length(sites.both.yrs),
+                        ncol=length(sp.yr1))
+
+    rownames(empty.mat) <- sites.both.yrs
+    colnames(empty.mat) <- unique(sp.yr1)
+
+    ## create a community matrix of species abundances by site for yr1
+    ## and yr2 to ensure alignment for log ratio
+    abund.yr.one <- spec.abund[spec.abund$Year == yr,]
     abund.yr.one <- samp2site.spp(abund.yr.one$Site,
                                   abund.yr.one$GenusSpecies,
                                   abund.yr.one$Abund)
 
-    abund.yr.two <- spec.abund[spec.abund$Year == "2014",]
+    abund.yr.two <- spec.abund[spec.abund$Year == (yr + 1),]
     abund.yr.two <- samp2site.spp(abund.yr.two$Site,
                                   abund.yr.two$GenusSpecies,
                                   abund.yr.two$Abund)
+
+    ## fill in matrix
     year.one <- year.two <- empty.mat
     year.one <-
         abund.yr.one[match(rownames(year.one),
@@ -25,19 +39,36 @@ calcYearDiff <- function(spec.abund){
                                    rownames(abund.yr.two)),
                              match(colnames(year.two),
                                    colnames(abund.yr.two))]
-
+    ## fix naming of species not found in year to that were found in
+    ## year 1
     colnames(year.two) <- colnames(empty.mat)
     year.two[is.na(year.two)] <- 0
     year.one[is.na(year.one)] <- 0
+
+    ## calculate the log ratio of abundances
     delta.year <- log(year.two + 1)/log(year.one + 1)
     ## in sites where the species was never detected, NA
     delta.year[year.two == 0 & year.one == 0] <- NA
     delta <- convertMatrix2Sample(delta.year)
+    delta$Years <- paste0(yr, "-", yr +1)
     return(delta)
 }
 
 
+
+calcYearDiff <- function(spec.abund){
+    ## function for calculating the log ratio of pollinator abundance
+    ## between any arbitrary number of years
+    years <- as.numeric(as.character(unique(spec.abund$Year)))
+    years <- years[-length(years)]
+    deltas <- lapply(years, calcDelta, spec.abund=spec.abund)
+    names(deltas) <- years
+    return(deltas)
+}
+
 prepDeltaVar <- function(delta, spec.abund, site.char, veg){
+    ## function to prep data to be have the varaibles of interest for
+    ## the statistical models
     spec.abund <- spec.abund[spec.abund$Year == "2013",]
     delta.sp.char <- merge(delta, spec.abund)
 

@@ -1,6 +1,6 @@
 ## setwd('~/Dropbox/Yosemite')
 rm(list=ls())
-setwd('analysis/networkLevel')
+setwd('analysis/network')
 source('src/initialize.R')
 source("src/misc.R")
 source("plotting/src/predictIntervals.R")
@@ -18,7 +18,7 @@ xlabel <- "Pyrodiversity"
 ys <- "Robustness"
 ylabs <- c("Co-extinction cascade resistance")
 
-extinction.methods <- c("veg", "degree", "visit")
+extinction.methods <- c("visit")
 participants<- c("lower")
 net.type <- c("obs", "potential")
 

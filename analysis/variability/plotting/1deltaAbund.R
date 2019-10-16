@@ -76,5 +76,5 @@ plotInteractionsPyroDiv()
 ## ************************************************************
 
 pdf.f(makeMetricBySppPlot, file= file.path("figures/sppMets.pdf"),
-      width=13, height=7)
+      width=13, height=9)
 

@@ -40,7 +40,22 @@ calcMetric <- function(dat.web, ...) {
         mets <-  networklevel(dat.web, ...)
     }
     mod.met <- calc.mod(dat.web)
-    return(c(mets, mod.met= mod.met))
+
+    rownames(dat.web) <- 1:nrow(dat.web)
+    colnames(dat.web) <- 1:ncol(dat.web)
+
+    plants <- matrix(rep(1, length=nrow(dat.web)),  nrow=1)
+    pols <- matrix(rep(1, length=ncol(dat.web)),  nrow=1)
+    colnames(plants) <- rownames(dat.web)
+    colnames(pols) <- colnames(dat.web)
+
+    redund.plant <- rao.diversity(plants,
+                                  traits=dat.web)$FunRedundancy
+    redund.pol <- rao.diversity(pols,
+                                   traits=t(dat.web))$FunRedundancy
+
+    return(c(mets, mod.met= mod.met, redund.plant=redund.plant,
+             redund.pol=redund.pol))
 
 }
 
@@ -59,7 +74,8 @@ calcNetworkMetrics <- function (dat.web, N,
                                 index= c("H2",
                                          "partner diversity",
                                          "functional complementarity",
-                                         "links per species"),
+                                         "links per species",
+                                         "niche overlap"),
                                 dist="chao") {
     ## calculate pvalues
     pvals <- function(stats, nnull){
@@ -102,7 +118,7 @@ calcNetworkMetrics <- function (dat.web, N,
             }
         }
     }
-    return(rep(NA, (length(index) + 4)*3))
+    return(rep(NA, (length(index) + 6)*3))
 }
 
 prepDat <- function(cor.stats, spec.dat){

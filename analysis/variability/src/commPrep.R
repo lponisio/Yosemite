@@ -16,7 +16,7 @@ calcSiteBeta <- function(x, species.type, spec, species.type.int,
     by.species <- split(prep.comm, prep.comm$GenusSpecies)
 
     num.observations <- sapply(by.species, function(x) sum(x$Abund))
-    ## subset to species seen in > 3 years and at least 5 times
+    ## subset to species seen in > 3 years and at least 3 times
     ## (defaults)
     by.species <- by.species[num.observations >= observation.cut.off]
     num.dates <- sapply(by.species, function(x) length(unique(x$SiteDate)))
@@ -38,15 +38,15 @@ calcSiteBeta <- function(x, species.type, spec, species.type.int,
             this.by.species <- by.species[[i]]
             for(j in 1:nrow(this.by.species)){
                 this.row <- this.by.species[j,]
-                comm[[i]][match(this.row["SiteDate"], rownames(comm[[i]])),
-                          match(this.row["InterGenusSpecies"],colnames(comm[[i]]))] <-
+                comm[[i]][match(this.row["SiteDate"],
+                                rownames(comm[[i]])),
+                          match(this.row["InterGenusSpecies"],
+                                colnames(comm[[i]]))] <-
                     as.numeric(this.row[["Abund"]])
             }
             comm[[i]] <- comm[[i]][rowSums(comm[[i]]) > 0,]
-            ## if(!is.matrix(comm[[i]])) comm[[i]] <- NA
         }
         names(comm) <- names(by.species)
-        ## comm <- comm[!sapply(comm, function(x) all(is.na(x)))]
         return(list(comm=comm, year=x))
     }
 }

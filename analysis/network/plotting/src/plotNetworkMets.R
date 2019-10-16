@@ -1,32 +1,5 @@
-## setwd('~/Dropbox/Yosemite')
-rm(list=ls())
-setwd('analysis/networkLevel')
-source('src/initialize.R')
-source("src/misc.R")
-source("plotting/src/predictIntervals.R")
-source("plotting/src/CIplotting.R")
-source("plotting/src/diagnostics.R")
 
-xvars <- c("simpson.div")
-type <- "all"
-xlabel <- "Pyrodiversity"
-
-## ************************************************************
-## network metrics
-## ************************************************************
-
-load('saved/mods/metrics.Rdata')
-
-ys <- names(mods.div)
-ylabs <- c("Plant functional \n complementarity",
-           "Pollinator functional \n complementarity",
-           "Reciprocal \n specialization (H2)",
-           "Niche breadth")
-names(ylabs) <- ys
-x <- xvars
-
-
-f <- function(){
+plotNetworkMets <- function(){
     col.lines.2013 <- rep("black", length(ys))
     col.lines.2014 <-  rep("black", length(ys))
     col.fill.2013 <- add.alpha(col.lines.2013, alpha=0.3)
@@ -99,11 +72,7 @@ f <- function(){
         pdf.f(plotDiag,
               file=file.path('figures/diagnostics/',
                              sprintf('%s.pdf', y)),
-              height=7, width=3)
+              height=6, width=4)
     }
 }
 
-
-pdf.f(f, file=file.path("figures",
-                        sprintf("%s.pdf", type)),
-      width=5, height=8)

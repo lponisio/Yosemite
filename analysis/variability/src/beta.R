@@ -6,7 +6,7 @@ calcBeta <- function(comm,
                      occ= FALSE,
                      zscore=FALSE){ ## calculate zscores?
     ## computes dispersion of community matrices, returns output of
-    ## vegan function
+    ## vegan function betadisper
     ## create community dissimilarity matrix
     comm.dis <-  lapply(comm, function(x) {
         as.matrix(vegdist(x, method= dis.method, diag= TRUE, binary= occ))

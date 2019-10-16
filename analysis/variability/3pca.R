@@ -30,4 +30,8 @@ pol.pca.scores <- calcPcaMeanVar(species.roles=pol,
                                  loadings=loadings,
                                  agg.col = "Year")
 
+
+autoplot(pol.pca.scores$'2013'$pca.loadings, loadings=TRUE,
+         loadings.colour = 'blue')
+
 save(pol.pca.scores,  file="saved/results/pcaVar.Rdata")

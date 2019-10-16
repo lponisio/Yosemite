@@ -1,16 +1,29 @@
 ## setwd('~/Dropbox/Yosemite')
 rm(list=ls())
-setwd('analysis/networkLevel')
+setwd('analysis/network')
 source('src/initialize.R')
 
+## what order to use for the extinction of plant species? Visit drop
+## species based on their abundance in the visitation data (lowest to
+## highest, this result is presented in the manuscript). Degree drops
+## species based on their degree (as per the original Memmot study and
+## the bipartite package). Veg drop species by their abundance in the
+## veg data which is based on flower counts. Dropping by abundance in
+## the visitation data seemed most reflective of a drought scenario.
 extinction.methods <- c("visit") ## visit, degree, veg
-participants<- c("lower")
 
-## **********************************************************
-## robustness
-## **********************************************************
-## simulate plant extinction
-## Simpson div pyrodiversity
+## frop plants ("lower") or pollinators ("higher"). I focus on plants
+## because while pollinaotrs try on plants for resrouces thus thus
+## co-extinctions would not be unheard of, the other direction
+## (pollinators leading to the co-extinction of plants) seems likely.
+participants <- c("lower")
+
+## the tree network types are the observed network (obs) the potential
+## network where are possible interactions are filled in as ones
+## (potential), and there same two where only the species present in
+## both years are included (both and filled both respectivly). I
+## created the last version in an attempt to understand how the
+## extinction simulation deviated from the actual drought event.
 
 for(net.type in names(all.nets)){
     for(sp.level in participants){
@@ -25,7 +38,7 @@ for(net.type in names(all.nets)){
                                  participant=sp.level,
                                  ext.row=ext.rows)
             res$Year <- factor(res$Year,
-                               levels=c("2014", "2013"))
+                               levels=c("2013", "2014"))
 
             mod.div <- lmer(Robustness ~
                                 scale(simpson.div)*Year
@@ -42,6 +55,10 @@ for(net.type in names(all.nets)){
     }
 }
 
+
+## **********************************************************
+## exploration of the differences between the obs and potential
+## networks
 
 diff.mats  <-  mapply(function(a, b){b-a},
                       a = all.nets[["obs"]],

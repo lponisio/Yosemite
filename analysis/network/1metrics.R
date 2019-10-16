@@ -1,6 +1,6 @@
 ## setwd('~/Dropbox/Yosemite')
 rm(list=ls())
-setwd('analysis/networkLevel')
+setwd('analysis/network')
 source('src/initialize.R')
 
 args <- commandArgs(trailingOnly=TRUE)
@@ -14,12 +14,12 @@ if(length(args) != 0){
 ## ## ************************************************************
 ## ## calculate metrics and zscores ## beware this takes a while!
 ## ## ************************************************************
-## mets <- lapply(all.nets[["obs"]], calcNetworkMetrics,
-##                N=N)
+mets <- lapply(all.nets[["obs"]], calcNetworkMetrics,
+               N=N)
 
-## cor.dats <- prepDat(mets,  spec)
-## cor.dats <- merge(cor.dats, dat.mods)
-## save(cor.dats, file='saved/corMets.Rdata')
+cor.dats <- prepDat(mets,  spec)
+cor.dats <- merge(cor.dats, dat.mods)
+save(cor.dats, file='saved/corMets.Rdata')
 
 ## ************************************************************
 load(file='saved/corMets.Rdata')
@@ -29,8 +29,8 @@ cor.dats$Year <- factor(cor.dats$Year,
 
 ys <- c("functional.complementarity.LL",
         "functional.complementarity.HL",
-        "zH2",
-         "links.per.species")
+        "redund.plant", "redund.pol",
+        "links.per.species")
 
 ## simpson's diversity of fire history
 formulas.div <-lapply(ys, function(x) {

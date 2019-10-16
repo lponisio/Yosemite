@@ -79,9 +79,11 @@ plot.panel <- function(dats,
              las=1)
     }
     if(year == "2013" | is.na(year)){
-        axis(2, pretty(range(c(new.dd$plo, new.dd$phi,
+        axis(2, pretty(range(c(0, 1, new.dd$plo, new.dd$phi,
                                dats[dats$Year == year, y1]),
-                             na.rm=TRUE)), las=1)
+                             na.rm=TRUE),
+                       n = 5),
+             las=1)
         mtext(ylabel, 2, line=4, cex=1)
     }
     if(plot.x){
@@ -89,7 +91,8 @@ plot.panel <- function(dats,
     }
     plotting.loop()
     ## add year labels
-    if(y1 == "functional.complementarity.LL" & !is.na(year)){
+    if(y1 == "functional.complementarity.LL" |
+       y1 == "Robustness" & !is.na(year)){
         legend(legend.loc.year,
                legend=leg.labs[year],
                bty="n", cex=1)

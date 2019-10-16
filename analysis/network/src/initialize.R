@@ -8,34 +8,15 @@ source('src/CalcMetrics.R')
 source('src/misc.R')
 source("src/robustness.R")
 source('src/diffs.R')
-source('src/prepNets.R')
 source('src/extOrder.R')
 source('src/makeNets.R')
 
 load('../data/specimens/spec.Rdata')
+load('../data/specimens/nets.Rdata')
 load('../data/pyrodiv_buffers/all150.Rdata')
 load('../data/veg/veg.Rdata')
 
 save.path <- 'saved'
-
-spec <- spec[spec$NetPan == "net",]
-spec <- spec[!spec$PlantGenusSpecies == "",]
-
-nets <- break.net(spec)
-nets <- unlist(nets, recursive=FALSE)
-
-getNetData <- function(nets){
-    sites <- sapply(strsplit(nets, "[.]"),
-                       function(x) x[1])
-    dates <-  sapply(strsplit(nets, "[.]"),
-                        function(x) x[2])
-    years <- format(as.Date(dates), "%Y")
-    return(data.frame(Date=dates,
-                      Site=sites,
-                      Year=years))
-}
-
-
 
 filled.nets <-  makeFilledNets(spec, nets)
 in.both.nets <- makeInBothNets(spec, nets)

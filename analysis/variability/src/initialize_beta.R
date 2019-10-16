@@ -2,6 +2,15 @@ library(vegan)
 source('src/misc.R')
 source('src/beta.R')
 
+args <- commandArgs(trailingOnly=TRUE)
+if(length(args) != 0){
+    type <- args[1]
+    occ <- args[2]
+} else{
+    type <- "pol"
+    occ <- "abund"
+}
+
 if(type == "pol"){
     speciesType <- "pollinator"
 } else{
@@ -30,10 +39,4 @@ if(occ == "occ"){
 
 if(type=="pol"){
     ylabel <- "Pollinator species turnover"
-}
-if(type=="ints"){
-    ylabel <- "Interaction turnover"
-}
-if(type=="plants"){
-    ylabel <- "Plant species turnover"
 }
