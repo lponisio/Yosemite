@@ -59,7 +59,7 @@ plot.panel <- function(dats,
     }
     if(!is.na(year)){
         plot(NA, xlim=range(dats[dats$Year == year, xs]),
-             ylim=range(c(new.dd$plo, new.dd$phi,
+             ylim=range(c(0, new.dd$plo, new.dd$phi,
                           dats[dats$Year == year, y1]),
                         na.rm=TRUE),
              xlab="",
@@ -91,7 +91,7 @@ plot.panel <- function(dats,
     }
     plotting.loop()
     ## add year labels
-    if(y1 == "functional.complementarity.LL" |
+    if(y1 == "plant.FunRedundancy" |
        y1 == "Robustness" & !is.na(year)){
         legend(legend.loc.year,
                legend=leg.labs[year],

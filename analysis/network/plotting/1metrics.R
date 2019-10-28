@@ -8,7 +8,7 @@ source("plotting/src/CIplotting.R")
 source("plotting/src/diagnostics.R")
 source("plotting/src/plotNetworkMets.R")
 
-xvars <- c("simpson.div")
+xvars <- c("Richness")
 type <- "all"
 xlabel <- "Pyrodiversity"
 
@@ -19,11 +19,12 @@ xlabel <- "Pyrodiversity"
 load('saved/mods/metrics.Rdata')
 
 ys <- names(mods.div)
-ylabs <- c("Plant functional \n complementarity",
-           "Pollinator functional \n complementarity",
-           "Plant functional \n redundancy",
-           "Pollinator functional \n redundancy",
-           "Generalization")
+ylabs <- c("Pollinator redundancy",
+           "Plant redundancy",
+           "Pollinator complementarity",
+           "Plant complementarity",
+           "Pollinator \n generalization",
+           "Plant \n generalization")
 
 names(ylabs) <- ys
 x <- xvars

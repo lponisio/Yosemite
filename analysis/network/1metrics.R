@@ -7,9 +7,11 @@ args <- commandArgs(trailingOnly=TRUE)
 if(length(args) != 0){
     N <- as.numeric(args[1])
 } else{
-    N <- 99
+    N <- 2
 }
 
+## including null models is relic of previously calculating metrics
+## where I wanted to control for species richness
 
 ## ## ************************************************************
 ## ## calculate metrics and zscores ## beware this takes a while!
@@ -25,17 +27,19 @@ save(cor.dats, file='saved/corMets.Rdata')
 load(file='saved/corMets.Rdata')
 
 cor.dats$Year <- factor(cor.dats$Year,
-                     levels=c("2013", "2014"))
+                     levels=c("2014", "2013"))
 
-ys <- c("functional.complementarity.LL",
+ys <- c("pol.FunRedundancy",
+        "plant.FunRedundancy",
         "functional.complementarity.HL",
-        "redund.plant", "redund.pol",
-        "links.per.species")
+        "functional.complementarity.LL",
+        "mean.number.of.links.HL",
+        "mean.number.of.links.LL")
 
 ## simpson's diversity of fire history
 formulas.div <-lapply(ys, function(x) {
     as.formula(paste(x, "~",
-                     paste("scale(simpson.div)*Year",
+                     paste("scale(Richness)*Year",
                            "(1|Site)",
                            sep="+")))
 })

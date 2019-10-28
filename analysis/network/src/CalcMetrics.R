@@ -1,33 +1,4 @@
 
-mut.adj <- function(x) {
-    nr <- dim(x)[1]
-    nc <- dim(x)[2]
-    to.fill <- matrix(0, ncol=nc + nr, nrow=nc + nr)
-    to.fill[1:nr,(nr+1):(nc+nr)] <- x
-    adj.mat <- graph.adjacency(to.fill, mode= "upper", weighted=TRUE)
-    return(adj.mat)
-}
-
-calc.mod <- function(dat.web){
-    ## converts a p-a matrix to a graph for modularity computation
-    graph <- mut.adj(dat.web)
-    weights <- as.vector(dat.web)
-    weights <- weights[weights != 0]
-
-    ## if matrix is binary, modularity calculate is not affected by
-    ## the weights
-    greedy <- modularity(graph,
-                         membership(fastgreedy.community(graph,
-                                                         weights=weights)),
-                         weights=weights)
-
-    random.walk <-  modularity(graph,
-                               membership(walktrap.community(graph,
-                                                             weights=weights)),
-                               weights=weights)
-    return(c(G=greedy,
-             R=random.walk))
-}
 
 calcMetric <- function(dat.web, ...) {
     ## calculates modularity
@@ -37,46 +8,67 @@ calcMetric <- function(dat.web, ...) {
         return(c(mets=rep(0, 1),
                  mod.met=rep(0,2)))
     } else{
-        mets <-  networklevel(dat.web, ...)
+        mets <-  grouplevel(dat.web, ...)
     }
-    mod.met <- calc.mod(dat.web)
 
+    ## the functional redundancy function takes a matrix of sites and
+    ## species, and a trait matrix whwere the rownames of the traits
+    ## match the column names of the site by species matric. In our
+    ## case, the plants and pollinators are the "species"
+    ## respectively, and their traits are their interaction partners.
+
+    ## create names for later use in site x species matrix
     rownames(dat.web) <- 1:nrow(dat.web)
     colnames(dat.web) <- 1:ncol(dat.web)
 
-    plants <- matrix(rep(1, length=nrow(dat.web)),  nrow=1)
-    pols <- matrix(rep(1, length=ncol(dat.web)),  nrow=1)
+    ## site by species matrix where there is only one "site" since the
+    ## networks are site specific, and the columns are the
+    ## species.
+
+    ## abundance weighted site by species matrices
+    plants <- matrix(rowSums(dat.web),  nrow=1)
+    pols <- matrix(colSums(dat.web),  nrow=1)
+
     colnames(plants) <- rownames(dat.web)
     colnames(pols) <- colnames(dat.web)
 
-    redund.plant <- rao.diversity(plants,
-                                  traits=dat.web)$FunRedundancy
-    redund.pol <- rao.diversity(pols,
-                                   traits=t(dat.web))$FunRedundancy
+    ## pull out Functional redundancy score based on: de Bello, F.;
+    ## Leps, J.; Lavorel, S. & Moretti, M. (2007). Importance of
+    ## species abundance for assessment of trait composition: an
+    ## example based on pollinator communities. Community Ecology, 8,
+    ## 163:170. and functional complementarity score based on Rao,
+    ## C.R. (1982). Diversity and dissimilarity coefficients: a
+    ## unified approach. Theoretical Population Biology, 21, 24:43.
 
-    return(c(mets, mod.met= mod.met, redund.plant=redund.plant,
-             redund.pol=redund.pol))
+    redund.plant <- unlist(rao.diversity(plants,
+                                         traits=
+                                             dat.web)[c("FunRao",
+                                                        "FunRedundancy")])
+    redund.pol <- unlist(rao.diversity(pols,
+                                       traits=
+                                           t(dat.web))[c("FunRao",
+                                                         "FunRedundancy")])
+
+    return(c(mets,
+             plant=redund.plant,
+             pol=redund.pol))
 
 }
 
 
 ## function to simulate 1 null, and calculate statistics on it
 calcNullStat <- function(dat.web,
-                         null.fun= vaznull.fast,...) {
+                         null.fun,...) {
     sim.web <- null.fun(dat.web)
-    return(calcMetric(sim.web, ...))
+    return(calcMetric(sim.web,...))
 }
 
 ##  function that computes summary statistics on simulated null matrices
 ##  (nulls simulated from web N times)
 calcNetworkMetrics <- function (dat.web, N,
-                                H2_integer=TRUE,
-                                index= c("H2",
-                                         "partner diversity",
-                                         "functional complementarity",
-                                         "links per species",
-                                         "niche overlap"),
-                                dist="chao") {
+                                index= c("mean number of links",
+                                         "niche overlap",
+                                         "fc")) {
     ## calculate pvalues
     pvals <- function(stats, nnull){
         rowSums(stats >= stats[, rep(1, ncol(stats))])/(nnull + 1)
@@ -98,13 +90,13 @@ calcNetworkMetrics <- function (dat.web, N,
         if(is.matrix(dat.web)){
             if(all(dim(dat.web) >= 2)) {
                 ## calculate null metrics
-                null.stat <- replicate(N, calcNullStat(dat.web,
-                                                       H2_integer=H2_integer,
-                                                       index=index,
-                                                       dist=dist),
+                null.stat <- replicate(N,
+                                       calcNullStat(dat.web,
+                                                    null.fun= vaznull.fast,
+                                                    index=index),
                                        simplify=TRUE)
                 ## calculate metrics from data
-                true.stat <- calcMetric(dat.web, H2_integer=H2_integer,
+                true.stat <- calcMetric(dat.web,
                                         index=index)
                 out.mets <- cbind(true.stat, null.stat)
                 ## compute z scores

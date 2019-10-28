@@ -3,8 +3,10 @@ plotNetworkMets <- function(){
     col.lines.2013 <- rep("black", length(ys))
     col.lines.2014 <-  rep("black", length(ys))
     col.fill.2013 <- add.alpha(col.lines.2013, alpha=0.3)
-    col.fill.2013[3]  <- "white"
-    col.fill.2014 <- rep("white", length(ys))
+    col.fill.2014 <- col.fill.2013
+    ## not stat sig
+    col.fill.2013[1:2]  <- "white"
+    col.fill.2014[c(1,3:4)]  <- "white"
 
     years <- c("2013", "2014")
     treatments <- c("all")
@@ -59,7 +61,7 @@ plotNetworkMets <- function(){
                        ylabel= ylabs[y],
                        plot.x=FALSE,
                        leg.labs=leg.labs)
-            if(y == "links.per.species"){
+            if(y == "mean.number.of.links.LL"){
                 axis(1, pretty(cor.dats[,x], 4))
                 mtext(xlabel, 1, line=3, cex=1)
             }

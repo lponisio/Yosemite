@@ -1,5 +1,6 @@
 library(igraph, quietly = TRUE)
 library(bipartite, quietly = TRUE)
+library(SYNCSA, quietly = TRUE)
 library(lme4, quietly = TRUE)
 library(lmerTest, quietly = TRUE)
 

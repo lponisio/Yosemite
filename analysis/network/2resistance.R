@@ -10,7 +10,7 @@ source('src/initialize.R')
 ## the bipartite package). Veg drop species by their abundance in the
 ## veg data which is based on flower counts. Dropping by abundance in
 ## the visitation data seemed most reflective of a drought scenario.
-extinction.methods <- c("visit") ## visit, degree, veg
+extinction.methods <- c("visit", "degree") ## visit, degree, veg
 
 ## frop plants ("lower") or pollinators ("higher"). I focus on plants
 ## because while pollinaotrs try on plants for resrouces thus thus

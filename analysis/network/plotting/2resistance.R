@@ -18,7 +18,7 @@ xlabel <- "Pyrodiversity"
 ys <- "Robustness"
 ylabs <- c("Co-extinction cascade resistance")
 
-extinction.methods <- c("visit")
+extinction.methods <- c("visit", "degree")
 participants<- c("lower")
 net.type <- c("obs", "potential")
 
