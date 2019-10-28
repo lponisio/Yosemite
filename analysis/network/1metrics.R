@@ -27,7 +27,7 @@ save(cor.dats, file='saved/corMets.Rdata')
 load(file='saved/corMets.Rdata')
 
 cor.dats$Year <- factor(cor.dats$Year,
-                     levels=c("2014", "2013"))
+                     levels=c("2013", "2014"))
 
 ys <- c("pol.FunRedundancy",
         "plant.FunRedundancy",
@@ -39,22 +39,49 @@ ys <- c("pol.FunRedundancy",
 ## simpson's diversity of fire history
 formulas.div <-lapply(ys, function(x) {
     as.formula(paste(x, "~",
+                     paste("scale(simpson.div)*Year",
+                           "(1|Site)",
+                           sep="+")))
+})
+## floral richness
+formulas.floral.rich <-lapply(ys, function(x) {
+    as.formula(paste(x, "~",
+                     paste("scale(FloralRichness)*Year",
+                           "(1|Site)",
+                           sep="+")))
+})
+## pollinator richness
+formulas.pol.rich <-lapply(ys, function(x) {
+    as.formula(paste(x, "~",
                      paste("scale(Richness)*Year",
                            "(1|Site)",
                            sep="+")))
 })
-
 mods.div <- lapply(formulas.div, function(x){
+    lmer(x, data=cor.dats)
+})
+mods.floral.rich <- lapply(formulas.floral.rich, function(x){
+    lmer(x, data=cor.dats)
+})
+mods.pol.rich <- lapply(formulas.pol.rich, function(x){
     lmer(x, data=cor.dats)
 })
 
 
-names(mods.div) <- ys
+names(mods.div) <- names(mods.floral.rich) <-
+    names(mods.pol.rich) <- ys
+
 ## results
 lapply(mods.div, summary)
+lapply(mods.pol.rich, summary)
+lapply(mods.floral.rich, summary)
+
 
 ## check sig levels with method other than wald CI
 lapply(mods.div, anova)
+lapply(mods.floral.rich, anova)
+lapply(mods.pol.rich, anova)
 
-save(mods.div, cor.dats,
+
+save(mods.div, mods.pol.rich, mods.floral.rich, cor.dats,
      file=file.path(save.path, 'mods/metrics.Rdata'))
