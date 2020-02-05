@@ -9,35 +9,38 @@ bash analysis/packages.sh
 ## prep data
 ## only needed for original analysis, the saved .Rdata files should
 ## all in in github
-Rscript analysis/data/dataPrep.R
+# Rscript analysis/data/dataPrep.R
 
 ##***************************************************************
 ## network metrics
 ##***************************************************************
 ## pollinator partner turnover
-Rscript analysis/networkLevel/metrics.R 999
+Rscript analysis/network/1metrics.R 999
 ## plot R outputs
-Rscript analysis/networkLevel/plotting/networkLevel_mods.R
+Rscript analysis/network/plotting/1metrics.R
 
 ##***************************************************************
 ## Community resistance: to species loss
 ##***************************************************************
-Rscript analysis/networkLevel/robustness.R
+Rscript analysis/network/2resistance.R
 ## plot model output
-Rscript analysis/networkLevel/plotting/robustness.R
+Rscript analysis/network/plotting/2resistance.R
 
 ##***************************************************************
 ## interaction flexibility
 ##***************************************************************
 ## pollinator partner turnover
-Rscript analysis/variability/nulls.R "pol" 999
-Rscript analysis/variability/partner.R "pol" "abund"
+Rscript analysis/variability/1nulls.R "pol" 999
+Rscript analysis/variability/2partner.R "pol" "abund"
 ## pollinator role variability
-Rscript analysis/variability/pca.R
+Rscript analysis/variability/3pca.R
 
 ##***************************************************************
 ## population resistance
 ##***************************************************************
-Rscript analysis/variability/deltaAbund.R
+Rscript analysis/variability/4deltaAbund.R
 ## plot model output
-Rscript analysis/variability/plotting/deltaAbund_mods.R
+Rscript analysis/variability/plotting/1deltaAbund.R
+
+## for the hedgerow log ratio comparisons
+Rscript analysis/variability/5deltaAbund_HR.R
