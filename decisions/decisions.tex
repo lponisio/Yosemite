@@ -1,0 +1,147 @@
+\documentclass[12pt]{article}
+\usepackage[top=0.85in, bottom=0.93in, right=0.93in, left=0.93in,
+paperwidth=8.5in, paperheight=11in, nohead]{geometry}
+\geometry{letterpaper}
+\usepackage[pdftex]{graphicx}
+\usepackage{color}
+\usepackage[normalem]{ulem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\usepackage{setspace}
+\usepackage{mdwlist}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage[numbers]{natbib}
+
+%% make bibliography more compact \setlength{\bibsep}{0in}
+\renewcommand\bibsection{\subsubsection*{\refname}}
+
+\begin{document}
+
+\begin{centering}
+  \large {\bf Pyrodiversity promotes interaction complementarity and
+    population resistance: Analysis decision points} \\
+\end{centering}
+\vspace{0.15in}
+
+
+\section{Data prep} 
+\begin{enumerate}
+\item Drop all non-bees. Rational: non-bees not identified to species
+  with the same rigor as bees because many groups do not have
+  experts. Also, life histories are less well understood, and bees are
+  the more dominant pollinator in this system.
+\end{enumerate}
+
+\section{Network metrics}
+\begin{enumerate}
+\item Which metrics best represent redundancy and complementarity?
+  There are a plethora of metrics to chose from. I decided on the most
+  direct metrics developed primarily by Devoto et al.\
+  (https://doi.org/10.1111/j.1461-0248.2012.01740.x) for
+  complementarity (previously used for networks), degree (the simplest
+  and widely used metric of generalization), and Rao's redundancy
+  metric as advised by Ricotta et al.\ 2016 (doi:
+  10.1111/2041-210X.12604).
+\end{enumerate}
+
+\section{Interaction flexibility}
+\subsection{Partner turnover}
+\begin{enumerate}
+\item Null models for partner variability: Constrain alpha diversity
+  and not the number of individuals in the null models for calculating
+  the expected $\beta$-diversity. Rational: Little difference in the
+  results when different null models are used (see Ponisio et
+  al.~2016. Global Change Ecol. https://doi.org/10.1111/gcb.13117)
+\item Partner variability calculation: weight interactions by their
+  ``abundance'' vs. binary interactions and use Chao as a
+  dissimilarity estimate. Rational: turnover in the number of
+  interactions is ecological meaningful and a part of interaction
+  flexibility. Chao (Chao et al.~2005,
+  https://doi.org/10.1111/j.1461-0248.2004.00707.x) is density
+  invariant, replication invariance, and monotonic (Jost L, Chao A,
+  Chazdon RL. Compositional similarity and $\beta$ diversity In:
+  Magurran AE, Mc Gill BJ, editors. Biological diversity: frontiers in
+  measurement and assessment. Oxford: Oxford University Press;
+  2011. pp. 66–84.)
+\item Partner variability calculation: calculate the corrected
+  interaction turnover by using the Chase et al.\
+  (https://doi.org/10.1890/ES10-00117.1) (calculating the fraction of
+  randomly assembled communities with dissimilarity values less than
+  and half of those equal to that of the observed
+  community). Rational: calculating the corrected turnover using
+  z-scores (the alternative) was not qualitatively different (see
+  Ponisio et al.~2016. Global Change Ecol.).
+\item Species-specific turnover calculation: the CV of the turnover
+  across all sampling periods (both through time at a site and across
+  sites) in 2013. Rational: 2013 is our baseline, pre-extreme drought
+  data point. Interaction flexibility can be both within a season (at
+  the same site through time and different plant come into and out of
+  bloom) and across sites (re-shuffle the plant community
+  composition). Other options, 1) cv corrected by samples size, an
+  unbiased estimates when sample sizes are low. Ruled out because
+  sample size is not particularly small. The pvalue
+  for the interaction between partner variability and pyrodiversity
+  becomes marginal (0.06), but this does not substantially change the
+  results (unless you are very militant about pvalues). 2) sd. Ruled
+  out because does not control for mean. 
+\end{enumerate}
+
+\subsection{Role variability}
+\begin{enumerate}
+\item Role quantification: chose "rarefied degree",
+  "weighted.betweenness", "weighted.closeness", "niche.overlap",
+  "species.strength", "d" as representatives of a species network
+  role. Rational: These metrics cover a range different aspects of a
+  species' role, though there is some overlap. Choose different
+  similar metrics did not change results qualitatively.
+\item Role variability calculation: CV of pca1 scores for each species
+  across samples in 2013. Rational: CV measures the variability while
+  controlling for the mean of values. SD and corrected CV rules out
+  for same reasons as with partner variability. pca1 is the primary
+  axis for differentiating roles. Interaction flexibility can be both
+  within a season (at the same site through time and different plant
+  come into and out of bloom) and across sites (re-shuffle the plant
+  community composition).
+\end{enumerate}
+
+\subsection{Linear mixed models of drought resistance}
+\begin{enumerate}
+\item Dropping extrema: I dropped two species with really extreme
+  values of role flexibility. Rational: from examining their
+  interactions, they seem to have occupied basically the exact same
+  role in every network they were observed in (though interestingly
+  different species). The model diagnostic look a lot better without
+  including them. In addition, the model results are mostly
+  consistent. Removing them makes the coefficient for pyrodiversity
+  less negative, as expected by removing an extreme value that is
+  shaping the slope.
+  \end{enumerate}
+
+  
+  \subsection{Network resistance to species loss (``robustness'')}
+  \begin{enumerate}
+  \item What order to drop plant species to simulation a drought-like
+    event? Sensible options: from least to most degree or abundance
+    calculated from network data or veg survey data. Veg survey data
+    is based on the number of flowers vs. individuals, which is a bit
+    misleading in terms of drought susceptibility. Dropping species by
+    degree (sum of unique bee interaction partners at each site) and
+    abundance (sum of total interactions) were qualitatively similar
+    in terms on the results of the linear mixed models. Rational: drop
+    species by abundance because that is the most like a drought
+    perturbation (more likely to loose the least abundant first).
+  \end{enumerate}
+
+  
+  
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% End:
+
+
