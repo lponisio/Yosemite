@@ -1,0 +1,83 @@
+\begin{thebibliography}{12}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Chao \emph{et~al.}(2005)Chao, Chazdon, Colwell \&
+  Shen}]{chao-2005-148}
+\hspace{0em}\\Chao, A., Chazdon, R.L., Colwell, R.K. \& Shen, T.J. (2005).
+\newblock A new statistical approach for assessing similarity of species
+  composition with incidence and abundance data.
+\newblock \emph{Ecol. Lett.}, 8, 148--159.
+
+\bibitem[{Chase \emph{et~al.}(2011)Chase, Kraft, Smith, Vellend \&
+  Inouye}]{Chase2011}
+\hspace{0em}\\Chase, J.M., Kraft, N.J., Smith, K.G., Vellend, M. \& Inouye,
+  B.D. (2011).
+\newblock Using null models to disentangle variation in community dissimilarity
+  from variation in $\alpha$-diversity.
+\newblock \emph{Ecosphere}, 2, art24.
+
+\bibitem[{Devoto \emph{et~al.}(2012)Devoto, Bailey, Craze \&
+  Memmott}]{devoto2012understanding}
+\hspace{0em}\\Devoto, M., Bailey, S., Craze, P. \& Memmott, J. (2012).
+\newblock Understanding and planning ecological restoration of
+  plant--pollinator networks.
+\newblock \emph{Ecol. Lett.}, 15, 319--328.
+
+\bibitem[{Memmott \emph{et~al.}(2004)Memmott, Waser \& Price}]{Memmott2004}
+\hspace{0em}\\Memmott, J., Waser, N.M. \& Price, M.V. (2004).
+\newblock Tolerance of pollination networks to species extinctions.
+\newblock \emph{Proc. R. Soc. Lond., B, Biol. Sci.}, 271, 2605--2611.
+
+\bibitem[{Miller(2012)}]{miller2012Yosemite}
+\hspace{0em}\\Miller, J.D. (2012).
+\newblock {Yosemite National Park} wildfire fire severity from 1984 to 2010.
+
+\bibitem[{Miller \& Thode(2007)}]{miller2007quantifying}
+\hspace{0em}\\Miller, J.D. \& Thode, A.E. (2007).
+\newblock Quantifying burn severity in a heterogeneous landscape with a
+  relative version of the delta {Normalized Burn Ratio} (dnbr).
+\newblock \emph{Remote Sens. Environ.}, 109, 66--80.
+
+\bibitem[{Ponisio \emph{et~al.}(2016{\natexlab{a}})Ponisio, M'Gonigle \&
+  Kremen}]{ponisio2015farm}
+\hspace{0em}\\Ponisio, L.C., M'Gonigle, L.K. \& Kremen, C.
+  (2016{\natexlab{a}}).
+\newblock On-farm habitat restoration counters biotic homogenization in
+  intensively managed agriculture.
+\newblock \emph{Global Change Biol.}, 22, 704--715.
+
+\bibitem[{Ponisio \emph{et~al.}(2016{\natexlab{b}})Ponisio, Wilkin, M'gonigle,
+  Kulhanek, Cook, Thorp, Griswold \& Kremen}]{ponisio2016pyrodiversity}
+\hspace{0em}\\Ponisio, L.C., Wilkin, K., M'gonigle, L.K., Kulhanek, K., Cook,
+  L., Thorp, R., Griswold, T. \& Kremen, C. (2016{\natexlab{b}}).
+\newblock Pyrodiversity begets plant--pollinator community diversity.
+\newblock \emph{Global Change Biol.}, 22, 1794--1808.
+
+\bibitem[{Ricotta \emph{et~al.}(2016)Ricotta, de~Bello, Moretti, Caccianiga,
+  Cerabolini \& Pavoine}]{ricotta2016measuring}
+\hspace{0em}\\Ricotta, C., de~Bello, F., Moretti, M., Caccianiga, M.,
+  Cerabolini, B.E. \& Pavoine, S. (2016).
+\newblock Measuring the functional redundancy of biological communities: a
+  quantitative guide.
+\newblock \emph{Methods Ecol. Evol.}, 7, 1386--1395.
+
+\bibitem[{V{\'a}zquez \emph{et~al.}(2007)V{\'a}zquez, Meli{\'a}n, Williams,
+  Bl{\"u}thgen, Krasnov \& Poulin}]{vazquez2007species}
+\hspace{0em}\\V{\'a}zquez, D.P., Meli{\'a}n, C.J., Williams, N.M.,
+  Bl{\"u}thgen, N., Krasnov, B.R. \& Poulin, R. (2007).
+\newblock Species abundance and asymmetric interaction strength in ecological
+  networks.
+\newblock \emph{Oikos}, 116, 1120--1127.
+
+\bibitem[{van Wagtendonk \emph{et~al.}(2012)van Wagtendonk, van Wagtendonk \&
+  Thode}]{van2012factors}
+\hspace{0em}\\van Wagtendonk, J.W., van Wagtendonk, K.A. \& Thode, A.E. (2012).
+\newblock Factors associated with the severity of intersecting fires in
+  {Yosemite National Park}, {California}, {USA}.
+\newblock \emph{Fire Ecol.}, 8, 11--31.
+
+\bibitem[{{Yosemite National Park}(2012)}]{yose2012Yosemite}
+\hspace{0em}\\{Yosemite National Park} (2012).
+\newblock {Yosemite National Park} fire history polygons, 1930 - 2011.
+
+\end{thebibliography}

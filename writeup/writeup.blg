@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: writeup.aux
+The style file: ecology_let.bst
+Database file #1: network.bib
+You've used 12 entries,
+            2997 wiz_defined-function locations,
+            701 strings with 6815 characters,
+and the built_in function-call counts, 7457 in all, are:
+= -- 595
+> -- 392
+< -- 3
++ -- 153
+- -- 138
+* -- 620
+:= -- 1233
+add.period$ -- 34
+call.type$ -- 12
+change.case$ -- 106
+chr.to.int$ -- 11
+cite$ -- 12
+duplicate$ -- 483
+empty$ -- 480
+format.name$ -- 172
+if$ -- 1390
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 112
+newline$ -- 62
+num.names$ -- 48
+pop$ -- 196
+preamble$ -- 1
+purify$ -- 94
+quote$ -- 0
+skip$ -- 130
+stack$ -- 0
+substring$ -- 386
+swap$ -- 275
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 108
+warning$ -- 0
+while$ -- 55
+width$ -- 0
+write$ -- 153

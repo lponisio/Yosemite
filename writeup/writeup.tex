@@ -77,8 +77,9 @@
 
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
-\title{Workflow and detailed analyses for: "Interaction flexibility and pyrodiversity interact to increase pollinator population resistance"}
-\author{Lauren Ponisio}
+\title{Workflow and detailed analyses for: "Pyrodiversity promotes
+  interaction complementarity and population resistance"}
+\author{Lauren C.\ Ponisio}
 \maketitle
 
 \begin{figure}[h!]
@@ -101,7 +102,7 @@ write up.
 
 The entire analysis is executable from the main.sh file. All of the
 packages needed to run the analyses are listed in the packages.sh
-file. All R scripts were run in v3.5.3. Navigate to the analysis
+file. All R scripts were run in v3.6.1. Navigate to the analysis
 folder within the github repo (Yosemite) then the main.sh file can be
 selected and run in terminal. This will somewhat helpfully print the
 results of each analysis and re-create any accompanying figures.
@@ -115,17 +116,19 @@ the analysis.
 \section{Data Prep}
 \label{sec:dataprep}
 
-In analysis/data the dataPrep.R script creates all the data structures
-needed for the analyses. It references the raw data, however, so all
-needed files are in the github repro and this file cannot be run.
+In analysis/data the \texttt{dataPrep.R} script creates all the data
+structures needed for the analyses. It references the raw data,
+however, so all needed files are in the github repro and this file
+cannot be run.
 
-\subsection{Decision points}
-\label{sec:dataprep_dp}
+\subsection{Decision points} 
 \begin{enumerate}
-\item Drop all non bees. Rational: non-bees not identified to species
-  with the same rigor as bees. Also, life histories are less well
-  understood, and bees are the more dominant pollinator in this system.
+\item Drop all non-bees. Rational: non-bees not identified to species
+  with the same rigor as bees because many groups do not have
+  experts. Also, life histories are less well understood, and bees are
+  the more dominant pollinator in this system.
 \end{enumerate}
+
 
 \subsection{Pyrodiversity}
 \label{sec:pyrodiv}
@@ -137,7 +140,7 @@ area. This metrics was published in our previous publication
 \citep{ponisio2016pyrodiversity}. We obtained fire history data of our
 study area, dating back to 1984, from Yosemite National Park and the
 United States Forest Service \citep{van2012factors,
-miller2012Yosemite, yose2012Yosemite}.  Each fire digitization
+  miller2012Yosemite, yose2012Yosemite}.  Each fire digitization
 contains rasterized values of burn severity
 \citep{miller2007quantifying}.  Fire season, another component of fire
 history, was not directly considered.  There was, however, little
@@ -150,15 +153,15 @@ history of each raster cell $(30~\mathrm{m})^2$ resolution. We first
 created categories of fire severity within a fire
 \citep{miller2012Yosemite}. For each raster cell, we then used the
 sequence of fires and the severity of each of those fires to define
-unique fire histories.  We identified 135 unique fire histories in the
-basin.  To calculate the pyrodiversity score, raster cells received
-different categories if they differed in any aspect of fire history;
-for example, if they were burned by the same fire but at different
-severities, or if they were burned by different fires, even if at the
-same severity.  Pyrodiversity was then calculated as the Simpson's
-diversity of fire history categories (the compliment of the sum of the
-squared proportion of each fire history category) around a monitoring
-plot within $150~\mathrm{m}$.
+unique fire histories.  We identified $135$ unique fire histories in
+the basin.  To calculate the pyrodiversity score, raster cells
+received different categories if they differed in any aspect of fire
+history; for example, if they were burned by the same fire but at
+different severities, or if they were burned by different fires, even
+if at the same severity.  Pyrodiversity was then calculated as the
+Simpson's diversity of fire history categories (the compliment of the
+sum of the squared proportion of each fire history category) around a
+monitoring plot within $150~\mathrm{m}$.
 
 Pragmatically, to calculate pyrodiversity, I combined the cell
 values of rater layers into a single character string. I then
@@ -171,12 +174,12 @@ These calculations were done for the the previous publication so the
 \section{Network metrics}
 \label{sec:metrics}
 
-Within the analysis/networkLevel folder, the metrics.R script runs
-calculates the network topology metrics. The step to this analysis are
-1) randomize the interactions within communities, 2) calculate network
-metrics, 3) calculate z-scores for network metrics, 4) use linear
-mixed models to estimate the relationship between pyrodiversity and
-network metrics.
+Within the analysis/network folder, the \texttt{1metrics.R} script
+runs calculates the network topology metrics. The step to this
+analysis are 1) randomize the interactions within communities, 2)
+calculate network metrics, 3) calculate z-scores for network metrics,
+4) use linear mixed models to estimate the relationship between
+pyrodiversity and network metrics.
 
 The analysis begins be calculating null models by constraining of a
 connectance as developed by Deigo Vazquez. The algorithm was described
@@ -185,7 +188,7 @@ interactions observed in the original interaction matrix, F. To this
 end, the algorithm first created a binary matrix, assigning
 interspecific interactions according to species-specific
 probabilities, requiring that each species had at least one
-interaction. As in Vazquez et al.~(2005b), the species-specific
+interaction. As in \citep{vazquez2007species}, the species-specific
 probabilities were proportional to species' relative abundances
 (probabilities are in fact approximately proportional and not equal to
 relative abundances because of the requirement that each species
@@ -194,20 +197,16 @@ probabilities to deviate from relative abundances, especially for rare
 species). Once the number of filled cells in the original matrix was
 reached, the remaining interactions were distributed among the filled
 cells, so that connectance in the original and randomized matrices was
-the same." \citep[][, page 1122-1123]{vazquez2007species}
+the same." \citep[][page 1122-1123]{vazquez2007species}
 
 I then used the bipartite package to calculate metrics related to
-functional redundancy and complementarity. Mainly,
-partner.diversity.LL" (plant Shannon's partner diversity),
-"partner.diversity.HL" (pollinator Shannon's partner diversity),
-"functional.complementarity.LL" (plant complementarity, based on
-\citep{devoto2012understanding}), "functional.complementarity.HL"
-(pollinator complementarity, based on
-\citep{devoto2012understanding}), and "links.per.species" (average for
-plants and for pollinators). Any metric calculated by bipartite can be
-used however.
+functional redundancy and complementarity. Any metric calculated by
+bipartite can be used however. In the end I did not use any metrics
+where the null models were necessary for standardization.
 
-For each network metrics, I then examined the effect of pyrodiversity and drought using linear mixed models. The  equation for the models was: 
+For each network metrics, I then examined the effect of pyrodiversity
+and drought using linear mixed models. The equation for the models
+was:
 \begin{equation}
 \label{equ:metrics}
 \begin{aligned}
@@ -223,26 +222,27 @@ in the extreme drought year and 0 otherwise. $pyrodiv_j$ is the
 pyrodiversity of the $j^{th}$ site. $\alpha_i$ is the random
 intercept for site.
 
-The figures are produced by running the $plotting/networkLevel\_mods.R$ script.
+The figures are produced by running the
+\texttt{plotting/network\_1metrics.R} script.
 
-\subsection{Decision points} 
-\label{sec:metrics_dp}
+
+\subsection{Decision points}
 \begin{enumerate}
-\item which metrics best represent redundancy and complementarity?
+\item Which metrics best represent redundancy and complementarity?
   There are a plethora of metrics to chose from. I decided on the most
-  direct metrics developed primarily by \citep{devoto2012understanding} for
-  complementarity, and following \cite{kaiser2017ecosystem}, the partner diversity (i.e., generalization) for
-  redundancy and H2 for reciprocal specialization. I considered
-  nestedness as a metric of redundancy, but none of the networks were
-  significantly nested.   
+  direct metrics developed primarily by
+  \citep{devoto2012understanding} for complementarity (previously used
+  for networks), degree (the simplest and widely used metric of
+  generalization), and Rao's redundancy metric as advised by
+  \cite{ricotta2016measuring}.
 \end{enumerate}
 
 \section{Community resistance}
 \label{sec:comm_resist}
 
-In the $analysis/networkLevel$ folder, the robustness.R script runs
-the extinction simulations (robustness is the term for resistance to
-species loss in the network world). Plants are removed sequentially
+In the $analysis/network$ folder, the \texttt{2resistance.R} script
+runs the extinction simulations (robustness is the term for resistance
+to species loss in the network world). Plants are removed sequentially
 based on their abundance before the increase in drought intensity
 (from lowest to highest). The pollinator species without any plant
 partners left go secondarily "extinct". I modified the second.extinct
@@ -254,10 +254,39 @@ species a pollinator was ever observed visiting. I then filled each
 network, adding a 1 in a cell if the pollinator was ever observed
 visiting the corresponding plant.
 
-The figures are produced by running the $plotting/robustness.R$ script.
+The figures are produced by running the
+\texttt{plotting/3resistance.R} script.
+
+In most resistence simulations, species richness is simulated from the
+highest to lowest degree \citep{Memmott2004}. This dataset is unqiue
+in that I actually know what species are mostly likely to go
+extinction in the face of a perturbation, because the community
+actually experienced a perturbation (increase in drought
+intensity). The highest degree species did not go extinct, and in fact
+were the least likely to go extinction given that degree is a
+conbination of abunduance and generaliation. I instead decided that I
+should simulate extinction in a way that actually reflected a drought
+perturbation, mainly simulating from the least to the msot abundant.
+
+I struggled with a logical inconsistency, however. I simulate plant
+species extinction in response to a drought-like perturbation, but I
+actually data on what happened to the plant species richness following
+a drought-like perturbation. So what does it mean when I simulate the
+extinction of plants in the 2014 (extreme drought) year? And, if I
+drop the plants that actually went extinct in in 2014 from the 2013
+(pre-extreme drought year) data, would the networks (2013 with dropped
+species and 2014) look that same and have the same resistance? I
+explored these different scenarios a bit, and so the resistance
+calculation is actually on four different networks (observed "obs",
+potential "potential", observed with only plant species present in
+2013 and 2014 "both", and with only plant species present in 2013 and
+2014 "filledboth"). They are make in the \texttt{src/makeNets.R}
+script. I realize quickly that the meaning of the robustness
+simulation could be an entirely separate study, exploring how
+different extinction affect resistance estimates, and whether that
+relates to any topological metrics.
 
   \subsection{Decision points}
-  \label{sec:comm_resist_dp}
   \begin{enumerate}
   \item What order to drop plant species to simulation a drought-like
     event? Sensible options: from least to most degree or abundance
@@ -271,37 +300,42 @@ The figures are produced by running the $plotting/robustness.R$ script.
     perturbation (more likely to loose the least abundant first).
   \end{enumerate}
 
+
+
+
 \section{Population resistance}
   \label{sec:pop_resist}
 
-In the $analysis/variability$ folder, the steps to calculating
-population resistance are as follows: 1) calculate the null
-communities (again using vaznull) in order to standardize partner
-"$\beta$-diversity" (nulls.R), 2) calculate partner turnover
-(partner.R), 3) calculate role variability (pca.R), then 4) the change
-in abundance of each pollinator species at each site (deltaAbund.R)
-and then the linear mixed models. To test whether the variability
-metrics were indeed an accurate representation of variability, I
-generated communities with no to high variability and examined the
-values of the variability scores ($test_flex_mets.R$). The variability
-metrics for partners and roles were small when the interaction
-matrices generated had little interaction turnover, and high with high
-interaction turnover, as intended.
+  In the $analysis/variability$ folder, the steps to calculating
+  population resistance are as follows: 1) calculate the null
+  communities (again using vaznull) in order to standardize partner
+  "$\beta$-diversity" (\texttt{1nulls.R}), 2) calculate partner
+  turnover (\texttt{2partner.R}), 3) calculate role variability
+  (\texttt{3pca.R}), then 4) the change in abundance of each
+  pollinator species at each site (\texttt{4deltaAbund.R}) and then
+  the linear mixed models. To test whether the variability metrics
+  were indeed an accurate representation of variability, I generated
+  communities with no to high variability and examined the values of
+  the variability scores (\texttt{test\_flex\_mets.R}). The
+  variability metrics for partners and roles were small when the
+  interaction matrices generated had little interaction turnover, and
+  high with high interaction turnover, as intended.
 
-Dissimilarity estimates can be affected by the total number of
-species/interactions sampled at a site \citep[e.g.,][]{Chase2011}. So
-I used null models to estimate the deviation of the observed
-$\beta$-diversity from that which would be expected under a random
-community assembly process, with constrained connectance and
-approximately constrained marginals.  I then calculated the fraction
-of randomly assembled communities with dissimilarity values less than
-(and half of those equal to) that of the observed community. I used
-this fraction as a ``corrected dissimilarity score'' for our observed
-data.  Corrected dissimilarity values near one indicate that the
-observed communities exhibit more species turnover between sites than
-expected under a random assembly process while values near $0.5$
-indicate that the observed communities exhibit levels of turnover more
-in line with the null expectation.
+  Dissimilarity estimates can be affected by the total number of
+  species/interactions sampled at a site
+  \citep[e.g.,][]{Chase2011}. So I used null models to estimate the
+  deviation of the observed $\beta$-diversity from that which would be
+  expected under a random community assembly process, with constrained
+  connectance and approximately constrained marginals.  I then
+  calculated the fraction of randomly assembled communities with
+  dissimilarity values less than (and half of those equal to) that of
+  the observed community. I used this fraction as a ``corrected
+  dissimilarity score'' for our observed data.  Corrected
+  dissimilarity values near one indicate that the observed communities
+  exhibit more species turnover between sites than expected under a
+  random assembly process while values near $0.5$ indicate that the
+  observed communities exhibit levels of turnover more in line with
+  the null expectation.
 
 The general equation for the models was: 
 \begin{equation}
@@ -327,24 +361,27 @@ richness of the $j^{th}$ between the years $2013$ (drought) and $2014$
 species.
 
 
+
 \subsection{Decision points}
-  \label{sec:pop_resist_dp1}
 \subsubsection{Partner turnover}
 \begin{enumerate}
-\item Null models: Constrain alpha diversity and not the number of
-  individuals in the null models for calculating the expected
-  $\beta$-diversity. Rational: Little difference in the results when
-  different null models are used \citep{ponisio2015farm}
-\item Turnover calculation: weight interactions by their ``abundance''
-  vs. binary interactions and use Chao as a dissimilarity
-  estimate. Rational: turnover in the number of interactions is
-  ecological meaningful and a part of interaction flexibility. Chao
-  \citep{Chao2005} is density invariant, replication invariance, and
-  monotonic.
-\item Turnover calculation: calculate the corrected interaction
-  turnover by using the Chase et al. (calculating the fraction of
-  randomly assembled communities with dissimilarity values less than
-  and half of those equal to that of the observed
+\item Null models for partner variability: Constrain alpha diversity
+  and not the number of individuals in the null models for calculating
+  the expected $\beta$-diversity. Rational: Little difference in the
+  results when different null models are used \citep{ponisio2015farm}.
+\item Partner variability calculation: weight interactions by their
+  ``abundance'' vs. binary interactions and use Chao as a
+  dissimilarity estimate. Rational: turnover in the number of
+  interactions is ecological meaningful and a part of interaction
+  flexibility. Chao \citep{chao-2005-148} is density invariant,
+  replication invariance, and monotonic (Jost L, Chao A, Chazdon
+  RL. Compositional similarity and $\beta$ diversity In: Magurran AE,
+  Mc Gill BJ, editors. Biological diversity: frontiers in measurement
+  and assessment. Oxford: Oxford University Press; 2011. pp. 66–84.)
+\item Partner variability calculation: calculate the corrected
+  interaction turnover by using the \citep{Chase2011} (calculating the
+  fraction of randomly assembled communities with dissimilarity values
+  less than and half of those equal to that of the observed
   community). Rational: calculating the corrected turnover using
   z-scores (the alternative) was not qualitatively different
   \citep{ponisio2015farm}.
@@ -356,15 +393,14 @@ species.
   bloom) and across sites (re-shuffle the plant community
   composition). Other options, 1) cv corrected by samples size, an
   unbiased estimates when sample sizes are low. Ruled out because
-  sample size is not particularly small. The pvalue
-  for the interaction between partner variability and pyrodiversity
-  becomes marginal (0.06), but this does not substantially change the
-  results (unless you are very militant about pvalues). 2) sd. Ruled
-  out because does not control for mean. 
+  sample size is not particularly small. The pvalue for the
+  interaction between partner variability and pyrodiversity becomes
+  marginal (0.06), but this does not substantially change the results
+  (unless you are very militant about pvalues). 2) sd. Ruled out
+  because does not control for mean.
 \end{enumerate}
 
-\subsubsection{Role turnover}
-  \label{sec:pop_resist_dp2}
+\subsubsection{Role variability}
 \begin{enumerate}
 \item Role quantification: chose "rarefied degree",
   "weighted.betweenness", "weighted.closeness", "niche.overlap",
@@ -381,27 +417,27 @@ species.
   come into and out of bloom) and across sites (re-shuffle the plant
   community composition).
 \end{enumerate}
-  
-\subsubsection{Linear mixed models}
-  \label{sec:pop_resist_dp3}
+
+\subsubsection{Linear mixed models of drought resistance}
 \begin{enumerate}
-  \item drop two species with really extreme values of role
-    flexibility. Rational: from examining their interactions, they
-    seem to have occupied basically the exact same role in every
-    network they were observed in (though interestingly different
-    species). The model diagnostic look a lot better without including
-    them. In addition, the model results are mostly
-    consistent. Removing them makes the coefficient for pyrodiversity
-    less negative, as expected by removing an extreme value that is
-    shaping the slope. 
+\item Dropping extrema: I dropped two species with really extreme
+  values of role flexibility. Rational: from examining their
+  interactions, they seem to have occupied basically the exact same
+  role in every network they were observed in (though interestingly
+  different species). The model diagnostic look a lot better without
+  including them. In addition, the model results are mostly
+  consistent. Removing them makes the coefficient for pyrodiversity
+  less negative, as expected by removing an extreme value that is
+  shaping the slope.
   \end{enumerate}
 
+  
 
 \section{Resource availability}
   \label{sec:resource}
-For the supplemental information, I made figures for the change in
+  For the supplemental information, I made figures for the change in
   flower richness between the yers 2013 and 2014. These analyses were
-  included in \cite{ponisio2016pyrodiversity}.
+  included in \citep{ponisio2016pyrodiversity}.
 
 
 \clearpage
