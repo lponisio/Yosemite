@@ -2,7 +2,6 @@
 ## partner beta diversity scores. Because species will vry in their
 ## partner richness, this standardized for partner "alpha diversity"
 ## for the beta diversity calculation
-## setwd('~/Dropbox/Yosemite')
 rm(list=ls())
 setwd('analysis/variability')
 this.script <- "nulls"

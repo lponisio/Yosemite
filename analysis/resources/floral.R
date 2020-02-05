@@ -1,5 +1,5 @@
 rm(list=ls())
-setwd('~/Dropbox/Yosemite/analysis/resources')
+setwd('analysis/resources')
 type <- "all"
 d.to.keep <- "150"
 binary <- FALSE

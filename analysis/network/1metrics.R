@@ -1,4 +1,3 @@
-## setwd('~/Dropbox/Yosemite')
 rm(list=ls())
 setwd('analysis/network')
 source('src/initialize.R')
@@ -46,14 +45,14 @@ formulas.div <-lapply(ys, function(x) {
 ## floral richness
 formulas.floral.rich <-lapply(ys, function(x) {
     as.formula(paste(x, "~",
-                     paste("scale(FloralRichness)*Year",
+                     paste("scale(FloralRichness)",
                            "(1|Site)",
                            sep="+")))
 })
 ## pollinator richness
 formulas.pol.rich <-lapply(ys, function(x) {
     as.formula(paste(x, "~",
-                     paste("scale(Richness)*Year",
+                     paste("scale(Richness)",
                            "(1|Site)",
                            sep="+")))
 })
@@ -71,17 +70,31 @@ mods.pol.rich <- lapply(formulas.pol.rich, function(x){
 names(mods.div) <- names(mods.floral.rich) <-
     names(mods.pol.rich) <- ys
 
+
+## pollinator redund/compl/generalziation should be regressed against
+## the floral community, similarly plant redund/comp/generalization
+## should be regressed agains the pollinator
+
+mods.rich <- c(mods.pol.rich["pol.FunRedundancy"],
+               mods.floral.rich["plant.FunRedundancy"],
+               mods.pol.rich["functional.complementarity.HL"],
+               mods.floral.rich["functional.complementarity.LL"],
+               mods.pol.rich["mean.number.of.links.LL"],
+               mods.floral.rich["mean.number.of.links.HL"])
+
 ## results
 lapply(mods.div, summary)
-lapply(mods.pol.rich, summary)
-lapply(mods.floral.rich, summary)
-
+lapply(mods.rich, summary)
 
 ## check sig levels with method other than wald CI
 lapply(mods.div, anova)
-lapply(mods.floral.rich, anova)
-lapply(mods.pol.rich, anova)
+lapply(mods.rich, anova)
+
+aics <- cbind(sapply(mods.div, AIC), sapply(mods.rich, AIC), NA)
+aics[,3]  <- aics[,2]- aics[,1]
+colnames(aics) <- c("pyrodiv", "richness", "deltaAIC")
+aics
 
 
-save(mods.div, mods.pol.rich, mods.floral.rich, cor.dats,
+save(mods.div, mods.rich, cor.dats,
      file=file.path(save.path, 'mods/metrics.Rdata'))

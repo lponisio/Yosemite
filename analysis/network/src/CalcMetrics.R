@@ -93,7 +93,8 @@ calcNetworkMetrics <- function (dat.web, N,
                 null.stat <- replicate(N,
                                        calcNullStat(dat.web,
                                                     null.fun= vaznull.fast,
-                                                    index=index),
+                                                    index=index,
+                                                    dist="chao"),
                                        simplify=TRUE)
                 ## calculate metrics from data
                 true.stat <- calcMetric(dat.web,

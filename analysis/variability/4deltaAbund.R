@@ -1,4 +1,7 @@
-## setwd('~/Dropbox/Yosemite')
+## This script calculates the log abundance of each species at each
+## site and then regresses that value against their interaction
+## variability values.
+
 rm(list=ls())
 setwd('analysis/variability')
 source('src/initialize-delta.R')

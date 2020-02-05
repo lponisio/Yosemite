@@ -1,6 +1,5 @@
 ## This script calculates the pollinator role/network niche
 ## varaibility between sites within a year.
-## setwd('~/Dropbox/Yosemite')
 rm(list=ls())
 setwd('analysis/variability')
 this.script <- "role"

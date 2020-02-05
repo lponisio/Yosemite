@@ -7,19 +7,20 @@ plot.panel <- function(dats,
                        year,
                        col.lines,
                        col.fill,
-                       legend.loc.year=NA,
+                       legend.loc.year=NULL,
                        ylabel,
-                       ag.col="SiteStatus",
+                       ag.col="Year",
                        plot.x=TRUE,
-                       FUN=mean,
                        pchs=c(16),
-                       leg.labs){
+                       leg.labs=NULL){
     plotting.loop <- function(){
-        for(i in 1:length(treatments)){
-            print(treatments[i])
+        for(i in treatments){
+            print(i)
             ## subset data to specific treatment
-            sub.dd <- new.dd[new.dd[,ag.col]==treatments[i],]
-            sub.dats <- dats[dats[,ag.col]==treatments[i],]
+            sub.dd <- new.dd[new.dd[,ag.col]==i,]
+            sub.dats <- dats[dats[,ag.col]==i,]
+            this.fill <- col.fill[[i]][y1]
+            this.line <- col.lines[[i]][y1]
             ## subset to a specific year if year is TRUE
             if(!is.na(year)){
                 sub.dd <- sub.dd[sub.dd$Year==year,]
@@ -34,33 +35,32 @@ plot.panel <- function(dats,
                       rev(sub.dd[,xs])),
                     c(sub.dd$phi,
                       rev(sub.dd$plo)),
-                    col=col.fill[treatments[i]], border=NA)
+                    col=this.fill, border=NA)
             ## plots means
             points(x=jitter(ys$x, factor=0.25),
                    y=ys$y,
                    pch=pchs[i],
-                   col=col.lines[treatments[i]],
-                   cex=1)
+                   col=this.line,
+                   cex=1.2)
             ## plots CI
             lines(x=sub.dd[,xs],
                   y=sub.dd[,y1],
-                  col=col.lines[treatments[i]],
+                  col=this.line,
                   lwd=2)
             lines(x=sub.dd[,xs],
                   y=sub.dd$plo,
-                  col=col.lines[treatments[i]],
+                  col=this.line,
                   lty="dashed")
             lines(x=sub.dd[,xs],
                   y=sub.dd$phi,
-                  col=col.lines[treatments[i]],
+                  col=this.line,
                   lty="dashed")
 
         }
     }
     if(!is.na(year)){
         plot(NA, xlim=range(dats[dats$Year == year, xs]),
-             ylim=range(c(0, new.dd$plo, new.dd$phi,
-                          dats[dats$Year == year, y1]),
+             ylim=range(c(0, new.dd$plo, new.dd$phi, dats[,y1]),
                         na.rm=TRUE),
              xlab="",
              ylab="",
@@ -69,18 +69,16 @@ plot.panel <- function(dats,
              las=1)
     }else{
         plot(NA, xlim=range(dats[, xs], na.rm=TRUE),
-             ylim=range(c(new.dd$plo, new.dd$phi,
-                          dats[dats$Year == year, y1]) ,
-                        na.rm=TRUE),
+             ylim= range(c(0, new.dd$plo, new.dd$phi, dats[,y1]),
+                         na.rm=TRUE),
              xlab="",
              ylab="",
              xaxt="n",
              yaxt="n",
              las=1)
     }
-    if(year == "2013" | is.na(year)){
-        axis(2, pretty(range(c(0, 1, new.dd$plo, new.dd$phi,
-                               dats[dats$Year == year, y1]),
+    if(is.na(year)){
+        axis(2, pretty(range(c(0, new.dd$plo, new.dd$phi, dats[,y1]),
                              na.rm=TRUE),
                        n = 5),
              las=1)
@@ -90,12 +88,10 @@ plot.panel <- function(dats,
         axis(1, pretty(dats[,xs], 4))
     }
     plotting.loop()
-    ## add year labels
-    if(y1 == "plant.FunRedundancy" |
-       y1 == "Robustness" & !is.na(year)){
-        legend(legend.loc.year,
-               legend=leg.labs[year],
-               bty="n", cex=1)
+    if(y1 == "pol.FunRedundancy" | y1 == "Robustness"){
+        legend("bottomleft", legend=c("Drought", "Extreme drought"),
+               col=c("darkgoldenrod1", "midnightblue"),
+               pch=c(16, 1), bty="n")
     }
 }
 

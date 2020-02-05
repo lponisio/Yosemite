@@ -1,7 +1,6 @@
 ## This script calculates the "beta diversity" of interaction partners
 ## for each species. For this study, the partner beta diversity is
 ## calculated across sites within a year
-## setwd('~/Dropbox/Yosemite')
 rm(list=ls())
 setwd('analysis/variability')
 source('src/initialize_beta.R')

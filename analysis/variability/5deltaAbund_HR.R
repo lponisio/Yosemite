@@ -1,4 +1,3 @@
-## setwd('~/Dropbox/Yosemite/')
 rm(list=ls())
 setwd('analysis/variability')
 load('../data/HR_spec.Rdata')
@@ -26,3 +25,16 @@ delta.HR <- calcYearDiff(spec.abund)
 
 pdf.f(makePointLine, file="figures/HR_Yose.pdf",
       height=4, width=5)
+
+##  statistical analysis in response to reviewer comment: " If there
+##   was statistical support that population changes from 2013 to 2014
+##   were more extreme than in other years the argument by the author
+##   could be strengthened. "
+
+delta.HR <- do.call(rbind, delta.HR)
+
+delta.HR <- delta.HR[is.finite(delta.HR[,"deltaAbund"]),]
+delta.HR <- delta.HR[delta.HR[, "deltaAbund"] != 0,]
+
+mod <- lmer(deltaAbund~Years + (1|Site) + (1|GenusSpecies),
+            data=delta.HR)

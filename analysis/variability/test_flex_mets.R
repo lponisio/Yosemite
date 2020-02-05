@@ -1,4 +1,4 @@
-## setwd('~/Dropbox/Yosemite')
+
 rm(list=ls())
 setwd('analysis/variability')
 source('src/initialize.R')
