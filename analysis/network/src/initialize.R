@@ -8,7 +8,6 @@ source('src/vaznull2.R')
 source('src/CalcMetrics.R')
 source('src/misc.R')
 source("src/robustness.R")
-source('src/diffs.R')
 source('src/extOrder.R')
 source('src/makeNets.R')
 
